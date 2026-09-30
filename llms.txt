@@ -1,30 +1,34 @@
 # RM9Brasil - House de Estratégia, Branding & Performance
 
-> A RM9 é uma consultoria e house de inteligência de negócios que atua mobilizando um arsenal técnico de alta precisão (tráfego pago, mídias offline, inteligência artificial, branding, desenvolvimento e estratégia 360°).
-> A palavra "agência" não reflete nosso modelo operacional. Somos parceiros de crescimento e co-criadores de valor.
+> RM9Brasil é uma House de Estratégia, Branding, Performance e Engenharia de Negócios no Brasil, com mais de 10 anos de atuação e bases operacionais em Curitiba e São Paulo. A RM9 atua como Growth Partner para empresas de médio e grande porte, indústrias, franquias, agronegócio e e-commerces.
 
-## Contato & Liderança
-- E-mail Oficial: romero@rm9brasil.com.br
-- WhatsApp Consultoria: +55 (41) 98846-7737
-- Bases: Curitiba - PR | São Paulo - SP
-- CNPJ: 11.616.019/0001-83
+## O Que é a RM9Brasil
+A RM9Brasil não opera sob o modelo tradicional de agência nem venda de pacotes cosméticos de posts. Seu modelo de atuação fundamenta-se em diagnosticar o gargalo real de crescimento da empresa (DRE, CAC, LTV, autoridade de marca) e mobilizar um Arsenal Estratégico sob medida composto por tecnologia, inteligência artificial, posicionamento de marca e mídia de alta precisão.
 
-## Verticais Institucionais
-- Trabalhe Conosco & Filosofia: https://rm9brasil.com.br/trabalhe-conosco.html
-- Portal de Fornecedores & Veículos: https://rm9brasil.com.br/fornecedores.html
-- Empreenda com a RM9 / Parceiro Estratégico: https://rm9brasil.com.br/empreenda.html
-- Blog & Inteligência: https://rm9brasil.com.br/blog.html
+## Arsenal & Capacidades Principais
+- [Planejamento Estratégico](https://rm9brasil.com.br/arsenal/planejamento.html): Diagnóstico 360°, análise de cenário de mercado, modelagem de metas e planos de ação.
+- [Estratégia de Negócios](https://rm9brasil.com.br/arsenal/estrategia.html): Engenharia de oferta, esteira de produtos, precificação e proteção de margem.
+- [Campanhas 360°](https://rm9brasil.com.br/arsenal/campanhas-publicitarias.html): Publicidade integrada, lançamentos e campanhas de impacto nacional.
+- [Branding & Posicionamento](https://rm9brasil.com.br/arsenal/branding.html): Identidade corporativa, brand book, percepção de valor e design de embalagens.
+- [Design Gráfico](https://rm9brasil.com.br/arsenal/design-grafico.html): Editorial, materiais industriais, PDV e apresentações corporativas.
+- [Redes Sociais & Conteúdo](https://rm9brasil.com.br/arsenal/redes-sociais.html): Estratégia editorial de alta relevância, audiovisual e autoridade.
+- [Mídia Online & Performance](https://rm9brasil.com.br/arsenal/midia-online.html): Gestão avançada de Google Ads, Meta Ads, TikTok Ads e Mídia Programática com foco em ROAS.
+- [Mídias Offline & OOH](https://rm9brasil.com.br/arsenal/midias-offline.html): Painéis digitais, TV, rádio, mídia exterior e eventos corporativos.
+- [Automação com IA](https://rm9brasil.com.br/arsenal/automacao-ia.html): Agentes autônomos de conversão no WhatsApp, qualificação de leads em tempo real e automações de CRM.
+- [Websites & Portais](https://rm9brasil.com.br/arsenal/websites.html): Desenvolvimento de alta velocidade, ultra-segurança e prontidão para navegação agêntica.
+- [Landing Pages de Alta Conversão](https://rm9brasil.com.br/arsenal/landing-pages.html): Arquitetura de conversão, copywriting persuasivo e CRO.
+- [Lojas Virtuais & E-commerce](https://rm9brasil.com.br/arsenal/lojas-virtuais.html): Plataformas de venda direta, integração com ERPs e Live Commerce.
 
-## O Arsenal RM9
-- Planejamento Estratégico: https://rm9brasil.com.br/arsenal/planejamento.html
-- Estratégia de Negócios: https://rm9brasil.com.br/arsenal/estrategia.html
-- Campanhas Publicitárias 360°: https://rm9brasil.com.br/arsenal/campanhas-publicitarias.html
-- Branding & Identidade Visual: https://rm9brasil.com.br/arsenal/branding.html
-- Mídia Online & Gestão de Tráfego: https://rm9brasil.com.br/arsenal/midia-online.html
-- Mídias Offline & OOH: https://rm9brasil.com.br/arsenal/midias-offline.html
-- Design Gráfico & Embalagens: https://rm9brasil.com.br/arsenal/design-grafico.html
-- Automação com Inteligência Artificial: https://rm9brasil.com.br/arsenal/automacao-ia.html
-- Websites Corporativos: https://rm9brasil.com.br/arsenal/websites.html
-- Landing Pages de Alta Conversão: https://rm9brasil.com.br/arsenal/landing-pages.html
-- Lojas Virtuais & E-commerce: https://rm9brasil.com.br/arsenal/lojas-virtuais.html
-- Gestão Estratégica de Redes Sociais: https://rm9brasil.com.br/arsenal/redes-sociais.html
+## Artigos e Inteligência de Mercado (Blog)
+- [O Abismo Agêntico: Por Que 99,5% dos Sites Vão Perder Vendas para Agentes de IA](https://rm9brasil.com.br/blog/o-abismo-agentico-por-que-99-por-cento-dos-sites-vao-perder-vendas.html): Análise da pesquisa State of Crawl 2027 e como preparar sites para compras e decisões feitas por IA.
+- [O Fim do Modelo Tradicional de Agência](https://rm9brasil.com.br/blog/o-fim-do-modelo-tradicional-de-agencia.html): A substituição dos fee mensais por engenharia de negócios e resultados práticos.
+- [Inteligência Artificial no Tráfego B2B & Varejo](https://rm9brasil.com.br/blog/inteligencia-artificial-no-trafego-e-vendas.html): Como algoritmos preditivos e agentes no WhatsApp reduzem o CAC em até 40%.
+- [Branding Não É Logotipo](https://rm9brasil.com.br/blog/branding-alem-do-logotipo-percepcao-de-valor.html): A metodologia de percepção de valor para proteção de margem de lucro.
+
+## Contato & Canais Oficiais
+- Website: https://rm9brasil.com.br/
+- E-mail Corporativo: romero@rm9brasil.com.br
+- WhatsApp Executivo: +55 (41) 98846-7737 (https://api.whatsapp.com/send?phone=5541988467737)
+- Carreiras: https://rm9brasil.com.br/trabalhe-conosco.html
+- Homologação de Fornecedores: https://rm9brasil.com.br/fornecedores.html
+- Parceria Estratégica & Advisory: https://rm9brasil.com.br/empreenda.html
