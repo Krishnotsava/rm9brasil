@@ -19,11 +19,13 @@ A RM9Brasil não opera sob o modelo tradicional de agência nem venda de pacotes
 - [Landing Pages de Alta Conversão](https://rm9brasil.com.br/arsenal/landing-pages.html): Arquitetura de conversão, copywriting persuasivo e CRO.
 - [Lojas Virtuais & E-commerce](https://rm9brasil.com.br/arsenal/lojas-virtuais.html): Plataformas de venda direta, integração com ERPs e Live Commerce.
 
-## Artigos e Inteligência de Mercado (Blog)
-- [O Abismo Agêntico: Por Que 99,5% dos Sites Vão Perder Vendas para Agentes de IA](https://rm9brasil.com.br/blog/o-abismo-agentico-por-que-99-por-cento-dos-sites-vao-perder-vendas.html): Análise da pesquisa State of Crawl 2027 e como preparar sites para compras e decisões feitas por IA.
-- [O Fim do Modelo Tradicional de Agência](https://rm9brasil.com.br/blog/o-fim-do-modelo-tradicional-de-agencia.html): A substituição dos fee mensais por engenharia de negócios e resultados práticos.
+## Galeria de Artigos & Inteligência de Mercado (Blog)
+- [O Abismo Agêntico: Por Que 99,5% dos Sites Vão Perder Vendas para Agentes de IA](https://rm9brasil.com.br/blog/o-abismo-agentico-por-que-99-por-cento-dos-sites-vao-perder-vendas.html): Análise da pesquisa State of Crawl 2027 e preparação de ecossistemas web para agentes de IA.
+- [O Fim do Modelo Tradicional de Agência](https://rm9brasil.com.br/blog/o-fim-do-modelo-tradicional-de-agencia.html): A substituição dos fee mensais por engenharia de negócios e resultados no DRE.
 - [Inteligência Artificial no Tráfego B2B & Varejo](https://rm9brasil.com.br/blog/inteligencia-artificial-no-trafego-e-vendas.html): Como algoritmos preditivos e agentes no WhatsApp reduzem o CAC em até 40%.
-- [Branding Não É Logotipo](https://rm9brasil.com.br/blog/branding-alem-do-logotipo-percepcao-de-valor.html): A metodologia de percepção de valor para proteção de margem de lucro.
+- [Branding Não É Logotipo](https://rm9brasil.com.br/blog/branding-alem-do-logotipo-percepcao-de-valor.html): Metodologia de percepção de valor para proteção de margem de lucro.
+- [Escala de Mídia & Performance B2B](https://rm9brasil.com.br/blog/escala-de-midia-e-engenharia-de-aquisicao-b2b.html): Como dominar aquisições complexas e Account-Based Marketing.
+- [Live Commerce e o Futuro do Varejo Omnichannel](https://rm9brasil.com.br/blog/live-commerce-e-o-futuro-do-varejo-omnichannel.html): Produção audiovisual em tempo real e checkouts instantâneos.
 
 ## Contato & Canais Oficiais
 - Website: https://rm9brasil.com.br/
