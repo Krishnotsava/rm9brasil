@@ -1,0 +1,20 @@
+backend:
+  name: git-gateway
+  branch: main # Ramo de deploy de produção
+
+media_folder: "website/assets/uploads" # Pasta física no repositório para uploads
+public_folder: "/assets/uploads" # Caminho público no site para as imagens
+
+collections:
+  - name: "blog"
+    label: "Artigos do Blog"
+    folder: "website/blog/posts" # Onde os arquivos markdown (.md) serão salvos
+    create: true # Permite criar novos posts pelo painel
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Título do Artigo", name: "title", widget: "string" }
+      - { label: "Data de Publicação", name: "date", widget: "datetime" }
+      - { label: "Descrição (SEO)", name: "description", widget: "text" }
+      - { label: "Imagem de Destaque", name: "image", widget: "image", required: false }
+      - { label: "Autor", name: "author", widget: "string", default: "RM9Brasil Growth Team" }
+      - { label: "Corpo do Artigo", name: "body", widget: "markdown" }

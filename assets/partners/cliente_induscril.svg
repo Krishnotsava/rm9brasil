@@ -1,0 +1,8 @@
+<svg width="240" height="60" xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
+  <g>
+    <path d="M12 18h10v24H12z" fill="#FFFFFF"/>
+    <circle cx="17" cy="12" r="4" fill="#FFFFFF"/>
+    <text x="32" y="38" font-family="'Syne', 'Plus Jakarta Sans', Arial, sans-serif" font-size="24" font-weight="900" fill="#FFFFFF" letter-spacing="2">INDUSCRIL</text>
+    <text x="34" y="50" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="8.5" font-weight="700" fill="#E2F800" letter-spacing="4.5">TINTAS & VERNIZES</text>
+  </g>
+</svg>

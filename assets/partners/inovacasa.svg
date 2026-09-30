@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" fill="#FFFFFF">
+  <g transform="translate(15, 10)">
+    <path d="M16 6L4 16v14h8v-8h8v8h8V16L16 6z" fill="none" stroke="#E2F800" stroke-width="2.2" stroke-linejoin="round"/>
+    <text x="36" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="17" letter-spacing="-0.01em" fill="#FFFFFF">INOVACASA</text>
+    <text x="37" y="33" font-family="'JetBrains Mono', sans-serif" font-weight="600" font-size="6.5" letter-spacing="0.2em" fill="#9FA3B5">EMPREENDIMENTOS</text>
+  </g>
+</svg>

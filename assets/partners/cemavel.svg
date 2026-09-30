@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" fill="#FFFFFF">
+  <g transform="translate(15, 10)">
+    <path d="M5 28L18 8h12L18 28H5z" fill="#E2F800"/>
+    <text x="38" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="19" letter-spacing="0.02em" fill="#FFFFFF">CEMAVEL</text>
+    <text x="39" y="34" font-family="'JetBrains Mono', sans-serif" font-weight="600" font-size="6.5" letter-spacing="0.22em" fill="#9FA3B5">VEÍCULOS &amp; PEÇAS</text>
+  </g>
+</svg>

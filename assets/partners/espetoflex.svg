@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" fill="#FFFFFF">
+  <g transform="translate(10, 10)">
+    <!-- Símbolo Espeto Flex -->
+    <circle cx="16" cy="20" r="14" fill="none" stroke="#E2F800" stroke-width="2.5" stroke-dasharray="4 2"/>
+    <path d="M8 20h16M20 14l4 6-4 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="38" y="23" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-weight="900" font-size="18" letter-spacing="-0.02em" fill="#FFFFFF">espetoflex</text>
+    <text x="39" y="33" font-family="'JetBrains Mono', sans-serif" font-weight="600" font-size="6.5" letter-spacing="0.18em" fill="#E2F800">GRILL &amp; INOVAÇÃO</text>
+  </g>
+</svg>

@@ -1,0 +1,31 @@
+# RM9Brasil - Configuração de Redirecionamento e SEO para Hostinger (Apache)
+RewriteEngine On
+RewriteBase /
+
+# 1. Forçar HTTPS (Certificado SSL)
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2. Redirecionar acessos diretos de index.html para a URL limpa (evita conteúdo duplicado)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^/]+/)*index\.html\ HTTP/
+RewriteRule ^(([^/]+/)*)index\.html$ https://rm9brasil.com.br/$1 [R=301,L]
+
+# 3. Permitir URLs limpas para arquivos .html avulsos (ex: acessar /consultoria.html como /consultoria)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^([^/]+)$ $1.html [L]
+
+# 4. URLs limpas para os posts do blog
+# Redirecionar /blog/slug/ para /blog/slug para manter caminhos relativos consistentes
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^/?blog/(.+)/$ https://rm9brasil.com.br/blog/$1 [R=301,L]
+
+# Reescrever /blog/slug para /blog/post-template.html?post=slug
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^/?blog/([^/]+)$ /blog/post-template.html?post=$1 [L,QSA]
+
+# 5. Forçar barra no final (trailing slash) para pastas se acessadas sem ela
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ https://rm9brasil.com.br/$1/ [R=301,L]

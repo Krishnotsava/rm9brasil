@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" fill="none">
+  <g>
+    <!-- Truck front icon -->
+    <rect x="10" y="18" width="22" height="24" rx="3" stroke="#FFFFFF" stroke-width="2.5" fill="none"/>
+    <rect x="14" y="22" width="14" height="8" rx="1" fill="#E2F800"/>
+    <circle cx="15" cy="38" r="2.5" fill="#FFFFFF"/>
+    <circle cx="27" cy="38" r="2.5" fill="#FFFFFF"/>
+    <text x="42" y="36" font-family="'Syne', 'Plus Jakarta Sans', Arial, sans-serif" font-size="22" font-weight="900" fill="#FFFFFF" letter-spacing="2">TRUCKET</text>
+    <text x="44" y="47" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="7.5" font-weight="600" fill="#A1A1AA" letter-spacing="3.5">FROTAS & LOGÍSTICA</text>
+  </g>
+</svg>

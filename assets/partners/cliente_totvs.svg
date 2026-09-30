@@ -1,0 +1,10 @@
+<svg width="200" height="60" xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <g>
+    <!-- TOTVS geometric logo -->
+    <path d="M12 20h22v6h-8v20h-6V26h-8v-6z" fill="#FFFFFF"/>
+    <ellipse cx="50" cy="33" rx="12" ry="13" stroke="#FFFFFF" stroke-width="5" fill="none"/>
+    <path d="M70 20h22v6h-8v20h-6V26h-8v-6z" fill="#FFFFFF"/>
+    <path d="M96 20l9 26 9-26h6l-12 32h-6l-12-32h6z" fill="#FFFFFF"/>
+    <path d="M130 22c3-2 8-3 14-1 6 2 9 6 8 11-1 4-4 6-9 8-4 1-6 3-6 5 0 2 3 3 7 3 5 0 9-2 11-4l3 5c-4 3-9 5-15 5-7 0-12-3-13-8-1-5 2-9 8-11 4-1 6-3 6-5s-2-3-5-3c-4 0-7 2-9 4l-3-4z" fill="#FFFFFF"/>
+  </g>
+</svg>

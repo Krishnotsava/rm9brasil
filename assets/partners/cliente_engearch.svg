@@ -1,0 +1,9 @@
+<svg width="240" height="60" xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
+  <g>
+    <!-- Geometric architecture icon -->
+    <path d="M10 42L25 14L40 42H10Z" stroke="#FFFFFF" stroke-width="2.5" fill="none"/>
+    <path d="M25 24L34 42H16L25 24Z" fill="#E2F800"/>
+    <text x="48" y="36" font-family="'Syne', 'Plus Jakarta Sans', Arial, sans-serif" font-size="22" font-weight="900" fill="#FFFFFF" letter-spacing="2">ENGEARCH</text>
+    <text x="50" y="48" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="8" font-weight="600" fill="#A1A1AA" letter-spacing="3.5">ENGENHARIA & ARQUITETURA</text>
+  </g>
+</svg>

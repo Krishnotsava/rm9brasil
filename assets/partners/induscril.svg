@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" width="220" height="60" fill="#FFFFFF">
+  <g transform="translate(10, 8)">
+    <!-- Ícone Gota/Pincel -->
+    <path d="M12 2C7 10 0 18 0 26c0 8.8 7.2 16 16 16s16-7.2 16-16C32 18 25 10 20 2c-2-3.2-6-3.2-8 0z" fill="#E2F800" opacity="0.9"/>
+    <path d="M16 12c-4 5-8 10-8 14 0 4.4 3.6 8 8 8s8-3.6 8-8c0-4-4-9-8-14z" fill="#FFFFFF"/>
+    <!-- Tipografia INDUSCRIL -->
+    <text x="40" y="27" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-weight="900" font-size="20" letter-spacing="-0.02em" fill="#FFFFFF">INDUSCRIL</text>
+    <text x="41" y="38" font-family="'JetBrains Mono', sans-serif" font-weight="600" font-size="7" letter-spacing="0.25em" fill="#E2F800">TINTAS &amp; TEXTURAS</text>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg width="240" height="60" xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
+  <g>
+    <!-- Agro Leaf & Gear icon -->
+    <path d="M12 36C12 24 22 14 34 14C34 26 24 36 12 36Z" fill="#E2F800"/>
+    <path d="M16 36C26 36 34 28 34 18" stroke="#0B0E14" stroke-width="2"/>
+    <text x="44" y="34" font-family="'Syne', 'Plus Jakarta Sans', Arial, sans-serif" font-size="20" font-weight="900" fill="#FFFFFF" letter-spacing="1">BRIQUE RURAL</text>
+    <text x="46" y="46" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="7.5" font-weight="700" fill="#A1A1AA" letter-spacing="3">AGRONEGÓCIO & CLASSIFICADOS</text>
+  </g>
+</svg>

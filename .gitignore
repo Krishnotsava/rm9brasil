@@ -1,0 +1,8 @@
+# Ignore backups and temporary files
+Backup - WP - old/
+node_modules/
+*.zip
+.DS_Store
+Thumbs.db
+logs/
+.git-tools/

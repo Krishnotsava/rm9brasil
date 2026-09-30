@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" fill="#FFFFFF">
+  <g transform="translate(15, 10)">
+    <!-- Ícone Folha Vida -->
+    <path d="M12 5c-6 8-8 16-2 22 6 6 16 4 20-4 4-8 0-16-8-20-3-1.5-7-1-10 2z" fill="#00F2FE" opacity="0.8"/>
+    <text x="36" y="24" font-family="'Plus Jakarta Sans', serif" font-weight="800" font-size="20" letter-spacing="0.05em" fill="#FFFFFF">HENVIDA</text>
+    <text x="37" y="34" font-family="'JetBrains Mono', sans-serif" font-weight="500" font-size="6.5" letter-spacing="0.2em" fill="#9FA3B5">PLANOS DE FAMÍLIA</text>
+  </g>
+</svg>

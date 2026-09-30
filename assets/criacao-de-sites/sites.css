@@ -1,0 +1,64 @@
+/* Specific styling for the SEO Diagnostic Scanner */
+
+.scanner-card {
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.scanner-card:hover {
+  border-color: var(--primary-glow);
+  box-shadow: var(--shadow-glow);
+}
+
+.scanner-console {
+  scrollbar-width: none;
+}
+
+.scanner-console::-webkit-scrollbar {
+  display: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.score-radial {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 149, 0, 0.15);
+    border-color: var(--secondary);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 149, 0, 0.35);
+    border-color: #ffaa33;
+  }
+}
+
+.results-error-list li {
+  padding: 0.5rem;
+  background: rgba(255,255,255,0.01);
+  border: 1px solid rgba(255,255,255,0.02);
+  border-radius: 0.35rem;
+  transition: background var(--transition-fast);
+}
+
+.results-error-list li:hover {
+  background: rgba(255, 59, 48, 0.02);
+  border-color: rgba(255, 59, 48, 0.1);
+}
+
+/* Mask invalid outlines */
+.quiz-input-text.invalid {
+  border-color: var(--primary) !important;
+  background: rgba(255, 59, 48, 0.02) !important;
+}

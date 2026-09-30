@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Admin - Agente de Blog IA | RM9Brasil</title>
+  
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --primary: #FF6B00;
+      --primary-hover: #e05e00;
+      --bg-dark: #0A0A0F;
+      --bg-card: rgba(20, 20, 28, 0.65);
+      --bg-input: rgba(12, 12, 18, 0.9);
+      --border: rgba(255, 255, 255, 0.05);
+      --border-focus: rgba(255, 107, 0, 0.4);
+      --text: #F3F4F6;
+      --text-secondary: #9CA3AF;
+      --success: #10B981;
+      --danger: #EF4444;
+      --font: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 107, 0, 0.2) transparent;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text);
+      font-family: var(--font);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background Ambient Orbs */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -10%;
+      right: -10%;
+      width: 50vw;
+      height: 50vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 107, 0, 0.08) 0%, transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -10%;
+      left: -10%;
+      width: 40vw;
+      height: 40vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Login Screen Container */
+    #loginScreen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1.5rem;
+    }
+
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .brand-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .brand-logo {
+      height: 50px;
+      margin-bottom: 1rem;
+    }
+
+    .brand-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #FFF;
+    }
+
+    .brand-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      color: var(--text-secondary);
+    }
+
+    .form-input {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--border-focus);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: var(--primary);
+      color: #FFF;
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-danger {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: var(--danger);
+    }
+
+    .btn-danger:hover {
+      background: rgba(239, 68, 68, 0.2);
+    }
+
+    .alert {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      margin-bottom: 1.25rem;
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .alert-danger {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      color: #FFA3A3;
+      display: flex;
+    }
+
+    /* Main Dashboard Layout */
+    #dashboardLayout {
+      display: none; /* Toggle programmatically */
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Top Navbar Header */
+    .navbar {
+      background: rgba(10, 10, 15, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-brand-logo {
+      height: 38px;
+    }
+
+    .nav-brand-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+    }
+
+    .nav-brand-badge {
+      background: rgba(255, 107, 0, 0.1);
+      border: 1px solid rgba(255, 107, 0, 0.2);
+      color: var(--primary);
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .api-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .api-online {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      color: var(--success);
+    }
+
+    .api-offline {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      color: var(--danger);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .status-dot.active {
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+
+    .btn-logout {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-logout:hover {
+      background: rgba(239, 68, 68, 0.08);
+      color: var(--danger);
+    }
+
+    /* Sidebar and View Navigation */
+    .dashboard-container {
+      display: flex;
+      flex: 1;
+      position: relative;
+    }
+
+    .sidebar {
+      width: 250px;
+      border-right: 1px solid var(--border);
+      padding: 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      background: rgba(10, 10, 15, 0.2);
+    }
+
+    .sidebar-btn {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      color: var(--text-secondary);
+      font-family: var(--font);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-btn:hover {
+      background: rgba(255, 255, 255, 0.03);
+      color: #FFF;
+    }
+
+    .sidebar-btn.active {
+      background: rgba(255, 107, 0, 0.08);
+      color: var(--primary);
+      border-left: 3px solid var(--primary);
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      padding-left: 0.8rem;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 2.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .view-section {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Typography & Titles */
+    .view-title {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #FFF;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .view-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 2rem;
+    }
+
+    .grid-editor {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      .grid-2, .grid-editor {
+        grid-template-columns: 1fr;
+      }
+      .dashboard-container {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 0.75rem 1rem;
+      }
+      .sidebar-btn {
+        width: auto;
+        white-space: nowrap;
+      }
+    }
+
+    /* Dashboard Widgets & Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #FFF;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Toggle Switch Styles */
+    .toggle-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .toggle-label-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .toggle-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #FFF;
+    }
+
+    .toggle-subtitle {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 46px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255,255,255,0.1);
+      transition: .3s;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--primary);
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px var(--primary);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(22px);
+    }
+
+    /* Quick suggestions helper tags */
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag-helper {
+      font-size: 0.7rem;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .tag-helper:hover {
+      background: rgba(255, 107, 0, 0.1);
+      border-color: rgba(255, 107, 0, 0.2);
+      color: var(--primary);
+    }
+
+    /* List Layouts (Drafts and Posts) */
+    .item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .item-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      transition: all 0.2s ease;
+    }
+
+    .item-card:hover {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .item-thumbnail {
+      width: 100px;
+      height: 65px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: #000;
+      flex-shrink: 0;
+    }
+
+    .item-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .item-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFF;
+      margin-bottom: 0.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .item-meta {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .badge-status {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+    }
+
+    .status-needs-approval {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      color: #F59E0B;
+    }
+
+    .status-published {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      color: var(--success);
+    }
+
+    .item-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn-icon {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+      padding: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .btn-icon:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #FFF;
+    }
+
+    .btn-icon-danger:hover {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.3);
+      color: var(--danger);
+    }
+
+    /* Markdown Editor Panel */
+    .editor-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      display: none; /* Toggle programmatically */
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .editor-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1rem;
+      border-b: 1px solid rgba(255, 255, 255, 0.05);
+      margin-bottom: 1.5rem;
+    }
+
+    .editor-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .editor-body-textarea {
+      width: 100%;
+      height: 450px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      color: var(--text);
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .editor-body-textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    /* Preview Panel */
+    .preview-panel {
+      height: 450px;
+      overflow-y: auto;
+      background: rgba(10, 10, 15, 0.3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #E5E7EB;
+    }
+
+    .preview-panel h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #FFF;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding-bottom: 0.25rem;
+    }
+    
+    .preview-panel h3:first-child {
+      margin-top: 0;
+    }
+
+    .preview-panel p {
+      margin-bottom: 1rem;
+    }
+
+    .preview-panel ul, .preview-panel ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .preview-panel li {
+      margin-bottom: 0.25rem;
+    }
+
+    .preview-panel strong {
+      color: #FFF;
+    }
+
+    .preview-cta {
+      background: rgba(255, 107, 0, 0.08);
+      border: 1px dashed rgba(255, 107, 0, 0.3);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--primary);
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .editor-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Loader Modal */
+    .loader-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 1.25rem;
+      z-index: 100;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(255, 107, 0, 0.1);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loader-text {
+      font-weight: 700;
+      color: #FFF;
+      font-size: 1.05rem;
+      text-align: center;
+    }
+
+    .loader-subtext {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================== -->
+  <!-- 1. LOGIN SCREEN -->
+  <!-- ========================================== -->
+  <div id="loginScreen">
+    <div class="glass-card">
+      <div class="brand-header">
+        <img src="../assets/logo.png" alt="RM9 Growth Partner" class="brand-logo" onerror="this.style.display='none'">
+        <h1 class="brand-title">RM9 Blog Agent</h1>
+        <p class="brand-subtitle">Portal de Administração e Automação IA</p>
+      </div>
+
+      <div id="loginAlert" class="alert alert-danger" style="display: none;">
+        <i data-lucide="alert-circle" style="width: 16px; height: 16px;"></i>
+        <span id="loginErrorMsg">Usuário ou senha incorretos.</span>
+      </div>
+
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">E-mail Administrativo</label>
+          <input type="email" id="loginEmail" class="form-input" placeholder="admin@rm9brasil.com.br" required autocomplete="username">
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 2rem;">
+          <label class="form-label" for="loginPassword">Senha de Acesso</label>
+          <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn">
+          <span>Entrar no Painel</span>
+          <i data-lucide="log-in" style="width: 16px; height: 16px;"></i>
+        </button>
+
+        <div class="form-group" style="margin-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem;">
+          <details style="cursor: pointer; font-size: 0.75rem; color: var(--text-secondary);">
+            <summary style="font-weight: 600; margin-bottom: 0.5rem; outline: none; list-style: none; display: flex; align-items: center; gap: 0.25rem;">
+              <i data-lucide="settings-2" style="width: 12px; height: 12px;"></i>
+              <span>Configurar Endereço da API</span>
+            </summary>
+            <div style="margin-top: 0.5rem;">
+              <input type="text" id="customApiUrl" class="form-input" placeholder="Ex: http://localhost:3001/api" style="font-size: 0.8rem; padding: 0.5rem 0.75rem;">
+              <p style="font-size: 0.65rem; color: var(--text-secondary); margin-top: 0.25rem; line-height: 1.3;">
+                Deixe em branco para usar o padrão automático.
+              </p>
+            </div>
+          </details>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- 2. DASHBOARD LAYOUT -->
+  <!-- ========================================== -->
+  <div id="dashboardLayout">
+    
+    <!-- Topbar Navigation -->
+    <header class="navbar">
+      <div class="nav-brand">
+        <img src="../assets/logo.png" alt="RM9" class="nav-brand-logo" onerror="this.style.display='none'">
+        <span class="nav-brand-title">RM9 Blog Admin</span>
+        <span class="nav-brand-badge">Agente IA</span>
+      </div>
+
+      <div class="nav-actions">
+        <div id="apiStatusCard" class="api-status api-offline">
+          <span class="status-dot active"></span>
+          <span id="apiStatusText">Desconectado</span>
+        </div>
+
+        <button class="btn-logout" onclick="handleLogout()" title="Sair do Painel">
+          <i data-lucide="log-out" style="width: 18px; height: 18px;"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="dashboard-container">
+      
+      <!-- Side Navigation Menu -->
+      <aside class="sidebar">
+        <button id="tabBtn-settings" class="sidebar-btn active" onclick="switchTab('settings')">
+          <i data-lucide="settings" style="width: 16px; height: 16px;"></i>
+          <span>Automação IA</span>
+        </button>
+        
+        <button id="tabBtn-drafts" class="sidebar-btn" onclick="switchTab('drafts')">
+          <i data-lucide="file-clock" style="width: 16px; height: 16px;"></i>
+          <span>Rascunhos Pendentes</span>
+          <span id="draftsBadge" style="margin-left: auto; background: rgba(255,255,255,0.06); padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.65rem; font-weight: 700;">0</span>
+        </button>
+        
+        <button id="tabBtn-posts" class="sidebar-btn" onclick="switchTab('posts')">
+          <i data-lucide="book-open" style="width: 16px; height: 16px;"></i>
+          <span>Artigos Publicados</span>
+        </button>
+      </aside>
+
+      <!-- Main Display Area -->
+      <main class="main-content">
+
+        <!-- ========================================== -->
+        <!-- VIEW: AUTOMATION SETTINGS -->
+        <!-- ========================================== -->
+        <section id="view-settings" class="view-section active">
+          <h2 class="view-title">Configurações da Automação</h2>
+          <p class="view-desc">Monitore, ative e configure o comportamento da geração automática diária de postagens.</p>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">
+                <i data-lucide="sliders" style="width: 18px; height: 18px; color: var(--primary);"></i>
+                <span>Parâmetros do Agente</span>
+              </div>
+
+              <div class="toggle-group">
+                <div class="toggle-label-wrap">
+                  <span class="toggle-title">Status do Agendador Automático</span>
+                  <span class="toggle-subtitle">Quando ativo, o Agente gera 1 rascunho por dia em background.</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="settingActive">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="toggle-group">
+                <div class="toggle-label-wrap">
+                  <span class="toggle-title">Deploy via Git Push</span>
+                  <span class="toggle-subtitle">Faz o commit e push automáticos ao GitHub ao aprovar um artigo.</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="settingGitPush">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="settingHour">Horário de Verificação / Publicação</label>
+                <input type="time" id="settingHour" class="form-input" style="max-width: 150px;">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="settingTopics">Tópicos e Palavras-chave Principais</label>
+                <input type="text" id="settingTopics" class="form-input" placeholder="Ex: seo, marketing digital, e-commerce, ia para vendas">
+                <div class="tag-container">
+                  <span class="tag-helper" onclick="addKeyword('growth marketing')">+ Growth Marketing</span>
+                  <span class="tag-helper" onclick="addKeyword('seo para e-commerce')">+ SEO E-commerce</span>
+                  <span class="tag-helper" onclick="addKeyword('funil de vendas')">+ Funil de Vendas</span>
+                  <span class="tag-helper" onclick="addKeyword('crm comercial')">+ CRM Comercial</span>
+                  <span class="tag-helper" onclick="addKeyword('tráfego pago')">+ Tráfego Pago</span>
+                </div>
+              </div>
+
+              <button class="btn" style="margin-top: 1.5rem;" onclick="saveSettings()">
+                <i data-lucide="save" style="width: 16px; height: 16px;"></i>
+                <span>Salvar Configurações</span>
+              </button>
+            </div>
+
+            <!-- Credentials & Author Info -->
+            <div class="card" style="display: flex; flex-direction: column; gap: 1.5rem;">
+              <div>
+                <div class="card-title">
+                  <i data-lucide="key-round" style="width: 18px; height: 18px; color: var(--primary);"></i>
+                  <span>Credenciais da API</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="settingApiKey">Chave de API OpenAI ou Gemini</label>
+                  <input type="password" id="settingApiKey" class="form-input" placeholder="Insira sua OpenAI API Key ou Gemini API Key">
+                  <p style="font-size: 0.7rem; color: var(--text-secondary); margin-top: 0.4rem;">
+                    Digite uma chave Gemini (inicia com <code>AIza</code>) ou OpenAI (GPT-4o). Salva diretamente na base segura.
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <div class="card-title" style="margin-bottom: 0.75rem;">
+                  <i data-lucide="user" style="width: 18px; height: 18px; color: var(--primary);"></i>
+                  <span>Identidade do Autor</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="settingAuthorName">Nome Exibido</label>
+                  <input type="text" id="settingAuthorName" class="form-input" value="Krishnotssava S. Romero">
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label" for="settingAuthorBio">Biografia do Autor</label>
+                  <textarea id="settingAuthorBio" class="form-input" style="height: 100px; resize: none;" placeholder="Descreva as competências e histórico..."></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- VIEW: PENDING DRAFTS (IA WRITER) -->
+        <!-- ========================================== -->
+        <section id="view-drafts" class="view-section">
+          <h2 class="view-title">Rascunhos Pendentes (Aprovação)</h2>
+          <p class="view-desc">Revise e aprove rascunhos criados automaticamente pela IA em segundo plano.</p>
+
+          <!-- Demand Generation Tool -->
+          <div class="card" style="margin-bottom: 2rem;">
+            <div class="card-title">
+              <i data-lucide="sparkles" style="width: 18px; height: 18px; color: var(--primary);"></i>
+              <span>Gerador de Artigos Sob Demanda</span>
+            </div>
+            
+            <div style="display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap;">
+              <div class="form-group" style="flex: 1; min-width: 280px; margin-bottom: 0;">
+                <label class="form-label" for="customTopicInput">Tema Customizado Opcional</label>
+                <input type="text" id="customTopicInput" class="form-input" placeholder="Ex: O impacto do WhatsApp CRM no faturamento de pequenas lojas">
+              </div>
+              <button class="btn" style="width: auto; min-width: 180px; flex-shrink: 0;" onclick="generateDraftManual()">
+                <i data-lucide="sparkles" style="width: 16px; height: 16px;"></i>
+                <span>Gerar Rascunho</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Drafts List -->
+          <div class="card">
+            <div class="card-title" style="justify-content: space-between; align-items: center;">
+              <span style="display: flex; align-items: center; gap: 0.5rem;">
+                <i data-lucide="file-text" style="width: 18px; height: 18px; color: var(--primary);"></i>
+                <span>Aguardando Revisão</span>
+              </span>
+              <button class="btn-icon" onclick="fetchDraftsList()" title="Recarregar Rascunhos">
+                <i data-lucide="refresh-cw" style="width: 14px; height: 14px;"></i>
+              </button>
+            </div>
+
+            <div id="draftsListContainer" class="item-list">
+              <p style="color: var(--text-secondary); text-align: center; padding: 2rem 0;">Carregando rascunhos...</p>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- VIEW: PUBLISHED POSTS -->
+        <!-- ========================================== -->
+        <section id="view-posts" class="view-section">
+          <h2 class="view-title">Artigos Publicados</h2>
+          <p class="view-desc">Veja todas as postagens ativas no blog do seu site e realize edições ou remoções.</p>
+
+          <div class="card">
+            <div class="card-title" style="justify-content: space-between; align-items: center;">
+              <span style="display: flex; align-items: center; gap: 0.5rem;">
+                <i data-lucide="book-open" style="width: 18px; height: 18px; color: var(--primary);"></i>
+                <span>Artigos Ativos no Site</span>
+              </span>
+              
+              <div style="display: flex; gap: 0.5rem;">
+                <button class="btn-icon" onclick="syncGitRepository()" title="Sincronizar Git (Push Manual)">
+                  <i data-lucide="git-branch" style="width: 14px; height: 14px;"></i>
+                </button>
+                <button class="btn-icon" onclick="fetchPostsList()" title="Recarregar Artigos">
+                  <i data-lucide="refresh-cw" style="width: 14px; height: 14px;"></i>
+                </button>
+              </div>
+            </div>
+
+            <div id="postsListContainer" class="item-list">
+              <p style="color: var(--text-secondary); text-align: center; padding: 2rem 0;">Carregando artigos...</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SIDE-BY-SIDE EDITOR DRAWER -->
+        <!-- ========================================== -->
+        <div id="editorPanel" class="editor-card">
+          <div class="editor-header">
+            <h3 class="editor-title">
+              <i data-lucide="edit-3" style="width: 20px; height: 20px; color: var(--primary);"></i>
+              <span id="editorPanelTitle">Editar Artigo</span>
+            </h3>
+            <span id="editorStatusBadge" class="badge-status status-needs-approval">Revisão</span>
+          </div>
+
+          <div class="grid-editor">
+            <!-- Left Side Inputs -->
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <div class="form-group">
+                <label class="form-label" for="editTitle">Título do Post</label>
+                <input type="text" id="editTitle" class="form-input" oninput="autoGenerateSlug(this.value)">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="editSlug">Slug de URL amigável</label>
+                <input type="text" id="editSlug" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="editDesc">Descrição do Post (SEO)</label>
+                <textarea id="editDesc" class="form-input" style="height: 60px; resize: none;"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="editImage">URL da Imagem de Destaque</label>
+                <input type="text" id="editImage" class="form-input">
+                <div class="tag-container" style="margin-top: 0.4rem;">
+                  <span class="tag-helper" onclick="setImageCategory('marketing')">Marketing</span>
+                  <span class="tag-helper" onclick="setImageCategory('seo')">SEO</span>
+                  <span class="tag-helper" onclick="setImageCategory('crm')">CRM</span>
+                  <span class="tag-helper" onclick="setImageCategory('ecommerce')">E-commerce</span>
+                  <span class="tag-helper" onclick="setImageCategory('ai')">Inteligência Artificial</span>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label class="form-label" for="editAuthor">Autor do Artigo</label>
+                  <input type="text" id="editAuthor" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="editDate">Data de Postagem</label>
+                  <input type="text" id="editDate" class="form-input" disabled>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" for="editBody">Corpo do Artigo (Markdown)</label>
+                <textarea id="editBody" class="editor-body-textarea" oninput="renderMarkdownPreview(this.value)"></textarea>
+              </div>
+            </div>
+
+            <!-- Right Side Preview -->
+            <div>
+              <label class="form-label" style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Visualização em Tempo Real (Site)</span>
+                <span style="font-size: 0.7rem; color: var(--text-secondary);">Simulação do Layout</span>
+              </label>
+              
+              <div class="preview-panel" id="editorPreview">
+                <p style="color: var(--text-secondary);">Comece a escrever no editor para visualizar a postagem...</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="editor-buttons">
+            <button class="btn btn-secondary" style="width: auto;" onclick="closeEditor()">Cancelar</button>
+            <button id="btnSaveDraft" class="btn btn-secondary" style="width: auto; gap: 0.4rem;" onclick="saveActiveDraft()">
+              <i data-lucide="save" style="width: 15px; height: 15px;"></i>
+              <span>Salvar Rascunho</span>
+            </button>
+            <button class="btn" style="width: auto; gap: 0.4rem;" onclick="approveAndPublishActive()">
+              <i data-lucide="check" style="width: 15px; height: 15px;"></i>
+              <span>Aprovar & Publicar no Site</span>
+            </button>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- 3. LOADER OVERLAY MODAL -->
+  <!-- ========================================== -->
+  <div id="loaderModal" class="loader-overlay">
+    <div class="spinner"></div>
+    <div class="loader-text" id="loaderText">Executando Ação...</div>
+    <div class="loader-subtext" id="loaderSubtext">O Agente de IA está gerando o seu artigo técnico</div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- 4. LOGIC JAVASCRIPT -->
+  <!-- ========================================== -->
+  <script>
+    // Dynamic API URL resolution
+    let API_BASE_URL = localStorage.getItem('blog_api_url') || 
+      (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.startsWith('192.168.')
+         ? 'http://localhost:3001/api'
+         : 'https://crm-rm9.onrender.com/api');
+
+    // Global App State
+    let currentUser = null;
+    let blogSettings = null;
+    let draftsList = [];
+    let postsList = [];
+    let activeEditorPost = null; // Holds the post object currently in the editor
+    let currentTabId = 'settings';
+
+    // Default Unsplash Image suggestions mapping
+    const UNSPLASH_IMAGES = {
+      marketing: [
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1533750349088-cd871a92f311?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800&auto=format&fit=crop"
+      ],
+      seo: [
+        "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1471897458573-5037d8651474?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1571721795195-a2ca2d3370a9?q=80&w=800&auto=format&fit=crop"
+      ],
+      crm: [
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800&auto=format&fit=crop"
+      ],
+      ecommerce: [
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=800&auto=format&fit=crop"
+      ],
+      ai: [
+        "https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1507146426996-ef05306b995a?q=80&w=800&auto=format&fit=crop"
+      ],
+      default: [
+        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800&auto=format&fit=crop"
+      ]
+    };
+
+    // Initialize Lucide Icons on document ready
+    document.addEventListener('DOMContentLoaded', () => {
+      // Load saved API URL to input if present
+      const savedApiUrl = localStorage.getItem('blog_api_url');
+      if (savedApiUrl) {
+        document.getElementById('customApiUrl').value = savedApiUrl;
+      }
+
+      // Check login token
+      const isLoggedIn = localStorage.getItem('blog_admin_token') === 'logged_in';
+      if (isLoggedIn) {
+        showDashboard();
+      } else {
+        document.getElementById('loginScreen').style.display = 'flex';
+        document.getElementById('dashboardLayout').style.display = 'none';
+      }
+      lucide.createIcons();
+    });
+
+    // Toggle loader popup
+    function toggleLoader(show, text = 'Carregando...', subtext = '') {
+      const modal = document.getElementById('loaderModal');
+      document.getElementById('loaderText').innerText = text;
+      document.getElementById('loaderSubtext').innerText = subtext;
+      modal.style.display = show ? 'flex' : 'none';
+    }
+
+    // Toggle API Connection indicator in Header
+    function updateAPIStatusIndicator(online) {
+      const card = document.getElementById('apiStatusCard');
+      const text = document.getElementById('apiStatusText');
+      if (online) {
+        card.className = 'api-status api-online';
+        text.innerText = 'API ONLINE';
+      } else {
+        card.className = 'api-status api-offline';
+        text.innerText = 'DESCONECTADO';
+      }
+    }
+
+    // ==========================================
+    // AUTHENTICATION LOGIC
+    // ==========================================
+    async function handleLogin(e) {
+      e.preventDefault();
+      
+      // Save custom API address if configured and update active URL
+      const customApi = document.getElementById('customApiUrl').value.trim();
+      if (customApi) {
+        localStorage.setItem('blog_api_url', customApi);
+        API_BASE_URL = customApi;
+      } else {
+        localStorage.removeItem('blog_api_url');
+        API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.startsWith('192.168.')
+          ? 'http://localhost:3001/api'
+          : 'https://crm-rm9.onrender.com/api');
+      }
+
+      const email = document.getElementById('loginEmail').value.trim();
+      const pass = document.getElementById('loginPassword').value;
+      const alertDiv = document.getElementById('loginAlert');
+
+      toggleLoader(true, 'Autenticando...', 'Verificando credenciais');
+
+      try {
+        // Fetch settings from server to validate credentials
+        const res = await fetch(`${API_BASE_URL}/settings`);
+        if (!res.ok) throw new Error('Não foi possível conectar ao servidor CRM.');
+        
+        const settings = await res.json();
+        const master = settings.master_user || { email: 'admin@rm9brasil.com.br', password: 'admin' };
+
+        if (email.toLowerCase() === master.email.toLowerCase() && pass === master.password) {
+          localStorage.setItem('blog_admin_token', 'logged_in');
+          alertDiv.style.display = 'none';
+          showDashboard();
+        } else {
+          showLoginError('E-mail ou senha de administrador incorretos.');
+        }
+      } catch (err) {
+        console.error(err);
+        showLoginError('Erro de conexão: certifique-se de que o backend está ativo.');
+      } finally {
+        toggleLoader(false);
+      }
+    }
+
+    function showLoginError(msg) {
+      const alertDiv = document.getElementById('loginAlert');
+      document.getElementById('loginErrorMsg').innerText = msg;
+      alertDiv.style.display = 'flex';
+    }
+
+    function handleLogout() {
+      if (confirm('Deseja encerrar a sessão administrativa?')) {
+        localStorage.removeItem('blog_admin_token');
+        document.getElementById('loginScreen').style.display = 'flex';
+        document.getElementById('dashboardLayout').style.display = 'none';
+      }
+    }
+
+    // Initialize Dashboard UI once authenticated
+    function showDashboard() {
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('dashboardLayout').style.display = 'flex';
+      
+      // Load initial settings and lists
+      loadAllData();
+    }
+
+    // ==========================================
+    // DATA LOADING & SYNCING
+    // ==========================================
+    async function loadAllData() {
+      toggleLoader(true, 'Carregando dados...', 'Buscando configurações da base de dados');
+      
+      let isConnected = false;
+      try {
+        await fetchSettings();
+        await fetchDraftsList();
+        await fetchPostsList();
+        isConnected = true;
+
+        // Dispara verificação em background (cron) para gerar rascunho diário se necessário
+        fetch(`${API_BASE_URL}/blog/cron`)
+          .then(res => res.json())
+          .then(data => {
+            if (data.success && data.draft) {
+              console.log('Novo rascunho gerado em background via verificação automática.');
+              fetchDraftsList(); // Recarrega a fila de aprovação
+            }
+          })
+          .catch(err => console.warn('Erro ao disparar agendador em background:', err));
+
+      } catch (err) {
+        console.error('Falha ao conectar com o backend:', err);
+        alert('Erro ao sincronizar com o backend. Verifique a execução na porta 3001.');
+      } finally {
+        updateAPIStatusIndicator(isConnected);
+        toggleLoader(false);
+      }
+    }
+
+    async function fetchSettings() {
+      const res = await fetch(`${API_BASE_URL}/settings`);
+      if (!res.ok) throw new Error('Falha ao carregar configurações');
+      const data = await res.json();
+      
+      blogSettings = data.blog_agent_settings || {
+        active: false,
+        hour: "09:00",
+        topics: "",
+        gitPush: false,
+        author_name: "Krishnotssava S. Romero",
+        author_bio: ""
+      };
+      
+      // Keep key in memory settings
+      blogSettings.openai_key = data.openai_key || '';
+
+      // Populate input elements
+      document.getElementById('settingActive').checked = blogSettings.active || false;
+      document.getElementById('settingGitPush').checked = blogSettings.gitPush || false;
+      document.getElementById('settingHour').value = blogSettings.hour || "09:00";
+      document.getElementById('settingTopics').value = blogSettings.topics || "";
+      document.getElementById('settingAuthorName').value = blogSettings.author_name || "Krishnotssava S. Romero";
+      document.getElementById('settingAuthorBio').value = blogSettings.author_bio || "";
+      document.getElementById('settingApiKey').value = blogSettings.openai_key || "";
+    }
+
+    async function saveSettings() {
+      const active = document.getElementById('settingActive').checked;
+      const gitPush = document.getElementById('settingGitPush').checked;
+      const hour = document.getElementById('settingHour').value;
+      const topics = document.getElementById('settingTopics').value;
+      const author_name = document.getElementById('settingAuthorName').value.trim();
+      const author_bio = document.getElementById('settingAuthorBio').value.trim();
+      const openai_key = document.getElementById('settingApiKey').value.trim();
+
+      toggleLoader(true, 'Salvando Configurações...', 'Escrevendo dados no banco de dados');
+
+      try {
+        // First post new blog agent parameters
+        const settingsRes = await fetch(`${API_BASE_URL}/settings`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            blog_agent_settings: {
+              active,
+              gitPush,
+              hour,
+              topics,
+              author_name,
+              author_bio,
+              lastRun: blogSettings?.lastRun || ""
+            },
+            openai_key: openai_key // updates openai_key globally
+          })
+        });
+
+        if (!settingsRes.ok) throw new Error('Erro ao salvar configurações no servidor.');
+
+        // Update local settings in memory
+        blogSettings = { active, gitPush, hour, topics, author_name, author_bio, openai_key };
+        alert('Configurações atualizadas com sucesso!');
+        updateAPIStatusIndicator(true);
+      } catch (err) {
+        console.error(err);
+        alert('Não foi possível salvar: ' + err.message);
+      } finally {
+        toggleLoader(false);
+      }
+    }
+
+    // Helper keyword tags
+    function addKeyword(keyword) {
+      const input = document.getElementById('settingTopics');
+      const current = input.value.trim();
+      if (current) {
+        input.value = current + ', ' + keyword;
+      } else {
+        input.value = keyword;
+      }
+    }
+
+    // ==========================================
+    // TABS SYSTEM
+    // ==========================================
+    function switchTab(tabId) {
+      currentTabId = tabId;
+      
+      // Update sidebar active classes
+      document.querySelectorAll('.sidebar-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.getElementById(`tabBtn-${tabId}`).classList.add('active');
+
+      // Show/Hide sections
+      document.querySelectorAll('.view-section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(`view-${tabId}`).classList.add('active');
+
+      // Auto scroll to top
+      window.scrollTo(0, 0);
+      closeEditor(); // Hide editor on tab change
+    }
+
+    // ==========================================
+    // DRAFTS SYSTEM (FILA DE APROVAÇÃO)
+    // ==========================================
+    async function fetchDraftsList() {
+      try {
+        const res = await fetch(`${API_BASE_URL}/blog/drafts`);
+        if (!res.ok) throw new Error();
+        draftsList = await res.json();
+        
+        // Update Sidebar Badge
+        document.getElementById('draftsBadge').innerText = draftsList.length;
+
+        // Render drafts cards
+        const container = document.getElementById('draftsListContainer');
+        container.innerHTML = '';
+
+        if (draftsList.length === 0) {
+          container.innerHTML = `
+            <div style="text-align: center; color: var(--text-secondary); padding: 3rem 1rem;">
+              <i data-lucide="inbox" style="width: 32px; height: 32px; margin-bottom: 0.5rem; opacity: 0.5;"></i>
+              <p>Nenhum rascunho de IA aguardando revisão no momento.</p>
+            </div>
+          `;
+          lucide.createIcons();
+          return;
+        }
+
+        draftsList.forEach(draft => {
+          const card = document.createElement('div');
+          card.className = 'item-card';
+          card.innerHTML = `
+            <img src="${draft.image || UNSPLASH_IMAGES.default}" alt="" class="item-thumbnail">
+            <div class="item-info">
+              <h4 class="item-title">${draft.title}</h4>
+              <div class="item-meta">
+                <span class="badge-status status-needs-approval">Revisão Pendente</span>
+                <span>•</span>
+                <span>${new Date(draft.date).toLocaleDateString('pt-BR')}</span>
+                <span>•</span>
+                <span>por ${draft.author || 'IA'}</span>
+              </div>
+            </div>
+            <div class="item-actions">
+              <button class="btn" style="width: auto; padding: 0.5rem 1rem; font-size: 0.75rem;" onclick="openEditorForDraft('${draft.id}')">
+                <i data-lucide="edit-3" style="width: 14px; height: 14px;"></i>
+                <span>Revisar</span>
+              </button>
+              <button class="btn-icon btn-icon-danger" onclick="deleteDraft('${draft.id}')" title="Excluir rascunho">
+                <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i>
+              </button>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+        lucide.createIcons();
+      } catch (err) {
+        console.error('Falha ao renderizar rascunhos', err);
+      }
+    }
+
+    async function deleteDraft(id) {
+      if (!confirm('Deseja realmente rejeitar e excluir este rascunho permanentemente?')) return;
+      toggleLoader(true, 'Removendo rascunho...', 'Excluindo registro no banco de dados');
+      
+      try {
+        const res = await fetch(`${API_BASE_URL}/blog/drafts/${id}`, { method: 'DELETE' });
+        if (!res.ok) throw new Error('Não foi possível excluir o rascunho.');
+        
+        await fetchDraftsList();
+        alert('Rascunho excluído com sucesso.');
+      } catch (err) {
+        alert(err.message);
+      } finally {
+        toggleLoader(false);
+      }
+    }
+
+    // AI Generation demand trigger
+    async function generateDraftManual() {
+      const customTopic = document.getElementById('customTopicInput').value.trim();
+      
+      toggleLoader(true, 'Escrevendo Artigo com IA...', 'O redator inteligente está estruturando e gerando o rascunho técnico');
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/blog/posts/generate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ customTopic })
+        });
+
+        if (!res.ok) {
+          const errData = await res.json();
+          throw new Error(errData.error || 'Erro interno na chamada de IA.');
+        }
+
+        const draft = await res.json();
+        
+        // Auto-save the generated draft
+        const saveRes = await fetch(`${API_BASE_URL}/blog/drafts`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...draft,
+            status: 'Pendente'
+          })
+        });
+
+        if (!saveRes.ok) throw new Error('Erro ao salvar rascunho gerado.');
+
+        document.getElementById('customTopicInput').value = '';
+        await fetchDraftsList();
+        
+        // Open directly in editor
+        const savedDraft = await saveRes.json();
+        openEditorForDraft(savedDraft.id);
+        
+        alert('Rascunho de IA gerado e carregado no editor com sucesso!');
+      } catch (err) {
+        console.error(err);
+        alert(err.message);
+      } finally {
+        toggleLoader(false);
+      }
+    }
+
+    // ==========================================
+    // POSTS LISTING SYSTEM
+    // ==========================================
+    async function fetchPostsList() {
+      try {
+        const res = await fetch(`${API_BASE_URL}/blog/posts`);
+        if (!res.ok) throw new Error();
+        postsList = await res.json();
+
+        const container = document.getElementById('postsListContainer');
+        container.innerHTML = '';
+
+        if (postsList.length === 0) {
+          container.innerHTML = `
+            <div style="text-align: center; color: var(--text-secondary); padding: 3rem 1rem;">
+              <i data-lucide="book-x" style="width: 32px; height: 32px; margin-bottom: 0.5rem; opacity: 0.5;"></i>
+              <p>Nenhum artigo publicado no blog ainda.</p>
+            </div>
+          `;
+          lucide.createIcons();
+          return;
+        }
+
+        postsList.forEach(post => {
+          const card = document.createElement('div');
+          card.className = 'item-card';
+          card.innerHTML = `
+            <img src="${post.image || UNSPLASH_IMAGES.default}" alt="" class="item-thumbnail">
+            <div class="item-info">
+              <h4 class="item-title">${post.title}</h4>
+              <div class="item-meta">
+                <span class="badge-status status-published">Publicado</span>
+                <span>•</span>
+                <span>${new Date(post.date).toLocaleDateString('pt-BR')}</span>
+                <span>•</span>
+                <span>por ${post.author}</span>
+                <span>•</span>
+                <span style="font-family: monospace; color: var(--primary);">/blog/${post.slug}</span>
+              </div>
+            </div>
+            <div class="item-actions">
+              <a href="../blog/${post.slug}" target="_blank" class="btn-icon" title="Ver artigo no site">
+                <i data-lucide="external-link" style="width: 14px; height: 14px;"></i>
+              </a>
+              <button class="btn-icon" onclick="openEditorForPost('${post.slug}')" title="Editar artigo publicado">
+                <i data-lucide="edit" style="width: 14px; height: 14px;"></i>
+              </button>
+              <button class="btn-icon btn-icon-danger" onclick="deletePost('${post.slug}')" title="Excluir artigo do blog">
+                <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i>
+              </button>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+        lucide.createIcons();
+      } catch (err) {
+        console.error('Erro ao renderizar lista de posts', err);
+      }
+    }
+
+    async function deletePost(slug) {
+      if (!confirm('Deseja realmente remover esta postagem do site público? Esta ação editará o arquivo posts.json.')) return;
+      toggleLoader(true, 'Removendo post...', 'Atualizando posts.json');
+
+      try {
+        const filtered = postsList.filter(p => p.slug !== slug);
+        const res = await fetch(`${API_BASE_URL}/blog/posts`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(filtered)
+        });
+
+        if (!res.ok) throw new Error('Não foi possível excluir o post.');
+        
+        await fetchPostsList();
+        
+        // Auto Git Push if active
+        if (blogSettings?.gitPush) {
+          try {
+            await fetch(`${API_BASE_URL}/blog/git-push`, { method: 'POST' });
+            alert('Post excluído e alterações enviadas para o GitHub!');
+          } catch (gErr) {
+            console.error(gErr);
+            alert('Post excluído localmente, mas falhou ao sincronizar Git.');
+          }
+        } else {
+          alert('Post excluído com sucesso.');
+        }
+      } catch (err) {
+        alert(err.message);
+      } finally {
+        toggleLoader(false);
+      }
+    }
+
+    // Git push trigger manual
+    async function syncGitRepository() {
+      toggleLoader(true, 'Sincronizando com GitHub...', 'Dando Git Add, Commit e Push do arquivo posts.json no repositório');
+      try {
+        const res = await fetch(`${API_BASE_URL}/blog/git-push`, { method: 'POST' });
+        if (!res.ok) throw new Error('O comando git push falhou no servidor.');
+        
+        alert('Alterações enviadas para o repositório GitHub com sucesso!');
+      } catch (err) {
+        console.error(err);
+        alert('Erro ao sincronizar Git: ' + err.message);
+      } finally {
+        toggleLoader(false);
+      }
+    }
+
+
+    // ==========================================
+    // WRITER / EDITOR SYSTEM
+    // ==========================================
+    function openEditorForDraft(draftId) {
+      const draft = draftsList.find(d => d.id === draftId);
+      if (!draft) return;
+
+      activeEditorPost = { ...draft, _source: 'draft' }; // track that it came from draft
+      populateEditorFields();
+      
+      // Update editor badges & titles
+      document.getElementById('editorPanelTitle').innerText = 'Revisar Rascunho IA';
+      document.getElementById('editorStatusBadge').className = 'badge-status status-needs-approval';
+      document.getElementById('editorStatusBadge').innerText = 'Aprovação Necessária';
+      document.getElementById('btnSaveDraft').style.display = 'inline-flex';
+
+      // Show editor and scroll to it
+      document.getElementById('editorPanel').style.display = 'block';
+      document.getElementById('editorPanel').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function openEditorForPost(slug) {
+      const post = postsList.find(p => p.slug === slug);
+      if (!post) return;
+
+      activeEditorPost = { ...post, _source: 'published' }; // track source
+      populateEditorFields();
+
+      document.getElementById('editorPanelTitle').innerText = 'Editar Artigo Ativo';
+      document.getElementById('editorStatusBadge').className = 'badge-status status-published';
+      document.getElementById('editorStatusBadge').innerText = 'Publicado';
+      document.getElementById('btnSaveDraft').style.display = 'none'; // published posts are published directly
+
+      document.getElementById('editorPanel').style.display = 'block';
+      document.getElementById('editorPanel').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function populateEditorFields() {
+      document.getElementById('editTitle').value = activeEditorPost.title || '';
+      document.getElementById('editSlug').value = activeEditorPost.slug || '';
+      document.getElementById('editDesc').value = activeEditorPost.description || '';
+      document.getElementById('editImage').value = activeEditorPost.image || '';
+      document.getElementById('editAuthor').value = activeEditorPost.author || blogSettings?.author_name || 'Krishnotssava S. Romero';
+      document.getElementById('editDate').value = activeEditorPost.date ? new Date(activeEditorPost.date).toLocaleString('pt-BR') : new Date().toLocaleString('pt-BR');
+      
+      const bodyText = activeEditorPost.body || '';
+      document.getElementById('editBody').value = bodyText;
+      renderMarkdownPreview(bodyText);
+    }
+
+    function closeEditor() {
+      document.getElementById('editorPanel').style.display = 'none';
+      activeEditorPost = null;
+    }
+
+    function autoGenerateSlug(title) {
+      // Auto-generates url slug from title on inputs (only if it is a new draft review)
+      if (activeEditorPost && activeEditorPost._source === 'draft') {
+        const slug = title
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '') // Remove accents
+          .replace(/[^\w\s-]/g, '') // Remove symbols
+          .replace(/[\s_]+/g, '-') // Replace spaces and underscores with dashes
+          .replace(/^-+|-+$/g, ''); // Trim leading/trailing dashes
+        document.getElementById('editSlug').value = slug;
+      }
+    }
+
+    function setImageCategory(category) {
+      const list = UNSPLASH_IMAGES[category] || UNSPLASH_IMAGES.default;
+      const url = list[Math.floor(Math.random() * list.length)];
+      document.getElementById('editImage').value = url;
+    }
+
+    // Save Active Draft changes back to the Drafts DB
+    async function saveActiveDraft() {
+      if (!activeEditorPost) return;
+
+      const title = document.getElementById('editTitle').value.trim();
+      const slug = document.getElementById('editSlug').value.trim();
+      const description = document.getElementById('editDesc').value.trim();
+      const image = document.getElementById('editImage').value.trim();
+      const author = document.getElementById('editAuthor').value.trim();
+      const body = document.getElementById('editBody').value;
+
+      if (!title || !slug) {
+        alert('Título e URL Slug são obrigatórios.');
+        return;
+      }
+
+      toggleLoader(true, 'Salvando Alterações...', 'Escrevendo alterações no rascunho');
+
+      try {
+        const payload = {
+          ...activeEditorPost,
+          title,
+          slug,
+          description,
+          image,
+          author,
+          body,
+          status: 'Pendente'
+        };
+        // Clean source trackers
+        delete payload._source;
+
+        const res = await fetch(`${API_BASE_URL}/blog/drafts`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) throw new Error();
+
+        await fetchDraftsList();
+        closeEditor();
+        alert('Alterações salvas no rascunho com sucesso!');
+      } catch (err) {
+        alert('Erro ao salvar rascunho.');
+      } finally {
+        toggleLoader(false);
+      }
+    }
+
+    // Approve & Publish Active editor post
+    async function approveAndPublishActive() {
+      if (!activeEditorPost) return;
+
+      const title = document.getElementById('editTitle').value.trim();
+      const slug = document.getElementById('editSlug').value.trim();
+      const description = document.getElementById('editDesc').value.trim();
+      const image = document.getElementById('editImage').value.trim();
+      const author = document.getElementById('editAuthor').value.trim();
+      const body = document.getElementById('editBody').value;
+
+      if (!title || !slug || !body) {
+        alert('Título, Slug e Corpo do Artigo são obrigatórios para a publicação.');
+        return;
+      }
+
+      toggleLoader(true, 'Publicando no Site...', 'Atualizando posts.json e limpando fila de aprovação');
+
+      try {
+        const payload = {
+          title,
+          slug,
+          description,
+          image,
+          author,
+          body,
+          date: activeEditorPost.date || new Date().toISOString()
+        };
+
+        const publishRes = await fetch(`${API_BASE_URL}/blog/posts/publish`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            post: payload,
+            gitPush: blogSettings?.gitPush || false,
+            // Pass draftId only if the source was a draft, so it gets removed from database queue
+            draftId: activeEditorPost._source === 'draft' ? activeEditorPost.id : null
+          })
+        });
+
+        if (!publishRes.ok) throw new Error('Falha ao chamar a rota de publicação.');
+        const result = await publishRes.json();
+
+        // Refresh UI lists
+        await fetchDraftsList();
+        await fetchPostsList();
+        closeEditor();
+
+        alert(`Artigo publicado com sucesso!\nStatus do deploy: ${result.deployStatus || 'Salvo localmente'}`);
+      } catch (err) {
+        console.error(err);
+        alert('Erro ao publicar artigo: ' + err.message);
+      } finally {
+        toggleLoader(false);
+      }
+    }
+
+    // Simple Regex-based client-side Markdown Parser for Preview
+    function renderMarkdownPreview(markdown) {
+      const container = document.getElementById('editorPreview');
+      if (!markdown || markdown.trim() === '') {
+        container.innerHTML = '<p style="color: var(--text-secondary);">Comece a escrever no editor para visualizar a postagem...</p>';
+        return;
+      }
+
+      let html = markdown
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+      // Headers (### Header)
+      html = html.replace(/^###\s+(.*$)/gim, '<h3>$1</h3>');
+      html = html.replace(/^##\s+(.*$)/gim, '<h3>$1</h3>');
+      html = html.replace(/^#\s+(.*$)/gim, '<h3>$1</h3>');
+
+      // Bold (**bold**)
+      html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+      // Unordered lists (- list item or * list item)
+      html = html.replace(/^\s*-\s+(.*$)/gim, '<li>$1</li>');
+      html = html.replace(/^\s*\*\s+(.*$)/gim, '<li>$1</li>');
+      // Wrap list items in ul blocks (simple regex wrapper)
+      html = html.replace(/(<li>.*<\/li>)/gim, '<ul>$1</ul>');
+      html = html.replace(/<\/ul>\s*<ul>/gim, ''); // Merge adjacent lists
+
+      // CTA or Links matching '#quiz'
+      html = html.replace(/\[(.*?)\]\((#quiz)\)/g, '<div class="preview-cta">CTA: $1</div>');
+      html = html.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color: var(--primary); font-weight:600;">$1</a>');
+
+      // Paragraph spacing (Double break to paragraph wrapper)
+      const paragraphs = html.split(/\n\s*\n/);
+      html = paragraphs.map(p => {
+        const trimmed = p.trim();
+        if (trimmed.startsWith('<h3>') || trimmed.startsWith('<ul>') || trimmed.startsWith('<div class="preview-cta">')) {
+          return trimmed;
+        }
+        return `<p>${trimmed.replace(/\n/g, '<br>')}</p>`;
+      }).join('');
+
+      container.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
