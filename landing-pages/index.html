@@ -354,11 +354,86 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-bottom">
-      <p>&copy; 2026 RM9Brasil. Todos os direitos reservados. CNPJ: 11.616.019/0001-83 | E-mail: contato@rm9brasil.com.br. Curitiba - PR | São Paulo - SP.</p>
+      <p>&copy; 2026 RM9Brasil. Todos os direitos reservados.  | E-mail: contato@rm9brasil.com.br. Curitiba - PR | São Paulo - SP.</p>
     </div>
   </footer>
 
   <script src="../js/quiz.js?v=1.0.5"></script>
   <script src="lp-cro.js?v=1.0.6"></script>
+
+  <!-- MOBILE DRAWER & OVERLAY -->
+  <div class="mobile-drawer-overlay" id="mobileOverlay"></div>
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <ul class="mobile-nav-list">
+      <li><a href="../index.html#metodo" class="mobile-nav-link">A Tese</a></li>
+      <li>
+        <div class="mobile-nav-link" id="mobileArsenalToggle">
+          <span>Arsenal</span>
+          <span style="font-size: 0.8rem;">▼</span>
+        </div>
+        <div class="mobile-accordion-body" id="mobileArsenalAccordion">
+          <a href="../arsenal/planejamento.html" class="mobile-sub-link">Planejamento &amp; Metas</a>
+          <a href="../arsenal/estrategia.html" class="mobile-sub-link">Estratégia de Negócios</a>
+          <a href="../arsenal/campanhas-publicitarias.html" class="mobile-sub-link">Campanhas 360°</a>
+          <a href="../arsenal/branding.html" class="mobile-sub-link">Branding &amp; Marca</a>
+          <a href="../arsenal/design-grafico.html" class="mobile-sub-link">Design Gráfico</a>
+          <a href="../arsenal/redes-sociais.html" class="mobile-sub-link">Redes Sociais</a>
+          <a href="../arsenal/midia-online.html" class="mobile-sub-link">Mídia Online</a>
+          <a href="../arsenal/midias-offline.html" class="mobile-sub-link">Mídias Offline</a>
+          <a href="../arsenal/automacao-ia.html" class="mobile-sub-link">Automação com IA</a>
+          <a href="../arsenal/websites.html" class="mobile-sub-link">Websites</a>
+          <a href="../arsenal/landing-pages.html" class="mobile-sub-link">Landing Pages</a>
+          <a href="../arsenal/lojas-virtuais.html" class="mobile-sub-link">Lojas Virtuais</a>
+        </div>
+      </li>
+      <li><a href="../index.html#cases" class="mobile-nav-link">Cases</a></li>
+      <li><a href="../index.html#setores" class="mobile-nav-link">Segmentos</a></li>
+      <li><a href="../blog.html" class="mobile-nav-link">Blog &amp; Inteligência</a></li>
+      <li><a href="../trabalhe-conosco.html" class="mobile-nav-link">Carreiras</a></li>
+      <li><a href="../fornecedores.html" class="mobile-nav-link">Fornecedores</a></li>
+    </ul>
+
+    <div class="mobile-drawer-actions">
+      <a href="../empreenda.html" class="btn-nav-partner" style="display: flex !important; justify-content: center; width: 100%;">
+        <span>Empreenda c/ a RM9</span>
+      </a>
+      <a href="https://api.whatsapp.com/send?phone=5541988467737" target="_blank" class="btn-nav-whatsapp" style="display: flex !important; justify-content: center; width: 100%;">
+        <span>Consultoria WhatsApp</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const toggle = document.getElementById('mobileMenuToggle');
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('mobileOverlay');
+      const arsenalToggle = document.getElementById('mobileArsenalToggle');
+      const arsenalAccordion = document.getElementById('mobileArsenalAccordion');
+
+      if (toggle && drawer && overlay) {
+        toggle.addEventListener('click', function() {
+          toggle.classList.toggle('active');
+          drawer.classList.toggle('active');
+          overlay.classList.toggle('active');
+          document.body.style.overflow = drawer.classList.contains('active') ? 'hidden' : '';
+        });
+
+        overlay.addEventListener('click', function() {
+          toggle.classList.remove('active');
+          drawer.classList.remove('active');
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      }
+
+      if (arsenalToggle && arsenalAccordion) {
+        arsenalToggle.addEventListener('click', function() {
+          arsenalAccordion.classList.toggle('open');
+        });
+      }
+    })();
+  </script>
+    
 </body>
 </html>
