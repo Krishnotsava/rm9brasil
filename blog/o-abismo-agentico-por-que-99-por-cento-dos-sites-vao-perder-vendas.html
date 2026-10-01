@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/studio-lux.css">
+  <link rel="stylesheet" href="../css/studio-lux.css?v=20261001_v5">
 
   <style>
     .article-container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
@@ -131,7 +131,7 @@
         <li><a href="../fornecedores.html" class="nav-item-link ">Fornecedores</a></li>
       </ul>
 
-      <div style="display: flex; align-items: center; gap: 0.85rem;">
+      <div class="nav-desktop-actions" style="display: flex; align-items: center; gap: 0.85rem;">
         <a href="../empreenda.html" class="btn-nav-partner">
           <span>Empreenda c/ a RM9</span>
         </a>
@@ -337,44 +337,51 @@
     </div>
   </footer>
 
-  <!-- MOBILE DRAWER & OVERLAY -->
-  <div class="mobile-drawer-overlay" id="mobileOverlay"></div>
-  <div class="mobile-menu-drawer" id="mobileDrawer">
-    <ul class="mobile-nav-list">
-      <li><a href="../index.html#metodo" class="mobile-nav-link">A Tese</a></li>
+  
+  <!-- MOBILE DRAWER & OVERLAY (SELF CONTAINED) -->
+  <div class="mobile-drawer-overlay" id="mobileOverlay" style="position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 99998; opacity: 0; visibility: hidden; transition: all 0.35s ease; pointer-events: none;"></div>
+  <div class="mobile-menu-drawer" id="mobileDrawer" style="position: fixed; top: 0; right: 0; width: min(88vw, 360px); height: 100vh; height: 100dvh; background: #08090E; z-index: 99999; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; overflow-y: auto; padding: 5rem 1.5rem 2rem; box-shadow: -15px 0 50px rgba(0,0,0,0.9); border-left: 1px solid rgba(255,255,255,0.12);">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08);">
+      <img src="../assets/logo.png" alt="RM9Brasil" style="height: 32px; width: auto;">
+      <button id="mobileDrawerClose" aria-label="Fechar Menu" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; width: 36px; height: 36px; border-radius: 8px; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+    </div>
+
+    <ul class="mobile-nav-list" style="list-style: none; display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1.5rem; padding: 0;">
+      <li><a href="../index.html#metodo" class="mobile-nav-link" style="color: #fff; text-decoration: none; font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; display: block; padding: 0.7rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">A Tese</a></li>
       <li>
-        <div class="mobile-nav-link" id="mobileArsenalToggle">
+        <div class="mobile-nav-link" id="mobileArsenalToggle" style="color: #fff; font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; padding: 0.7rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer;">
           <span>Arsenal</span>
           <span style="font-size: 0.8rem;">▼</span>
         </div>
-        <div class="mobile-accordion-body" id="mobileArsenalAccordion">
-          <a href="../arsenal/planejamento.html" class="mobile-sub-link">Planejamento &amp; Metas</a>
-          <a href="../arsenal/estrategia.html" class="mobile-sub-link">Estratégia de Negócios</a>
-          <a href="../arsenal/campanhas-publicitarias.html" class="mobile-sub-link">Campanhas 360°</a>
-          <a href="../arsenal/branding.html" class="mobile-sub-link">Branding &amp; Marca</a>
-          <a href="../arsenal/design-grafico.html" class="mobile-sub-link">Design Gráfico</a>
-          <a href="../arsenal/redes-sociais.html" class="mobile-sub-link">Redes Sociais</a>
-          <a href="../arsenal/midia-online.html" class="mobile-sub-link">Mídia Online</a>
-          <a href="../arsenal/midias-offline.html" class="mobile-sub-link">Mídias Offline</a>
-          <a href="../arsenal/automacao-ia.html" class="mobile-sub-link">Automação com IA</a>
-          <a href="../arsenal/websites.html" class="mobile-sub-link">Websites</a>
-          <a href="../arsenal/landing-pages.html" class="mobile-sub-link">Landing Pages</a>
-          <a href="../arsenal/lojas-virtuais.html" class="mobile-sub-link">Lojas Virtuais</a>
+        <div class="mobile-accordion-body" id="mobileArsenalAccordion" style="display: none; flex-direction: column; gap: 0.3rem; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.03); border-radius: 8px; margin-top: 0.2rem;">
+          <a href="../arsenal/planejamento.html" class="mobile-sub-link" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Planejamento &amp; Metas</a>
+          <a href="../arsenal/estrategia.html" class="mobile-sub-link" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Estratégia de Negócios</a>
+          <a href="../arsenal/campanhas-publicitarias.html" class="mobile-sub-link" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Campanhas 360°</a>
+          <a href="../arsenal/branding.html" class="mobile-sub-link" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Branding &amp; Marca</a>
+          <a href="../arsenal/design-grafico.html" class="mobile-sub-link" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Design Gráfico</a>
+          <a href="../arsenal/redes-sociais.html" class="mobile-sub-link" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Redes Sociais</a>
+          <a href="../arsenal/midia-online.html" class="mobile-sub-link" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Mídia Online</a>
+          <a href="../arsenal/midias-offline.html" class="mobile-sub-link" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Mídias Offline</a>
+          <a href="../arsenal/automacao-ia.html" class="mobile-sub-link" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Automação com IA</a>
+          <a href="../arsenal/websites.html" class="mobile-sub-link" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Websites</a>
+          <a href="../arsenal/landing-pages.html" class="mobile-sub-link" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Landing Pages</a>
+          <a href="../arsenal/lojas-virtuais.html" class="mobile-sub-link" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Lojas Virtuais</a>
         </div>
       </li>
-      <li><a href="../index.html#cases" class="mobile-nav-link">Cases</a></li>
-      <li><a href="../index.html#setores" class="mobile-nav-link">Segmentos</a></li>
-      <li><a href="../blog.html" class="mobile-nav-link">Blog &amp; Inteligência</a></li>
-      <li><a href="../trabalhe-conosco.html" class="mobile-nav-link">Carreiras</a></li>
-      <li><a href="../fornecedores.html" class="mobile-nav-link">Fornecedores</a></li>
+      <li><a href="../index.html#cases" class="mobile-nav-link" style="color: #fff; text-decoration: none; font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; display: block; padding: 0.7rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">Cases</a></li>
+      <li><a href="../index.html#setores" class="mobile-nav-link" style="color: #fff; text-decoration: none; font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; display: block; padding: 0.7rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">Segmentos</a></li>
+      <li><a href="../blog.html" class="mobile-nav-link" style="color: #fff; text-decoration: none; font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; display: block; padding: 0.7rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">Blog &amp; Inteligência</a></li>
+      <li><a href="../trabalhe-conosco.html" class="mobile-nav-link" style="color: #fff; text-decoration: none; font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; display: block; padding: 0.7rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">Carreiras</a></li>
+      <li><a href="../fornecedores.html" class="mobile-nav-link" style="color: #fff; text-decoration: none; font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; display: block; padding: 0.7rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">Fornecedores</a></li>
     </ul>
 
-    <div class="mobile-drawer-actions">
-      <a href="../empreenda.html" class="btn-nav-partner" style="display: flex !important; justify-content: center; width: 100%;">
+    <div class="mobile-drawer-actions" style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: auto; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08);">
+      <a href="../empreenda.html" class="btn-nav-partner" style="display: flex !important; justify-content: center; width: 100%; text-decoration: none; background: transparent; border: 1px solid #E2F800; color: #E2F800; padding: 0.75rem 1rem; border-radius: 999px; font-weight: 700; font-size: 0.88rem;">
         <span>Empreenda c/ a RM9</span>
       </a>
-      <a href="https://api.whatsapp.com/send?phone=5541988467737" target="_blank" class="btn-nav-whatsapp" style="display: flex !important; justify-content: center; width: 100%;">
-        <span>Consultoria WhatsApp</span>
+      <a href="https://api.whatsapp.com/send?phone=5541988467737" target="_blank" class="btn-nav-whatsapp" style="display: flex !important; justify-content: center; width: 100%; text-decoration: none; background: #fff; color: #050507; padding: 0.75rem 1rem; border-radius: 999px; font-weight: 800; font-size: 0.88rem;">
+        <span>Consultoria WhatsApp ➔</span>
       </a>
     </div>
   </div>
@@ -384,32 +391,63 @@
       const toggle = document.getElementById('mobileMenuToggle');
       const drawer = document.getElementById('mobileDrawer');
       const overlay = document.getElementById('mobileOverlay');
+      const closeBtn = document.getElementById('mobileDrawerClose');
       const arsenalToggle = document.getElementById('mobileArsenalToggle');
       const arsenalAccordion = document.getElementById('mobileArsenalAccordion');
 
-      if (toggle && drawer && overlay) {
-        toggle.addEventListener('click', function() {
-          toggle.classList.toggle('active');
-          drawer.classList.toggle('active');
-          overlay.classList.toggle('active');
-          document.body.style.overflow = drawer.classList.contains('active') ? 'hidden' : '';
-        });
+      function openMenu() {
+        if (toggle) toggle.classList.add('active');
+        if (drawer) {
+          drawer.classList.add('active');
+          drawer.style.transform = 'translateX(0)';
+        }
+        if (overlay) {
+          overlay.classList.add('active');
+          overlay.style.opacity = '1';
+          overlay.style.visibility = 'visible';
+          overlay.style.pointerEvents = 'auto';
+        }
+        document.body.style.overflow = 'hidden';
+      }
 
-        overlay.addEventListener('click', function() {
-          toggle.classList.remove('active');
+      function closeMenu() {
+        if (toggle) toggle.classList.remove('active');
+        if (drawer) {
           drawer.classList.remove('active');
+          drawer.style.transform = 'translateX(100%)';
+        }
+        if (overlay) {
           overlay.classList.remove('active');
-          document.body.style.overflow = '';
+          overlay.style.opacity = '0';
+          overlay.style.visibility = 'hidden';
+          overlay.style.pointerEvents = 'none';
+        }
+        document.body.style.overflow = '';
+      }
+
+      if (toggle) {
+        toggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          if (drawer && drawer.classList.contains('active')) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
         });
       }
 
+      if (overlay) overlay.addEventListener('click', closeMenu);
+      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
       if (arsenalToggle && arsenalAccordion) {
-        arsenalToggle.addEventListener('click', function() {
-          arsenalAccordion.classList.toggle('open');
+        arsenalToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const isOpen = arsenalAccordion.style.display === 'flex';
+          arsenalAccordion.style.display = isOpen ? 'none' : 'flex';
         });
       }
     })();
   </script>
-    
+  
 </body>
 </html>
