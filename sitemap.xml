@@ -69,4 +69,10 @@
   <url><loc>https://rm9brasil.com.br/arsenal/landing-pages.html</loc><priority>0.8</priority></url>
   <url><loc>https://rm9brasil.com.br/arsenal/lojas-virtuais.html</loc><priority>0.8</priority></url>
   <url><loc>https://rm9brasil.com.br/arsenal/redes-sociais.html</loc><priority>0.8</priority></url>
+  <url>
+    <loc>https://rm9brasil.com.br/blog/a-farsa-do-trafego-pago-sem-branding-por-que-anuncios-sem-desejo-queimam-caixa.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
