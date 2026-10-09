@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Disparo para o webhook de e-mail e CRM
     try {
-      fetch('api/send-mail.php', {
+      fetch('/api/send-mail.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.innerHTML = '<span>Enviando mensagem...</span>';
 
       try {
-        const response = await fetch('api/send-mail.php', {
+        const response = await fetch('/api/send-mail.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

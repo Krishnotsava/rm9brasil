@@ -1075,7 +1075,7 @@
       });
     }
 
-    // Direct Inline Contact Form Handler
+    // Direct Inline Contact Form Handler (Multi-Channel Email + CRM Dispatch)
     const inlineForm = document.getElementById('inlineContactForm');
     if (inlineForm) {
       inlineForm.addEventListener('submit', (e) => {
@@ -1088,37 +1088,52 @@
         const msg = document.getElementById('contactMensagem').value.trim();
 
         const btn = document.getElementById('contactSubmitBtn');
-        btn.innerHTML = '<span>Enviando Mensagem...</span>';
+        btn.innerHTML = '<span>Enviando para a Diretoria...</span>';
         btn.disabled = true;
 
         const payload = {
+          nome: nome,
           name: nome,
           email: email,
           phone: phone,
-          service: 'Contato Direto Inline',
-          source: 'form_inline_studio',
+          whatsapp: phone,
+          telefone: phone,
+          segmento: segmento,
+          setor: segmento,
+          mensagem: msg,
+          desafio: msg,
+          service: 'Contato Direto pelo Site (Diagnóstico)',
+          source: 'form_inline_home',
           customFields: {
             segmento: segmento,
             desafio: msg
           }
         };
 
-        // Send to Webhook
+        // 1. Envio Direto de E-mail para romero@rm9brasil.com.br via Servidor RM9
+        fetch('/api/send-mail.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          keepalive: true
+        }).catch(err => console.warn('Send-mail error:', err));
+
+        // 2. Registro no CRM
         fetch('https://crm-rm9.onrender.com/api/leads/webhook/site', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
           keepalive: true
-        }).catch(err => console.warn('Webhook info:', err));
+        }).catch(err => console.warn('CRM Webhook info:', err));
 
-        // Direct WhatsApp redirection
+        // 3. Redirecionamento Direto para o WhatsApp & Página de Obrigado
         const whatsappText = `Olá RM9! Acabei de enviar uma mensagem pelo site.\n\n*Nome:* ${nome}\n*E-mail:* ${email}\n*WhatsApp:* ${phone}\n*Segmento:* ${segmento}\n*Desafio:* ${msg}`;
         const whatsappUrl = `https://api.whatsapp.com/send?phone=5541988467737&text=${encodeURIComponent(whatsappText)}`;
 
         setTimeout(() => {
           sessionStorage.setItem('whatsappRedirectUrl', whatsappUrl);
           window.location.href = 'obrigado.html';
-        }, 500);
+        }, 600);
       });
     }
   </script>

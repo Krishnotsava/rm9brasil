@@ -431,7 +431,7 @@
       btn.innerHTML = '<span>Registrando homologação...</span>';
 
       try {
-        const res = await fetch('api/send-mail.php', {
+        const res = await fetch('/api/send-mail.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
