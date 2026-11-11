@@ -25,6 +25,7 @@ RewriteRule ^arsenal/live-commerce\.html$ https://rm9brasil.com.br/live-commerce
 RewriteRule ^arsenal/marketplace-ads\.html$ https://rm9brasil.com.br/shopee-ads-e-mercado-ads/ [R=301,L]
 RewriteRule ^arsenal/?$ https://rm9brasil.com.br/#arsenal [R=301,L,NE]
 # Páginas antigas que foram substituídas
+RewriteRule ^sp(/.*)?$ https://rm9brasil.com.br/agencia-de-marketing-digital-sao-paulo/ [R=301,L]
 RewriteRule ^agencia-gestao-marketplace(/.*)?$ https://rm9brasil.com.br/gestao-de-marketplace/ [R=301,L]
 RewriteRule ^live-shop(/.*)?$ https://rm9brasil.com.br/live-commerce/ [R=301,L]
 RewriteRule ^(agencia-de-marketing-digital-em-curitiba|curitiba)(/.*)?$ https://rm9brasil.com.br/ [R=301,L]
