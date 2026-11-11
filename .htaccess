@@ -6,6 +6,10 @@ RewriteBase /
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+# 1b. Páginas antigas de marketplace e live shop -> novas páginas do Arsenal (nov/2026)
+RewriteRule ^agencia-gestao-marketplace/?(index\.html)?$ https://rm9brasil.com.br/arsenal/gestao-de-marketplace.html [R=301,L]
+RewriteRule ^live-shop/?(index\.html)?$ https://rm9brasil.com.br/arsenal/live-commerce.html [R=301,L]
+
 # 2. Redirecionar acessos diretos de index.html para a URL limpa (evita conteúdo duplicado)
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^/]+/)*index\.html\ HTTP/
 RewriteRule ^(([^/]+/)*)index\.html$ https://rm9brasil.com.br/$1 [R=301,L]

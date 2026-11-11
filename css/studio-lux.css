@@ -257,6 +257,13 @@ body {
   gap: 1.8rem;
 }
 
+/* MEGA MENU 5 COLUNAS (E-commerce & Marketplace) - centralizado no container */
+.nav-wrapper { position: relative; }
+.has-dropdown:has(.mega-grid-5col) { position: static; }
+.has-dropdown:has(.mega-grid-5col) .nav-mega-panel { width: min(1180px, calc(100vw - 2rem)); }
+.has-dropdown:has(.mega-grid-5col) .nav-mega-panel::before { content: ''; position: absolute; left: 0; right: 0; top: -2.5rem; height: 2.5rem; }
+.mega-grid-5col { grid-template-columns: repeat(5, 1fr); gap: 1.5rem; }
+
 .mega-col-title {
   font-family: var(--font-mono);
   font-size: 0.7rem;
@@ -2127,7 +2134,7 @@ a.footer-btn-cta:hover {
   height: 100dvh !important;
   background: #08090E !important;
   z-index: 999999 !important;
-  transform: translateX(100%) !important;
+  transform: translateX(100%); /* sem !important: o JS precisa conseguir abrir o menu */
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
   flex-direction: column !important;
   overflow-y: auto !important;

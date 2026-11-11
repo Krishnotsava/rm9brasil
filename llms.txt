@@ -19,6 +19,10 @@ A RM9 não atua como uma agência operacional comum de publicidade. Ela atua com
 - [Websites](https://rm9brasil.com.br/arsenal/websites.html): Portais institucionais imersivos de alta velocidade e design de classe mundial.
 - [Landing Pages](https://rm9brasil.com.br/arsenal/landing-pages.html): Páginas de alta conversão, testes A/B e engenharia de CRO.
 - [Lojas Virtuais](https://rm9brasil.com.br/arsenal/lojas-virtuais.html): E-commerce de alta performance, Nuvemshop/Shopify e Live Commerce omnichannel.
+- [TikTok Shop](https://rm9brasil.com.br/arsenal/tiktok-shop.html): Abertura e operação de lojas no TikTok Shop para marcas com CNPJ: catálogo, vídeos, afiliados, lives e GMV Max.
+- [Gestão de Marketplace](https://rm9brasil.com.br/arsenal/gestao-de-marketplace.html): Gestão de Mercado Livre e Shopee: precificação com margem, cadastro e otimização de anúncios, integração com ERP e reputação.
+- [Live Commerce](https://rm9brasil.com.br/arsenal/live-commerce.html): Estruturação e operação de lives de vendas na Shopee e no TikTok Shop: roteiro, estrutura técnica, apresentadores e análise.
+- [Marketplace Ads](https://rm9brasil.com.br/arsenal/marketplace-ads.html): Gestão de Shopee Ads, Mercado Ads (Mercado Livre) e GMV Max no TikTok Shop com foco em margem e ROAS.
 
 ## Segmentos de Especialidade
 1. Construção Civil & Empreendimentos Imobiliários
