@@ -784,8 +784,8 @@ body {
   background: rgba(255, 255, 255, 0.03) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 14px !important;
-  min-width: 148px !important;
-  height: 68px !important;
+  min-width: 200px !important;
+  height: 96px !important;
   transition: all 0.3s ease !important;
 }
 
@@ -797,9 +797,9 @@ body {
 
 /* TRATAMENTO DE LOGOS: SUPORTE PERFEITO PARA SVG, PNG E FALLBACK DE TEXTO */
 .client-logo-img {
-  height: 35px !important;
+  height: 64px !important;
   width: auto !important;
-  max-width: 148px !important;
+  max-width: 200px !important;
   display: block !important;
   object-fit: contain !important;
   opacity: 0.95 !important;
@@ -826,9 +826,9 @@ body {
 }
 
 .client-logo-card:hover .client-logo-img {
-  height: 35px !important;
+  height: 64px !important;
   width: auto !important;
-  max-width: 148px !important;
+  max-width: 200px !important;
   display: block !important;
   object-fit: contain !important;
   opacity: 0.95 !important;
