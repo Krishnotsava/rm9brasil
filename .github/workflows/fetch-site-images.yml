@@ -12,6 +12,7 @@ jobs:
       - name: Baixar e converter
         run: |
           set -e
+          sudo apt-get -qq update >/dev/null && sudo apt-get -qq install -y imagemagick >/dev/null
           B=https://d8j0ntlcm91z4.cloudfront.net/user_3K4s3nQVN8WyTRsFH2g8SwS87xv
           mkdir -p assets/img/servicos assets/img/cases
           dl(){ curl -fsSL "$B/$1" -o /tmp/in.png && convert /tmp/in.png -resize 1600x900^ -gravity center -extent 1600x900 -strip -quality 80 -interlace Plane "assets/img/$2.jpg"; }
