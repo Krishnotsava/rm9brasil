@@ -1,0 +1,33 @@
+name: fetch-blog-images
+on:
+  push:
+    branches: [tmp-fetch-blog-images]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Baixar e converter imagens
+        run: |
+          set -e
+          sudo apt-get -qq install -y imagemagick >/dev/null || true
+          mkdir -p assets/blog
+          B=https://d8j0ntlcm91z4.cloudfront.net/user_3K4s3nQVN8WyTRsFH2g8SwS87xv
+          dl(){ curl -fsSL "$B/$1" -o /tmp/in.png && convert /tmp/in.png -resize 1600x900^ -gravity center -extent 1600x900 -strip -quality 80 -interlace Plane "assets/blog/$2.jpg"; }
+          dl hf_20261111_040246_b2e1f233-acec-41dc-b233-87ee2b9cec34.png trafego-sem-branding
+          dl hf_20261111_040246_9b8a1445-b323-4c9c-95f4-352297e6a5e5.png branding-percepcao-de-valor
+          dl hf_20261111_040246_5500fa56-b08e-4f5e-bb46-5dc8532e3082.png midia-b2b-industria
+          dl hf_20261111_040245_fa35df5a-a4d6-4fcc-90b3-a303acfff936.png ia-trafego-varejo
+          dl hf_20261111_040245_341bd389-5eea-4669-bed7-3028abf12af6.png live-commerce-estudio
+          dl hf_20261111_040246_b85e06db-cc45-45c2-a43d-bcc50c565d7a.png agentes-ia-ecommerce
+          dl hf_20261111_040245_36de2962-9aa1-4988-8f33-69083bca6c8e.png novo-modelo-de-agencia
+          ls -la assets/blog
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add assets/blog
+          git commit -m "Imagens novas do blog (geradas no Higgsfield)"
+          git push
