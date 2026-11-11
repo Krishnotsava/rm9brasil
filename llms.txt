@@ -1,28 +1,37 @@
-# RM9Brasil — House de Estratégia, Branding & Performance
+# RM9Brasil: agência de marketing digital em Curitiba
 
-> A RM9Brasil é uma House brasileira de inteligência estratégica de negócios, branding de desejo, comunicação e tração comercial de alta performance com mais de 10 anos de mercado e bases em Curitiba (PR) e São Paulo (SP).
+> A RM9Brasil é uma House brasileira de inteligência estratégica de negócios, branding de desejo, comunicação e tração comercial de alta performance fundada em 2018, com bases em Curitiba (PR) e São Paulo (SP) e atendimento em todo o Brasil. Atua como agência de marketing digital, publicidade, branding, tráfego pago, sites, e-commerce, marketplace e TikTok Shop.
 
 ## Filosofia Operacional & Tese Central
 "Tudo são ferramentas. A gente descobre o que trava o seu crescimento e resolve antes do anúncio ir ao ar."
-A RM9 não atua como uma agência operacional comum de publicidade. Ela atua como um Growth Partner estratégico, diagnosticando causas-raiz de negócios (precificação, posicionamento, canais de aquisição, percepção de valor) antes de acelerar a mídia.
+A RM9 atua como um Growth Partner estratégico, diagnosticando causas-raiz de negócios (precificação, posicionamento, canais de aquisição, percepção de valor) antes de acelerar a mídia.
 
-## Arsenal de Soluções
-- [Planejamento & Metas](https://rm9brasil.com.br/arsenal/planejamento.html): Diagnóstico de cenário, metas de crescimento e planos de ação táticos.
-- [Estratégia de Negócios](https://rm9brasil.com.br/arsenal/estrategia.html): Engenharia de oferta, análise competitiva e arquitetura de vendas.
-- [Campanhas Publicitárias 360°](https://rm9brasil.com.br/arsenal/campanhas-publicitarias.html): Conceito criativo, key visual, lançamentos e mídia integrada.
-- [Branding & Marca](https://rm9brasil.com.br/arsenal/branding.html): Identidade corporativa, branding de luxo, manuais de marca e percepção de valor.
-- [Design Gráfico](https://rm9brasil.com.br/arsenal/design-grafico.html): Materiais corporativos, embalagens, PDV e design editorial.
-- [Redes Sociais](https://rm9brasil.com.br/arsenal/redes-sociais.html): Estratégia de conteúdo, direção de arte e produção audiovisual orientada a desejo.
-- [Mídia Online](https://rm9brasil.com.br/arsenal/midia-online.html): Gestão avançada de Google Ads, Meta Ads, TikTok Ads, YouTube e Mídia Programática.
-- [Mídias Offline](https://rm9brasil.com.br/arsenal/midias-offline.html): Outdoors, rádio, TV, painéis de LED e ativações em eventos.
-- [Automação com IA](https://rm9brasil.com.br/arsenal/automacao-ia.html): Agentes autônomos de IA para qualificação e atendimento no WhatsApp, CRM preditivo e protocolo WebMCP.
-- [Websites](https://rm9brasil.com.br/arsenal/websites.html): Portais institucionais imersivos de alta velocidade e design de classe mundial.
-- [Landing Pages](https://rm9brasil.com.br/arsenal/landing-pages.html): Páginas de alta conversão, testes A/B e engenharia de CRO.
-- [Lojas Virtuais](https://rm9brasil.com.br/arsenal/lojas-virtuais.html): E-commerce de alta performance, Nuvemshop/Shopify e Live Commerce omnichannel.
-- [TikTok Shop](https://rm9brasil.com.br/arsenal/tiktok-shop.html): Abertura e operação de lojas no TikTok Shop para marcas com CNPJ: catálogo, vídeos, afiliados, lives e GMV Max.
-- [Gestão de Marketplace](https://rm9brasil.com.br/arsenal/gestao-de-marketplace.html): Gestão de Mercado Livre e Shopee: precificação com margem, cadastro e otimização de anúncios, integração com ERP e reputação.
-- [Live Commerce](https://rm9brasil.com.br/arsenal/live-commerce.html): Estruturação e operação de lives de vendas na Shopee e no TikTok Shop: roteiro, estrutura técnica, apresentadores e análise.
-- [Marketplace Ads](https://rm9brasil.com.br/arsenal/marketplace-ads.html): Gestão de Shopee Ads, Mercado Ads (Mercado Livre) e GMV Max no TikTok Shop com foco em margem e ROAS.
+## Serviços
+### Estratégia & Gestão
+- [Planejamento de Marketing](https://rm9brasil.com.br/planejamento-de-marketing/): Planejamento de marketing feito com a sua empresa: diagnóstico, metas, canais, orçamento e plano de ação trimestral. Um plano de marketing que sai do papel.
+- [Consultoria de Marketing](https://rm9brasil.com.br/consultoria-de-marketing/): Consultoria de marketing e assessoria estratégica para empresas que querem vender mais: oferta, preço, posicionamento e canais, com acompanhamento de resultado.
+- [Agência de Publicidade](https://rm9brasil.com.br/agencia-de-publicidade/): Agência de publicidade e propaganda em Curitiba: conceito criativo, campanhas publicitárias 360°, lançamentos e mídia online e offline integradas.
+
+### Identidade & Criação
+- [Branding e Identidade Visual](https://rm9brasil.com.br/agencia-de-branding/): Agência de branding em Curitiba: posicionamento, naming, criação de logotipo, identidade visual, manual de marca e embalagens para marcas que querem valer mais.
+- [Design Gráfico](https://rm9brasil.com.br/design-grafico/): Design gráfico para empresas: catálogos, folders, apresentações, materiais de PDV, adesivação de frota, uniformes e peças para feiras e eventos.
+- [Gestão de Redes Sociais](https://rm9brasil.com.br/gestao-de-redes-sociais/): Gestão de redes sociais para empresas: planejamento de conteúdo, Reels, TikTok e Shorts, design, captação de vídeo e social media com foco em vender.
+
+### Mídia & Tração
+- [Gestão de Tráfego Pago](https://rm9brasil.com.br/gestao-de-trafego-pago/): Agência de tráfego pago e gestão de anúncios no Google Ads, Meta Ads, TikTok Ads, LinkedIn Ads e YouTube, com foco em leads, vendas e custo por cliente.
+- [Mídia Offline](https://rm9brasil.com.br/midia-offline/): Planejamento e compra de mídia offline em Curitiba e no Brasil: outdoor, busdoor, painéis de LED, rádio, TV aberta e fechada, revistas e eventos.
+- [Automação de WhatsApp com IA](https://rm9brasil.com.br/automacao-whatsapp-ia/): Automação de WhatsApp com inteligência artificial: agente de IA que atende, qualifica leads e agenda 24 horas, integrado ao CRM. Chatbot que conversa de verdade.
+
+### Digital & Tech
+- [Criação de Sites](https://rm9brasil.com.br/criacao-de-sites/): Criação de sites profissionais em Curitiba: sites institucionais rápidos, otimizados para o Google e para IAs, com design premium e foco em gerar contatos.
+- [Criação de Landing Pages](https://rm9brasil.com.br/landing-pages/): Criação de landing page profissional para campanhas de Google e Meta: copy persuasiva, design rápido, testes A/B e integração com WhatsApp e CRM.
+- [Criação de Loja Virtual e E-commerce](https://rm9brasil.com.br/lojas-virtuais/): Criação de loja virtual e gestão de e-commerce em Nuvemshop, Shopify, Tray e WooCommerce: loja que converte, tráfego, CRO e recuperação de carrinho.
+
+### E-commerce & Marketplace
+- [Agência de TikTok Shop](https://rm9brasil.com.br/agencia-de-tiktok-shop/): Abrimos e operamos a sua loja no TikTok Shop: cadastro, catálogo, vídeos, afiliados, lives e GMV Max. Para marcas com CNPJ que querem vender no carrinho laranja.
+- [Gestão de Marketplace (Mercado Livre e Shopee)](https://rm9brasil.com.br/gestao-de-marketplace/): Gestão de Mercado Livre e Shopee para marcas com CNPJ: precificação, cadastro e otimização de anúncios, integração com ERP, reputação e Ads. Venda mais com margem.
+- [Live Commerce](https://rm9brasil.com.br/live-commerce/): Estruturamos e operamos live commerce para marcas: roteiro, estrutura técnica, apresentadores e ofertas para vender ao vivo na Shopee e no TikTok Shop.
+- [Gestão de Ads em Marketplace (Shopee Ads, Mercado Ads e GMV Max)](https://rm9brasil.com.br/shopee-ads-e-mercado-ads/): Gestão de Shopee Ads, Mercado Ads (Mercado Livre) e GMV Max no TikTok Shop com foco em margem: campanhas de busca, descoberta e produto com meta de retorno.
 
 ## Segmentos de Especialidade
 1. Construção Civil & Empreendimentos Imobiliários
@@ -47,6 +56,11 @@ A RM9 não atua como uma agência operacional comum de publicidade. Ela atua com
 - [Branding Além do Logotipo: Construção de Percepção de Valor](https://rm9brasil.com.br/blog/branding-alem-do-logotipo-percepcao-de-valor.html)
 - [Inteligência Artificial no Tráfego e Vendas do Varejo](https://rm9brasil.com.br/blog/inteligencia-artificial-no-trafego-e-vendas.html)
 - [Live Commerce e o Futuro do Varejo Omnichannel](https://rm9brasil.com.br/blog/live-commerce-e-o-futuro-do-varejo-omnichannel.html)
+
+## Perguntas frequentes
+- Atende fora de Curitiba? Sim, empresas de todo o Brasil, com bases em Curitiba e São Paulo.
+- Trabalha com Mercado Livre, Shopee e TikTok Shop? Sim: gestão de marketplace, operação de TikTok Shop, live commerce e Shopee Ads/Mercado Ads.
+- Como começar? Pelo WhatsApp +55 (41) 98846-7737, com um diagnóstico gratuito.
 
 ## Contatos & Canais Oficiais
 - **Website Oficial:** https://rm9brasil.com.br/

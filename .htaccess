@@ -6,9 +6,38 @@ RewriteBase /
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# 1b. Páginas antigas de marketplace e live shop -> novas páginas do Arsenal (nov/2026)
-RewriteRule ^agencia-gestao-marketplace/?(index\.html)?$ https://rm9brasil.com.br/arsenal/gestao-de-marketplace.html [R=301,L]
-RewriteRule ^live-shop/?(index\.html)?$ https://rm9brasil.com.br/arsenal/live-commerce.html [R=301,L]
+# 1b. SEO (nov/2026): URLs antigas -> páginas de serviço com palavra-chave
+RewriteRule ^arsenal/planejamento\.html$ https://rm9brasil.com.br/planejamento-de-marketing/ [R=301,L]
+RewriteRule ^arsenal/estrategia\.html$ https://rm9brasil.com.br/consultoria-de-marketing/ [R=301,L]
+RewriteRule ^arsenal/campanhas-publicitarias\.html$ https://rm9brasil.com.br/agencia-de-publicidade/ [R=301,L]
+RewriteRule ^arsenal/branding\.html$ https://rm9brasil.com.br/agencia-de-branding/ [R=301,L]
+RewriteRule ^arsenal/design-grafico\.html$ https://rm9brasil.com.br/design-grafico/ [R=301,L]
+RewriteRule ^arsenal/redes-sociais\.html$ https://rm9brasil.com.br/gestao-de-redes-sociais/ [R=301,L]
+RewriteRule ^arsenal/midia-online\.html$ https://rm9brasil.com.br/gestao-de-trafego-pago/ [R=301,L]
+RewriteRule ^arsenal/midias-offline\.html$ https://rm9brasil.com.br/midia-offline/ [R=301,L]
+RewriteRule ^arsenal/automacao-ia\.html$ https://rm9brasil.com.br/automacao-whatsapp-ia/ [R=301,L]
+RewriteRule ^arsenal/websites\.html$ https://rm9brasil.com.br/criacao-de-sites/ [R=301,L]
+RewriteRule ^arsenal/landing-pages\.html$ https://rm9brasil.com.br/landing-pages/ [R=301,L]
+RewriteRule ^arsenal/lojas-virtuais\.html$ https://rm9brasil.com.br/lojas-virtuais/ [R=301,L]
+RewriteRule ^arsenal/tiktok-shop\.html$ https://rm9brasil.com.br/agencia-de-tiktok-shop/ [R=301,L]
+RewriteRule ^arsenal/gestao-de-marketplace\.html$ https://rm9brasil.com.br/gestao-de-marketplace/ [R=301,L]
+RewriteRule ^arsenal/live-commerce\.html$ https://rm9brasil.com.br/live-commerce/ [R=301,L]
+RewriteRule ^arsenal/marketplace-ads\.html$ https://rm9brasil.com.br/shopee-ads-e-mercado-ads/ [R=301,L]
+RewriteRule ^arsenal/?$ https://rm9brasil.com.br/#arsenal [R=301,L,NE]
+# Páginas antigas que foram substituídas
+RewriteRule ^agencia-gestao-marketplace(/.*)?$ https://rm9brasil.com.br/gestao-de-marketplace/ [R=301,L]
+RewriteRule ^live-shop(/.*)?$ https://rm9brasil.com.br/live-commerce/ [R=301,L]
+RewriteRule ^(agencia-de-marketing-digital-em-curitiba|curitiba)(/.*)?$ https://rm9brasil.com.br/ [R=301,L]
+RewriteRule ^agencia-de-performance-em-curitiba(/.*)?$ https://rm9brasil.com.br/gestao-de-trafego-pago/ [R=301,L]
+RewriteRule ^agencia-especializada-(em-ecommerce|tray-commerce|em-seo-para-e-commerce)(/.*)?$ https://rm9brasil.com.br/lojas-virtuais/ [R=301,L]
+RewriteRule ^consultoria(\.html|/.*)?$ https://rm9brasil.com.br/consultoria-de-marketing/ [R=301,L]
+RewriteRule ^index_old_v1\.html$ https://rm9brasil.com.br/ [R=301,L]
+RewriteRule ^blog/(index\.html)?$ https://rm9brasil.com.br/blog.html [R=301,L]
+# Cópias duplicadas do site dentro de subpastas (conteúdo duplicado)
+RewriteRule ^(assets|blog)/(admin|agencia-[^/]+|blog|consultoria|criacao-de-sites|curitiba|estrategia-de-afiliados|gestao-de-trafego-pago|live-shop|sp|portal|css|js|assets)(/.*)?$ https://rm9brasil.com.br/ [R=301,L]
+RewriteRule ^assets/(index|agendar|consultoria|obrigado|obrigado-educativo)\.html$ https://rm9brasil.com.br/ [R=301,L]
+RewriteRule ^blog/(agendar|consultoria|obrigado|obrigado-educativo)\.html$ https://rm9brasil.com.br/$1.html [R=301,L]
+RewriteRule ^admin/admin(/.*)?$ https://rm9brasil.com.br/ [R=301,L]
 
 # 2. Redirecionar acessos diretos de index.html para a URL limpa (evita conteúdo duplicado)
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^/]+/)*index\.html\ HTTP/
