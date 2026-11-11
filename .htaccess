@@ -63,3 +63,6 @@ RewriteRule ^/?blog/([^/]+)$ /blog/post-template.html?post=$1 [L,QSA]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_URI} !(.*)/$
 RewriteRule ^(.*)$ https://rm9brasil.com.br/$1/ [R=301,L]
+
+# /blog/ (pasta) -> lista do blog
+RedirectMatch 301 ^/blog/?$ https://rm9brasil.com.br/blog.html
