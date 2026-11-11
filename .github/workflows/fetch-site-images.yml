@@ -1,0 +1,47 @@
+name: fetch-site-images
+on:
+  push:
+    branches: [tmp-fetch-site-images]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Baixar e converter
+        run: |
+          set -e
+          B=https://d8j0ntlcm91z4.cloudfront.net/user_3K4s3nQVN8WyTRsFH2g8SwS87xv
+          mkdir -p assets/img/servicos assets/img/cases
+          dl(){ curl -fsSL "$B/$1" -o /tmp/in.png && convert /tmp/in.png -resize 1600x900^ -gravity center -extent 1600x900 -strip -quality 80 -interlace Plane "assets/img/$2.jpg"; }
+          dl hf_20261111_040706_9707f566-98a2-40b3-a8b3-868c4a201df1.png cases/louca-de-luxo
+          dl hf_20261111_040705_9fad5edb-d771-47a8-8894-89b2a4d9c0e5.png cases/logistica
+          dl hf_20261111_040705_e1dbf4b4-9bc6-4195-9f30-057cd01b703d.png cases/cosmeticos-ecommerce
+          dl hf_20261111_040705_b230303a-792b-4fa2-967f-947f5fd8272c.png servicos/planejamento-de-marketing
+          dl hf_20261111_040706_83e19389-1e35-4acc-9df4-629c494a0949.png servicos/consultoria-de-marketing
+          dl hf_20261111_040705_5c3d1c3f-5907-4f00-baec-8543fea0bbd9.png servicos/agencia-de-publicidade
+          dl hf_20261111_040706_11fdd3bb-d611-401e-bd90-95bb7e13e7b8.png servicos/agencia-de-branding
+          dl hf_20261111_040706_52109d6b-39d9-4eca-a1d6-3aab2b9b6ae7.png servicos/design-grafico
+          dl hf_20261111_040751_13d4be4a-0a95-4011-8ad2-995a533ae46b.png servicos/gestao-de-redes-sociais
+          dl hf_20261111_040750_a249b982-9b92-45af-b1fe-55c9dffa0c90.png servicos/gestao-de-trafego-pago
+          dl hf_20261111_040749_12017bf8-4d51-4ece-8d9b-c7eb9d8f33f0.png servicos/midia-offline
+          dl hf_20261111_040750_d84d3956-b87b-4572-baee-02217d807aa9.png servicos/automacao-whatsapp-ia
+          dl hf_20261111_040750_2b6ab88c-976c-4160-9ef5-b1eca2b0b802.png servicos/agencia-de-influenciadores
+          dl hf_20261111_040750_85495941-748c-4881-b75b-32c9b8e75210.png servicos/criacao-de-sites
+          dl hf_20261111_040750_a607be9d-4b5a-4e8b-993b-e601d7ba3f76.png servicos/landing-pages
+          dl hf_20261111_040830_d76c1e27-90f4-4eef-8c9c-20fc31f7eee0.png servicos/lojas-virtuais
+          dl hf_20261111_040830_cfb897c1-254c-4869-87db-7042eab1e945.png servicos/agencia-de-tiktok-shop
+          dl hf_20261111_040831_996b5e8e-2a6b-42a3-8d66-f645d014fdd4.png servicos/gestao-de-marketplace
+          dl hf_20261111_040831_adc6398c-126c-44bb-b6eb-6aa8b6e0a308.png servicos/live-commerce
+          dl hf_20261111_040831_56a7bc46-8836-4771-b73f-62fbfd8d275d.png servicos/shopee-ads-e-mercado-ads
+          dl hf_20261111_040830_93629946-2606-4c3b-a888-83e48172934c.png servicos/estrategia-de-afiliados
+          dl hf_20261111_040832_b9b7a382-8da0-4f7d-ba9f-43cf059c4202.png servicos/agencia-de-marketing-digital-sao-paulo
+          ls -la assets/img/*
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add assets/img
+          git commit -m "Imagens novas do site (geradas no Higgsfield)"
+          git push
