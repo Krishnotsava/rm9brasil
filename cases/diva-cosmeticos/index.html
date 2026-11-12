@@ -13,7 +13,7 @@
   <meta property="og:description" content="Como a RM9 planejou e executou a campanha de 25 anos da Diva Cosméticos: conceito, mecânica, influenciadoras, rádio, PDV, mídia paga e sorteio de uma moto elétrica.">
   <meta property="og:url" content="https://rm9brasil.com.br/cases/diva-cosmeticos/">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:image" content="https://rm9brasil.com.br/assets/img/cases/diva/cartaz-campanha.jpg">
+  <meta property="og:image" content="https://rm9brasil.com.br/assets/img/cases/diva/cartaz-25-anos.jpg">
   <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg?v=3.2.0">
   <link rel="icon" type="image/png" sizes="192x192" href="../../assets/favicon-192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,6 +65,20 @@
     .dv-gallery img, .dv-gallery video { display: block; width: 100%; height: auto !important; aspect-ratio: 3 / 4; object-fit: cover; background: #000; }
     .dv-gallery figcaption { padding: 0.8rem 1rem; color: var(--text-secondary); font-size: 0.88rem; }
     @media (max-width: 900px) { .dv-hero-grid, .dv-stats, .dv-cols { grid-template-columns: 1fr; } .dv-gallery { grid-template-columns: 1fr 1fr; } }
+    .dv-sub { font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); margin: 2.5rem 0 0; }
+    .dv-gallery--3 { grid-template-columns: repeat(3, 1fr); }
+    .dv-gallery { margin-top: 1rem !important; }
+    .dv-lead { color: var(--text-secondary); max-width: 720px; line-height: 1.65; margin-top: 1rem; }
+    .dv-team { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2.5rem; }
+    .dv-person { display: grid; grid-template-columns: 3.4rem 1fr; gap: 1.2rem; padding: 1.6rem; border-radius: 18px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); transition: border-color .25s; }
+    .dv-person:hover { border-color: var(--accent-acid); }
+    .dv-avatar { width: 3.4rem; height: 3.4rem; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-weight: 900; font-size: 1.3rem; color: #000; background: var(--accent-acid); }
+    .dv-person strong { display: block; font-size: 1.2rem; }
+    .dv-role { display: block; font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-acid); margin-top: 0.2rem; }
+    .dv-person p { color: var(--text-secondary); margin: 0.7rem 0 0; line-height: 1.55; }
+    .dv-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.9rem; }
+    .dv-tags em { font-style: normal; font-size: 0.78rem; padding: 0.25rem 0.65rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); color: var(--text-pure); }
+    @media (max-width: 900px) { .dv-team, .dv-gallery--3 { grid-template-columns: 1fr; } .dv-gallery--3 { grid-template-columns: 1fr 1fr; } }
   </style>
 </head>
 <body>
@@ -224,7 +238,7 @@
             </div>
           </div>
           <figure>
-            <img src="/assets/img/cases/diva/cartaz-campanha.jpg" alt="Cartaz da campanha Aniversário Premiado 25 anos da Diva Cosméticos" width="1080" height="1350" fetchpriority="high">
+            <img src="/assets/img/cases/diva/cartaz-25-anos.jpg" alt="Cartaz da campanha Aniversário Premiado 25 anos da Diva Cosméticos" width="934" height="1400" fetchpriority="high">
           </figure>
         </div>
       </div>
@@ -286,23 +300,85 @@
       <div class="container">
         <div class="mono-badge">REGISTROS</div>
         <h2 class="dv-h2">A campanha na rua</h2>
-        <div class="dv-gallery">
+        <h3 class="dv-sub">Na loja</h3>
+        <div class="dv-gallery dv-gallery--3">
           <figure>
-            <img src="/assets/img/cases/diva/pdv-fachada.jpg" alt="Banner da campanha na entrada da loja Diva" loading="lazy" width="1050" height="1400">
+            <img src="/assets/img/cases/diva/pdv-fachada.jpg" alt="Banner da campanha na entrada da loja Diva" loading="lazy">
             <figcaption>Comunicação no PDV</figcaption>
           </figure>
           <figure>
-            <video src="/assets/img/cases/diva/influenciadora.mp4" poster="/assets/img/cases/diva/influenciadora-poster.jpg" controls playsinline preload="none"></video>
-            <figcaption>Conteúdo com influenciadora</figcaption>
+            <img src="/assets/img/cases/diva/roleta.jpg" alt="Roleta da sorte da campanha de 25 anos na loja Diva" loading="lazy">
+            <figcaption>Roleta da sorte: comprou, girou, ganhou</figcaption>
           </figure>
           <figure>
-            <img src="/assets/img/cases/diva/equipe-loja.jpg" alt="Equipe da loja Diva no dia do sorteio final" loading="lazy" width="960" height="1280">
-            <figcaption>Equipe no dia do sorteio</figcaption>
+            <img src="/assets/img/cases/diva/equipe-loja.jpg" alt="Equipe da loja Diva no dia do sorteio final" loading="lazy">
+            <figcaption>Equipe no dia do sorteio final</figcaption>
+          </figure>
+        </div>
+        <h3 class="dv-sub">Nos vídeos</h3>
+        <div class="dv-gallery">
+          <figure>
+            <video src="/assets/img/cases/diva/influenciadora.mp4" poster="/assets/img/cases/diva/influenciadora-poster.jpg" controls playsinline preload="none"></video>
+            <figcaption>Influenciadora explicando a mecânica</figcaption>
+          </figure>
+          <figure>
+            <video src="/assets/img/cases/diva/influenciador-roleta.mp4" poster="/assets/img/cases/diva/influenciador-roleta-poster.jpg" controls playsinline preload="none"></video>
+            <figcaption>Roleta e a moto em exposição</figcaption>
+          </figure>
+          <figure>
+            <video src="/assets/img/cases/diva/influenciadora-2.mp4" poster="/assets/img/cases/diva/influenciadora-2-poster.jpg" controls playsinline preload="none"></video>
+            <figcaption>Compras e sorteios semanais</figcaption>
           </figure>
           <figure>
             <video src="/assets/img/cases/diva/comemoracao.mp4" poster="/assets/img/cases/diva/comemoracao-poster.jpg" controls playsinline preload="none"></video>
             <figcaption>Comemoração em 31/10</figcaption>
           </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="dv-section">
+      <div class="container">
+        <div class="mono-badge">FICHA TÉCNICA</div>
+        <h2 class="dv-h2">Quem fez acontecer</h2>
+        <p class="dv-lead">Uma campanha com muitas frentes ao mesmo tempo só funciona com cada uma delas na mão de alguém. Esse foi o time por trás dos 25 anos da Diva.</p>
+        <div class="dv-team">
+          <div class="dv-person">
+            <div class="dv-avatar">R</div>
+            <div>
+              <strong>Romero</strong>
+              <span class="dv-role">Estratégia e coordenação</span>
+              <p>Planejamento e coordenação da campanha, mídia e produção.</p>
+              <div class="dv-tags"><em>Conceito</em><em>Mecânica</em><em>Mídia paga</em><em>Rádio</em></div>
+            </div>
+          </div>
+          <div class="dv-person">
+            <div class="dv-avatar">E</div>
+            <div>
+              <strong>Evelyn</strong>
+              <span class="dv-role">Direção de arte</span>
+              <p>Identidade visual e desenvolvimento de todas as peças gráficas.</p>
+              <div class="dv-tags"><em>Key visual</em><em>Tabloide</em><em>Lonas e banners</em><em>Cartazes</em></div>
+            </div>
+          </div>
+          <div class="dv-person">
+            <div class="dv-avatar">L</div>
+            <div>
+              <strong>Luana</strong>
+              <span class="dv-role">Estratégia de conteúdo</span>
+              <p>Planejamento e gestão das influenciadoras digitais, das pautas aos roteiros.</p>
+              <div class="dv-tags"><em>Influenciadoras</em><em>Roteiros</em><em>Conteúdo</em></div>
+            </div>
+          </div>
+          <div class="dv-person">
+            <div class="dv-avatar">C</div>
+            <div>
+              <strong>Cainã</strong>
+              <span class="dv-role">Vídeo</span>
+              <p>Captação e edição dos vídeos gravados nas lojas físicas.</p>
+              <div class="dv-tags"><em>Captação</em><em>Edição</em><em>Lojas físicas</em></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
