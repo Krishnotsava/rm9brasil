@@ -98,6 +98,10 @@
     .an-gallery { grid-template-columns: repeat(3, 1fr) !important; }
     .an-gallery img { aspect-ratio: 4 / 3 !important; }
     @media (max-width: 900px) { .an-gallery { grid-template-columns: 1fr !important; } }
+    .hv-gallery { grid-template-columns: 1fr 1.6fr !important; }
+    .hv-gallery figure:first-child img { aspect-ratio: 1 / 1 !important; }
+    .hv-gallery figure:last-child img { aspect-ratio: auto !important; height: 100% !important; }
+    @media (max-width: 900px) { .hv-gallery { grid-template-columns: 1fr !important; } }
   </style>
 </head>
 <body>
@@ -273,8 +277,7 @@
       <div class="container">
         <div class="mono-badge">REGISTROS</div>
         <h2 class="dv-h2">A marca na cidade</h2>
-        <div class="dv-gallery an-gallery">
-          <figure><img src="/assets/img/cases/henvida/outdoor.jpg" alt="Outdoor do Seguro Residencial Henvida" loading="lazy"><figcaption>Outdoor: Seguro Residencial com a Porto Seguro</figcaption></figure>
+        <div class="dv-gallery an-gallery hv-gallery">
           <figure><img src="/assets/img/cases/henvida/jornal.jpg" alt="Jornal Henvida" loading="lazy"><figcaption>Jornal Henvida, distribuição gratuita</figcaption></figure>
           <figure><img src="/assets/img/cases/henvida/frota.jpg" alt="Veículo personalizado da Henvida" loading="lazy"><figcaption>Personalização da frota</figcaption></figure>
         </div>
