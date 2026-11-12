@@ -62,7 +62,7 @@
     .dv-col li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-acid); }
     .dv-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.5rem; align-items: start; }
     .dv-gallery figure { margin: 0; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); background: #0b0d14; }
-    .dv-gallery img, .dv-gallery video { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+    .dv-gallery img, .dv-gallery video { display: block; width: 100%; height: auto !important; aspect-ratio: 3 / 4; object-fit: cover; background: #000; }
     .dv-gallery figcaption { padding: 0.8rem 1rem; color: var(--text-secondary); font-size: 0.88rem; }
     @media (max-width: 900px) { .dv-hero-grid, .dv-stats, .dv-cols { grid-template-columns: 1fr; } .dv-gallery { grid-template-columns: 1fr 1fr; } }
   </style>
