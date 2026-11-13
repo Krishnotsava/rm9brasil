@@ -9,6 +9,14 @@
     gtag('js', new Date());
 
     gtag('config', 'G-79HPJNT5WP');
+    // Mede cliques de contato (WhatsApp, telefone, e-mail) como eventos no GA4
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="whatsapp.com"], a[href*="wa.me"], a[href^="tel:"], a[href^="mailto:"]');
+      if (!a || typeof gtag !== 'function') return;
+      var h = a.getAttribute('href') || '';
+      var tipo = h.indexOf('tel:') === 0 ? 'telefone' : (h.indexOf('mailto:') === 0 ? 'email' : 'whatsapp');
+      gtag('event', tipo === 'whatsapp' ? 'whatsapp_click' : 'contact_click', { contact_type: tipo, page_path: location.pathname, link_text: (a.textContent || '').trim().slice(0, 60) });
+    }, true);
   </script>
 
   <meta charset="UTF-8">

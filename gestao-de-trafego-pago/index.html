@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agência de Tráfego Pago: Google, Meta e TikTok Ads | RM9Brasil</title>
-  <meta name="description" content="Agência de tráfego pago e gestão de anúncios no Google Ads, Meta Ads, TikTok Ads, LinkedIn Ads e YouTube, com foco em leads, vendas e custo por cliente.">
+  <title>Agência de Tráfego Pago em Curitiba: Google, Meta e TikTok Ads | RM9</title>
+  <meta name="description" content="Gestão de Google Ads, Meta Ads e TikTok Ads com foco em venda e custo por cliente, não em clique. Estratégia antes da mídia, desde 2018. Fale com a RM9.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://rm9brasil.com.br/gestao-de-trafego-pago/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RM9Brasil">
-  <meta property="og:title" content="Agência de Tráfego Pago: Google, Meta e TikTok Ads | RM9Brasil">
-  <meta property="og:description" content="Agência de tráfego pago e gestão de anúncios no Google Ads, Meta Ads, TikTok Ads, LinkedIn Ads e YouTube, com foco em leads, vendas e custo por cliente.">
+  <meta property="og:title" content="Agência de Tráfego Pago em Curitiba: Google, Meta e TikTok Ads | RM9">
+  <meta property="og:description" content="Gestão de Google Ads, Meta Ads e TikTok Ads com foco em venda e custo por cliente, não em clique. Estratégia antes da mídia, desde 2018. Fale com a RM9.">
   <meta property="og:url" content="https://rm9brasil.com.br/gestao-de-trafego-pago/">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:image" content="https://rm9brasil.com.br/assets/img/servicos/gestao-de-trafego-pago.jpg">
@@ -187,6 +187,14 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-79HPJNT5WP');
+    // Mede cliques de contato (WhatsApp, telefone, e-mail) como eventos no GA4
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="whatsapp.com"], a[href*="wa.me"], a[href^="tel:"], a[href^="mailto:"]');
+      if (!a || typeof gtag !== 'function') return;
+      var h = a.getAttribute('href') || '';
+      var tipo = h.indexOf('tel:') === 0 ? 'telefone' : (h.indexOf('mailto:') === 0 ? 'email' : 'whatsapp');
+      gtag('event', tipo === 'whatsapp' ? 'whatsapp_click' : 'contact_click', { contact_type: tipo, page_path: location.pathname, link_text: (a.textContent || '').trim().slice(0, 60) });
+    }, true);
   </script>
   <!-- Meta Pixel -->
   <script>

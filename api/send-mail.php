@@ -46,12 +46,19 @@ $cidade = htmlspecialchars(trim($data['cidade'] ?? ''));
 $link_curriculo = htmlspecialchars(trim($data['link_curriculo'] ?? ''));
 $link_kit = htmlspecialchars(trim($data['link_kit'] ?? ''));
 
+$leadEmpresa = htmlspecialchars(trim($data['lead_empresa'] ?? ''));
+if ($leadEmpresa !== '' && $empresa === '') {
+    $empresa = $leadEmpresa; // mostra a empresa no corpo do e-mail
+}
+date_default_timezone_set('America/Sao_Paulo');
 $dataHora = date('d/m/Y H:i:s');
 $whatsappClean = preg_replace('/[^0-9]/', '', $whatsapp);
 
 // Definir assunto do e-mail
 $assunto = "[Lead RM9] Novo Contato: {$nome} - {$segmento}";
-if (!empty($empresa)) {
+if ($service === 'lead_site') {
+    $assunto = "[Lead RM9] Novo lead do site: {$nome} ({$leadEmpresa})";
+} elseif (!empty($empresa)) {
     $assunto = "[Parceiro/Fornecedor RM9] {$empresa} ({$nome})";
 } elseif ($service === 'trabalhe_conosco') {
     $assunto = "[Trabalhe Conosco RM9] Candidatura: {$nome} ({$segmento})";
@@ -86,6 +93,9 @@ $corpoHtml = "
                     <td style='padding: 10px 0; color: #9fa3b5; border-bottom: 1px solid #1c1f2e;'><strong>E-mail:</strong></td>
                     <td style='padding: 10px 0; border-bottom: 1px solid #1c1f2e;'><a href='mailto:{$email}' style='color: #e2f800; text-decoration: none;'>{$email}</a></td>
                 </tr>
+";
+if ($whatsappClean !== '') {
+    $corpoHtml .= "
                 <tr>
                     <td style='padding: 10px 0; color: #9fa3b5; border-bottom: 1px solid #1c1f2e;'><strong>WhatsApp:</strong></td>
                     <td style='padding: 10px 0; border-bottom: 1px solid #1c1f2e;'>
@@ -94,10 +104,15 @@ $corpoHtml = "
                         </a>
                     </td>
                 </tr>
+";
+}
+if ($segmento !== 'Não informado') {
+    $corpoHtml .= "
                 <tr>
                     <td style='padding: 10px 0; color: #9fa3b5; border-bottom: 1px solid #1c1f2e;'><strong>Segmento / Área:</strong></td>
                     <td style='padding: 10px 0; color: #ffffff; border-bottom: 1px solid #1c1f2e;'>{$segmento}</td>
                 </tr>";
+}
 
 if (!empty($faturamento)) {
     $corpoHtml .= "
@@ -187,7 +202,30 @@ $headers .= "X-Mailer: PHP/" . phpversion() . "
 ";
 
 // Disparar email
-$enviado = @mail($destinatario, $assunto, $corpoHtml, $headers);
+// -f define o remetente do envelope (Return-Path) no domínio da RM9: ajuda a não cair no spam na Hostinger
+$enviado = @mail($destinatario, $assunto, $corpoHtml, $headers, '-fcontato@rm9brasil.com.br');
+
+// Aviso no WhatsApp do Kris (CallMeBot). Configure em api/config.php (fora do Git):
+//   define('CALLMEBOT_PHONE', '5541988467737'); define('CALLMEBOT_APIKEY', 'sua-chave');
+$waEnviado = false;
+$cfgFile = __DIR__ . '/config.php';
+if (is_file($cfgFile)) {
+    require_once $cfgFile;
+}
+if ($service !== 'trabalhe_conosco' && defined('CALLMEBOT_APIKEY') && CALLMEBOT_APIKEY !== '' && defined('CALLMEBOT_PHONE')) {
+    $plain = function ($v) { return html_entity_decode((string) $v, ENT_QUOTES, 'UTF-8'); };
+    $linhas = ["Novo lead no site RM9", "Nome: " . $plain($nome)];
+    if ($empresa !== '') { $linhas[] = "Empresa: " . $plain($empresa); }
+    $linhas[] = "E-mail: " . $plain($email);
+    if ($whatsappClean !== '') { $linhas[] = "WhatsApp: " . $plain($whatsapp); }
+    $linhas[] = "Origem: " . $plain($service);
+    $waUrl = 'https://api.callmebot.com/whatsapp.php?phone=' . rawurlencode(CALLMEBOT_PHONE)
+        . '&text=' . rawurlencode(implode("\n", $linhas))
+        . '&apikey=' . rawurlencode(CALLMEBOT_APIKEY);
+    $ctx = stream_context_create(['http' => ['timeout' => 6], 'https' => ['timeout' => 6]]);
+    $waResp = @file_get_contents($waUrl, false, $ctx);
+    $waEnviado = ($waResp !== false);
+}
 
 // Log local
 $logDir = __DIR__ . '/../logs';
@@ -196,13 +234,14 @@ if (!is_dir($logDir)) {
 }
 @file_put_contents(
     $logDir . '/leads.log', 
-    date('Y-m-d H:i:s') . " | {$service} | Mail: " . ($enviado ? 'OK' : 'FAIL') . " | " . json_encode($data, JSON_UNESCAPED_UNICODE) . "
+    date('Y-m-d H:i:s') . " | {$service} | Mail: " . ($enviado ? 'OK' : 'FAIL') . " | WhatsApp: " . ($waEnviado ? 'OK' : 'NAO') . " | " . json_encode($data, JSON_UNESCAPED_UNICODE) . "
 ", 
     FILE_APPEND
 );
 
 echo json_encode([
-    'success' => true,
+    'success' => (bool) ($enviado || $waEnviado),
+    'whatsapp_sent' => $waEnviado,
     'email_sent' => $enviado,
     'message' => 'Mensagem processada com sucesso!'
 ]);
