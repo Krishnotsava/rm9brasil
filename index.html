@@ -8,22 +8,30 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-79HPJNT5WP');
+    // Mede cliques de contato (WhatsApp, telefone, e-mail) como eventos no GA4
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="whatsapp.com"], a[href*="wa.me"], a[href^="tel:"], a[href^="mailto:"]');
+      if (!a || typeof gtag !== 'function') return;
+      var h = a.getAttribute('href') || '';
+      var tipo = h.indexOf('tel:') === 0 ? 'telefone' : (h.indexOf('mailto:') === 0 ? 'email' : 'whatsapp');
+      gtag('event', tipo === 'whatsapp' ? 'whatsapp_click' : 'contact_click', { contact_type: tipo, page_path: location.pathname, link_text: (a.textContent || '').trim().slice(0, 60) });
+    }, true);
   </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- SEO & Social Meta Tags -->
-  <title>Agência de Marketing Digital em Curitiba | RM9Brasil</title>
-  <meta name="description" content="Agência de marketing digital em Curitiba: tráfego pago, criação de sites, branding, redes sociais, e-commerce, marketplace e TikTok Shop. Estratégia que vira venda, para empresas de todo o Brasil.">
+  <title>Agência de Marketing Digital em Curitiba | Indústria, B2B e E-commerce</title>
+  <meta name="description" content="Agência de marketing digital em Curitiba desde 2018. Estratégia, branding e tráfego pago que levaram uma marca do zero à liderança nacional. Peça um diagnóstico.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta property="og:site_name" content="RM9Brasil">
   <link rel="canonical" href="https://rm9brasil.com.br/">
   
   <meta property="og:locale" content="pt_BR">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Agência de Marketing Digital em Curitiba | RM9Brasil">
-  <meta property="og:description" content="Agência de marketing digital em Curitiba: tráfego pago, criação de sites, branding, redes sociais, e-commerce, marketplace e TikTok Shop. Estratégia que vira venda, para empresas de todo o Brasil.">
+  <meta property="og:title" content="Agência de Marketing Digital em Curitiba | Indústria, B2B e E-commerce">
+  <meta property="og:description" content="Agência de marketing digital em Curitiba desde 2018. Estratégia, branding e tráfego pago que levaram uma marca do zero à liderança nacional. Peça um diagnóstico.">
   <meta property="og:image" content="https://rm9brasil.com.br/assets/img/cases/louca-de-luxo.jpg">
   <meta property="og:url" content="https://rm9brasil.com.br/">
   
@@ -1273,39 +1281,18 @@
 
           <form id="inlineContactForm">
             <div class="form-field-group">
-              <label for="contactNome" class="form-field-label">Seu Nome / Cargo</label>
-              <input type="text" id="contactNome" class="form-field-input" placeholder="Ex: Marcos Souza (Diretor Geral)" required>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
-              <div class="form-field-group">
-                <label for="contactEmail" class="form-field-label">E-mail Corporativo</label>
-                <input type="email" id="contactEmail" class="form-field-input" placeholder="marcos@empresa.com.br" required>
-              </div>
-              <div class="form-field-group">
-                <label for="contactPhone" class="form-field-label">WhatsApp com DDD</label>
-                <input type="tel" id="contactPhone" class="form-field-input" placeholder="(41) 99999-9999" required>
-              </div>
+              <label for="contactNome" class="form-field-label">Seu nome</label>
+              <input type="text" id="contactNome" name="nome" class="form-field-input" placeholder="Ex: Marcos Souza" autocomplete="name" required>
             </div>
 
             <div class="form-field-group">
-              <label for="contactSegmento" class="form-field-label">Segmento da sua Empresa</label>
-              <select id="contactSegmento" class="form-field-select" required>
-                <option value="" disabled selected>Selecione o segmento...</option>
-                <option value="Educação Infantil / Escolas">Educação Infantil / Escolas</option>
-                <option value="Indústria / Geradores / Pesados">Indústria / Geradores / Equipamentos Pesados</option>
-                <option value="Varejo / E-commerce">Varejo / E-commerce</option>
-                <option value="Agronegócio / Maquinários">Agronegócio / Maquinários</option>
-                <option value="Logística / Frotas / Caminhões">Logística / Transportes / Frotas / Caminhões</option>
-                <option value="Saúde / Clínicas / Planos Médicos">Saúde / Clínicas / Planos Médicos</option>
-                <option value="Assistência Familiar / Serviços">Assistência Familiar / Serviços</option>
-                <option value="Outro Segmento">Outro Segmento</option>
-              </select>
+              <label for="contactEmpresa" class="form-field-label">Empresa</label>
+              <input type="text" id="contactEmpresa" name="empresa" class="form-field-input" placeholder="Nome da sua empresa" autocomplete="organization" required>
             </div>
 
             <div class="form-field-group">
-              <label for="contactMensagem" class="form-field-label">Qual é o maior desafio do seu negócio hoje?</label>
-              <textarea id="contactMensagem" class="form-field-textarea" rows="3" placeholder="Conte brevemente sobre o seu momento atual e o que você busca destravar..."></textarea>
+              <label for="contactEmail" class="form-field-label">E-mail</label>
+              <input type="email" id="contactEmail" name="email" class="form-field-input" placeholder="marcos@empresa.com.br" autocomplete="email" required>
             </div>
 
             <button type="submit" id="contactSubmitBtn" class="btn-cta-lux" style="width: 100%; padding: 1rem; font-size: 0.95rem;">
@@ -1506,65 +1493,65 @@
       });
     }
 
-    // Direct Inline Contact Form Handler (Multi-Channel Email + CRM Dispatch)
+    // Formulário de contato: nome, empresa e e-mail. O lead vai para o e-mail e o WhatsApp do Kris (api/send-mail.php).
     const inlineForm = document.getElementById('inlineContactForm');
     if (inlineForm) {
-      inlineForm.addEventListener('submit', (e) => {
+      const statusBox = document.createElement('p');
+      statusBox.id = 'contactFormStatus';
+      statusBox.setAttribute('role', 'status');
+      statusBox.style.cssText = 'margin-top: 1rem; font-size: 0.95rem; line-height: 1.5; display: none;';
+      inlineForm.appendChild(statusBox);
+
+      const showStatus = (text, ok) => {
+        statusBox.textContent = text;
+        statusBox.style.color = ok ? '#E2F800' : '#ff8a8a';
+        statusBox.style.display = 'block';
+      };
+
+      inlineForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
         const nome = document.getElementById('contactNome').value.trim();
         const email = document.getElementById('contactEmail').value.trim();
-        const phone = document.getElementById('contactPhone').value.trim();
-        const segmento = document.getElementById('contactSegmento').value;
-        const msg = document.getElementById('contactMensagem').value.trim();
+        const empresa = document.getElementById('contactEmpresa').value.trim();
 
         const btn = document.getElementById('contactSubmitBtn');
-        btn.innerHTML = '<span>Enviando para a Diretoria...</span>';
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<span>Enviando...</span>';
         btn.disabled = true;
+        statusBox.style.display = 'none';
 
         const payload = {
           nome: nome,
-          name: nome,
+          lead_empresa: empresa,
           email: email,
-          phone: phone,
-          whatsapp: phone,
-          telefone: phone,
-          segmento: segmento,
-          setor: segmento,
-          mensagem: msg,
-          desafio: msg,
-          service: 'Contato Direto pelo Site (Diagnóstico)',
-          source: 'form_inline_home',
-          customFields: {
-            segmento: segmento,
-            desafio: msg
-          }
+          service: 'lead_site',
+          source: 'form_inline_home'
         };
 
-        // 1. Envio Direto de E-mail para romero@rm9brasil.com.br via Servidor RM9
-        fetch('/api/send-mail.php', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-          keepalive: true
-        }).catch(err => console.warn('Send-mail error:', err));
+        try {
+          const res = await fetch('/api/send-mail.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const result = await res.json().catch(() => ({}));
+          if (!res.ok || !result.success) throw new Error('falha no envio');
 
-        // 2. Registro no CRM
-        fetch('https://crm-rm9.onrender.com/api/leads/webhook/site', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-          keepalive: true
-        }).catch(err => console.warn('CRM Webhook info:', err));
+          if (typeof gtag === 'function') {
+            gtag('event', 'generate_lead', { form_id: 'contato_home', lead_source: 'formulario' });
+          }
+          if (typeof fbq === 'function') { fbq('track', 'Lead'); }
 
-        // 3. Redirecionamento Direto para o WhatsApp & Página de Obrigado
-        const whatsappText = `Olá RM9! Acabei de enviar uma mensagem pelo site.\n\n*Nome:* ${nome}\n*E-mail:* ${email}\n*WhatsApp:* ${phone}\n*Segmento:* ${segmento}\n*Desafio:* ${msg}`;
-        const whatsappUrl = `https://api.whatsapp.com/send?phone=5541988467737&text=${encodeURIComponent(whatsappText)}`;
-
-        setTimeout(() => {
-          sessionStorage.setItem('whatsappRedirectUrl', whatsappUrl);
-          window.location.href = 'obrigado.html';
-        }, 600);
+          inlineForm.reset();
+          btn.innerHTML = '<span>✓ Mensagem enviada</span>';
+          showStatus('Recebemos sua mensagem. A RM9 vai responder no e-mail que você informou.', true);
+          setTimeout(() => { btn.disabled = false; btn.innerHTML = originalText; }, 6000);
+        } catch (err) {
+          console.error('Erro ao enviar formulário:', err);
+          btn.disabled = false;
+          btn.innerHTML = originalText;
+          showStatus('Não conseguimos enviar agora. Tente de novo em instantes ou escreva para romero@rm9brasil.com.br.', false);
+        }
       });
     }
   </script>
