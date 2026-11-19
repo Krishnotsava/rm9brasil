@@ -12,6 +12,10 @@
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
+  # Post em HTML estático: /blog/slug serve slug.html quando o arquivo existe
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^([^/.]+)$ $1.html [L]
+
   # Rewrite everything else to post-template.html
   RewriteRule ^(.*)$ post-template.html [L]
 </IfModule>
