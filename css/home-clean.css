@@ -206,3 +206,71 @@ body.theme-clean input, body.theme-clean textarea { cursor: text !important; }
 /* Palavra em destaque com pílula lilás (como na apresentação) */
 .hl-lilac { color: inherit; }
 .theme-clean .hl-lilac { background: var(--lilac); color: var(--ink) !important; padding: 0 0.3em 0.06em; border-radius: 999px; display: inline-block; }
+
+/* =========================================================
+   Pimenta: esferas 3D, ícones em círculo e números em blocos
+   ========================================================= */
+.rm9-sphere { display: none; }
+.theme-clean .rm9-sphere {
+  display: block; position: absolute; border-radius: 50%; pointer-events: none; z-index: 1;
+  background: radial-gradient(circle at 32% 28%, #FBFFD0 0%, #EEFF5C 18%, #E2F800 38%, #B9CC00 70%, #8A9900 100%);
+  box-shadow: inset -18px -22px 40px rgba(60, 70, 0, 0.35), 0 40px 60px -20px rgba(140, 160, 0, 0.45);
+  animation: rm9Float 7s ease-in-out infinite;
+}
+.theme-clean .rm9-sphere--lg { width: 190px; height: 190px; right: 6%; top: 320px; }
+.theme-clean .rm9-sphere--sm { width: 76px; height: 76px; right: 4%; top: 150px; animation-delay: -3s; animation-duration: 6s; }
+@keyframes rm9Float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+@media (prefers-reduced-motion: reduce) { .theme-clean .rm9-sphere { animation: none; } }
+.theme-clean .hero-content { position: relative; z-index: 2; }
+
+/* Ícone em círculo preto com traço verde-limão */
+.rm9-ic { display: none; }
+.theme-clean .rm9-ic {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 44px; height: 44px; border-radius: 50%; background: var(--ink); color: var(--lime);
+  transition: background .25s ease, color .25s ease;
+}
+.theme-clean .arsenal-home-card { position: relative; }
+.theme-clean #o-que-fazemos .arsenal-home-card .rm9-ic { position: absolute; top: 22px; right: 22px; }
+.theme-clean #o-que-fazemos .arsenal-home-card:hover .rm9-ic { background: var(--lime); color: var(--ink); }
+
+/* Números do topo em blocos: verde-limão, preto e branco */
+.theme-clean .hero-floating-meta {
+  display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;
+  border-top: 0 !important; padding-top: 0 !important; margin-top: 3rem !important;
+}
+.theme-clean .hero-floating-meta .meta-col {
+  position: relative; border-radius: 28px; padding: 26px 26px 22px; min-height: 150px;
+  display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;
+  background: #fff; border: 1px solid var(--line);
+}
+.theme-clean .hero-floating-meta .meta-col .rm9-ic { position: absolute; top: 18px; right: 18px; width: 40px; height: 40px; }
+.theme-clean .hero-floating-meta .meta-col:nth-child(1) { background: var(--lime); border-color: var(--lime); }
+.theme-clean .hero-floating-meta .meta-col:nth-child(1) .meta-label { color: #2E3300 !important; }
+.theme-clean .hero-floating-meta .meta-col:nth-child(1) .meta-num span { color: #2E3300 !important; }
+.theme-clean .hero-floating-meta .meta-col:nth-child(2) { background: var(--ink); border-color: var(--ink); }
+.theme-clean .hero-floating-meta .meta-col:nth-child(2) .meta-num { color: #F2F2F4 !important; }
+.theme-clean .hero-floating-meta .meta-col:nth-child(2) .meta-num span,
+.theme-clean .hero-floating-meta .meta-col:nth-child(2) .meta-label { color: #A9ABB4 !important; }
+.theme-clean .hero-floating-meta .meta-col:nth-child(2) .rm9-ic { background: var(--lime); color: var(--ink); }
+.theme-clean .hero-floating-meta .meta-num { font-size: clamp(2.2rem, 3.4vw, 3rem) !important; }
+
+/* Sublinhado ondulado verde no título "Do plano à venda" (como "missing link" na referência) */
+.theme-clean #o-que-fazemos h2 { position: relative; display: table; }
+.theme-clean #o-que-fazemos h2::after {
+  content: ""; position: absolute; left: 0; bottom: -10px; width: 100%; height: 12px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='12' viewBox='0 0 40 12'%3E%3Cpath d='M0 6 Q10 0 20 6 T40 6' fill='none' stroke='%23B9CC00' stroke-width='3'/%3E%3C/svg%3E") repeat-x;
+  background-size: 40px 12px;
+}
+
+@media (max-width: 1100px) {
+  .theme-clean .rm9-sphere--lg { width: 140px; height: 140px; right: 3%; top: 360px; }
+}
+@media (max-width: 900px) {
+  .theme-clean .rm9-sphere--lg { display: none; }
+  .theme-clean .rm9-sphere--sm { width: 64px; height: 64px; right: -18px; top: 540px; }
+}
+@media (max-width: 640px) {
+  .theme-clean .hero-floating-meta { grid-template-columns: 1fr; gap: 12px; margin-top: 2rem !important; padding: 0 !important; width: 100% !important; }
+  .theme-clean .hero-floating-meta .meta-col { min-height: 116px; padding: 20px; }
+}
