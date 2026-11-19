@@ -459,21 +459,27 @@ document.addEventListener('DOMContentLoaded', () => {
       utm_term: leadData.utm_term
     };
 
-    // Send lead to CRM in the background (fire and forget)
+    // Envia o lead para o e-mail e o WhatsApp do Kris (o CRM foi descontinuado)
     try {
-      fetch('https://crm-rm9.onrender.com/api/leads/webhook/site', {
+      fetch('/api/send-mail.php', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(crmPayload),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome: crmPayload.name,
+          email: crmPayload.email,
+          whatsapp: crmPayload.phone,
+          segmento: crmPayload.company,
+          mensagem: crmPayload.message,
+          service: 'Triagem (Diagnóstico)',
+          source: crmPayload.utm_source || 'triagem'
+        }),
         keepalive: true
-      })
-      .then(response => response.json())
-      .then(data => console.log('Lead pushed to CRM in background:', data))
-      .catch(err => console.error('CRM webhook error in background:', err));
+      }).catch(err => console.warn('Envio do lead:', err));
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', { form_id: 'triagem', lead_source: 'triagem' });
+      }
     } catch (fetchError) {
-      console.warn('Failed to dispatch keepalive fetch:', fetchError);
+      console.warn('Falha ao enviar o lead:', fetchError);
     }
 
     // Trigger Meta Pixel and GA4 conversion events instantly

@@ -2,6 +2,22 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-79HPJNT5WP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-79HPJNT5WP');
+    // Mede cliques de contato (WhatsApp, telefone, e-mail) como eventos no GA4
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="whatsapp.com"], a[href*="wa.me"], a[href^="tel:"], a[href^="mailto:"]');
+      if (!a || typeof gtag !== 'function') return;
+      var h = a.getAttribute('href') || '';
+      var tipo = h.indexOf('tel:') === 0 ? 'telefone' : (h.indexOf('mailto:') === 0 ? 'email' : 'whatsapp');
+      gtag('event', tipo === 'whatsapp' ? 'whatsapp_click' : 'contact_click', { contact_type: tipo, page_path: location.pathname, link_text: (a.textContent || '').trim().slice(0, 60) });
+    }, true);
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Escala de Mídia & Performance B2B: Como Dominar Aquisições Complexas sem Queimar Budget | Blog RM9Brasil</title>
   <meta name="description" content="A engenharia de tráfego de alta precisão que combina Google Search cirúrgico, Meta Ads comportamental e Account-Based Marketing para gerar contratos de alto valor.">

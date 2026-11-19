@@ -6,3 +6,6 @@ node_modules/
 Thumbs.db
 logs/
 .git-tools/
+
+# Chaves do servidor
+api/config.php

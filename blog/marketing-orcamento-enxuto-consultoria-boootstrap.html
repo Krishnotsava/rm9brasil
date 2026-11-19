@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-79HPJNT5WP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-79HPJNT5WP');
+    // Mede cliques de contato (WhatsApp, telefone, e-mail) como eventos no GA4
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="whatsapp.com"], a[href*="wa.me"], a[href^="tel:"], a[href^="mailto:"]');
+      if (!a || typeof gtag !== 'function') return;
+      var h = a.getAttribute('href') || '';
+      var tipo = h.indexOf('tel:') === 0 ? 'telefone' : (h.indexOf('mailto:') === 0 ? 'email' : 'whatsapp');
+      gtag('event', tipo === 'whatsapp' ? 'whatsapp_click' : 'contact_click', { contact_type: tipo, page_path: location.pathname, link_text: (a.textContent || '').trim().slice(0, 60) });
+    }, true);
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing com orçamento enxuto: onde investir primeiro | RM9Brasil</title>
+  <meta name="description" content="Pequenas empresas com pouca verba de mídia devem investir em consultoria focada em SEO local e funis direcionados em vez de assessoria mensal cara. Veja como fazer.">
+  <link rel="canonical" href="https://rm9brasil.com.br/blog/marketing-orcamento-enxuto-consultoria-boootstrap">
+  
+  <meta property="og:title" content="Como Estruturar e Monetizar o seu Marketing Digital com Orçamento Enxuto">
+  <meta property="og:description" content="Pequenas empresas com pouca verba de mídia devem investir em consultoria focada em SEO local e funis direcionados em vez de assessoria mensal cara. Veja como fazer.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&amp;w=800&amp;auto=format&amp;fit=crop">
+  <meta property="og:url" content="https://rm9brasil.com.br/blog/marketing-orcamento-enxuto-consultoria-boootstrap">
+  <meta property="og:type" content="article">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/studio-lux.css?v=20261111_v8">
+
+  <style>
+    .article-container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+    .article-header { padding: 3.5rem 0 1.8rem; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 2.5rem; }
+    .article-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1.18; text-transform: uppercase; color: #fff; margin: 1rem 0; }
+    .article-meta-header { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); margin-top: 1.2rem; }
+    .article-featured-img { width: 100%; aspect-ratio: 16/9; max-height: 520px; object-fit: cover; border-radius: 16px; margin-bottom: 3.5rem; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 25px 60px rgba(0,0,0,0.6); display: block; }
+    .article-body { color: #d0d2dd; font-size: 1.15rem; line-height: 1.85; }
+    .article-body h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; text-transform: uppercase; color: #fff; margin: 2.5rem 0 1rem; }
+    .article-body h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; text-transform: uppercase; color: var(--accent-cyan); margin: 2rem 0 0.8rem; }
+    .article-body p { margin-bottom: 1.5rem; }
+    .article-body strong { color: #fff; }
+    .article-body blockquote { border-left: 4px solid var(--accent-cyan); padding: 1rem 1.5rem; background: rgba(0, 242, 254, 0.04); border-radius: 0 8px 8px 0; margin: 2rem 0; font-style: italic; color: #fff; }
+    .article-body ul { margin-bottom: 1.8rem; padding-left: 1.5rem; }
+    .article-body li { margin-bottom: 0.8rem; }
+    .article-cta-box { background: rgba(14, 16, 24, 0.9); border: 1px solid rgba(0, 242, 254, 0.3); border-radius: 14px; padding: 2.5rem; margin-top: 4rem; text-align: center; }
+    .stat-callout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+    @media (max-width: 650px) { .stat-callout-grid { grid-template-columns: 1fr; } }
+    .stat-card-tech { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 1.5rem; border-radius: 12px; }
+    .stat-val-big { font-family: var(--font-display); font-size: 2.8rem; font-weight: 900; line-height: 1; }
+    .related-articles-section { border-top: 1px solid rgba(255,255,255,0.08); padding: 5rem 0 6rem; background: rgba(10,12,18,0.6); }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    @media (max-width: 860px) { .related-grid { grid-template-columns: 1fr; } }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Como Estruturar e Monetizar o seu Marketing Digital com Orçamento Enxuto",
+  "description": "Pequenas empresas com pouca verba de mídia devem investir em consultoria focada em SEO local e funis direcionados em vez de assessoria mensal cara. Veja como fazer.",
+  "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop",
+  "datePublished": "2026-05-25",
+  "dateModified": "2026-11-13",
+  "author": {
+    "@type": "Organization",
+    "name": "RM9 Growth Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "RM9Brasil",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://rm9brasil.com.br/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": "https://rm9brasil.com.br/blog/marketing-orcamento-enxuto-consultoria-boootstrap",
+  "inLanguage": "pt-BR"
+}
+  </script>
+</head>
+<body class="page-dark">
+  <!-- NAVIGATION OFICIAL RM9 -->
+  <header class="studio-nav" id="studioNav">
+    <div class="container nav-wrapper">
+      <a href="/" class="brand-logo-wrap" aria-label="RM9Brasil">
+        <img src="../assets/logo.png" alt="RM9Brasil" class="brand-logo-img">
+      </a>
+      
+      <ul class="nav-links-wrap">
+        <li><a href="/#metodo" class="nav-item-link">A Tese</a></li>
+        <li class="has-dropdown">
+          <a href="/#setores" class="nav-item-link">
+            <span>Serviços</span>
+            <svg width="8" height="6" viewBox="0 0 8 6" fill="none" style="margin-top:2px;">
+              <path d="M1 1.5L4 4.5L7 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-mega-panel">
+            <div class="mega-grid-4col mega-grid-5col">
+              <div>
+                <div class="mega-col-title">Estratégia &amp; Gestão</div>
+                <a href="../planejamento-de-marketing/" class="mega-link-item">
+                  <span class="mega-link-title">Planejamento de Marketing</span>
+                  <span class="mega-link-desc">Diagnóstico, metas e plano de ação</span>
+                </a>
+                <a href="../consultoria-de-marketing/" class="mega-link-item">
+                  <span class="mega-link-title">Consultoria de Marketing</span>
+                  <span class="mega-link-desc">Oferta, preço e posicionamento</span>
+                </a>
+                <a href="../agencia-de-publicidade/" class="mega-link-item">
+                  <span class="mega-link-title">Agência de Publicidade</span>
+                  <span class="mega-link-desc">Campanhas 360° e lançamentos</span>
+                </a>
+              </div>
+              <div>
+                <div class="mega-col-title">Identidade &amp; Criação</div>
+                <a href="../agencia-de-branding/" class="mega-link-item">
+                  <span class="mega-link-title">Branding e Identidade Visual</span>
+                  <span class="mega-link-desc">Logo, identidade e posicionamento</span>
+                </a>
+                <a href="../design-grafico/" class="mega-link-item">
+                  <span class="mega-link-title">Design Gráfico</span>
+                  <span class="mega-link-desc">Editorial, PDV e impressos</span>
+                </a>
+                <a href="../gestao-de-redes-sociais/" class="mega-link-item">
+                  <span class="mega-link-title">Gestão de Redes Sociais</span>
+                  <span class="mega-link-desc">Conteúdo, vídeo e social media</span>
+                </a>
+              </div>
+              <div>
+                <div class="mega-col-title">Mídia &amp; Tração</div>
+                <a href="../gestao-de-trafego-pago/" class="mega-link-item">
+                  <span class="mega-link-title">Tráfego Pago</span>
+                  <span class="mega-link-desc">Google, Meta, TikTok e LinkedIn Ads</span>
+                </a>
+                <a href="../midia-offline/" class="mega-link-item">
+                  <span class="mega-link-title">Mídia Offline</span>
+                  <span class="mega-link-desc">Outdoor, busdoor, rádio e TV</span>
+                </a>
+                <a href="../automacao-whatsapp-ia/" class="mega-link-item">
+                  <span class="mega-link-title">Automação com IA</span>
+                  <span class="mega-link-desc">Agente de IA no WhatsApp e CRM</span>
+                </a>
+                <a href="../agencia-de-influenciadores/" class="mega-link-item">
+                  <span class="mega-link-title">Marketing de Influência</span>
+                  <span class="mega-link-desc">Influenciadores e creators para marcas</span>
+                </a>
+              </div>
+              <div>
+                <div class="mega-col-title">Digital &amp; Tech</div>
+                <a href="../criacao-de-sites/" class="mega-link-item">
+                  <span class="mega-link-title">Criação de Sites</span>
+                  <span class="mega-link-desc">Sites profissionais e institucionais</span>
+                </a>
+                <a href="../landing-pages/" class="mega-link-item">
+                  <span class="mega-link-title">Landing Pages</span>
+                  <span class="mega-link-desc">Páginas de alta conversão</span>
+                </a>
+                <a href="../lojas-virtuais/" class="mega-link-item">
+                  <span class="mega-link-title">Lojas Virtuais</span>
+                  <span class="mega-link-desc">Criação e gestão de e-commerce</span>
+                </a>
+              </div>
+              <div>
+                <div class="mega-col-title">E-commerce &amp; Marketplace</div>
+                <a href="../agencia-de-tiktok-shop/" class="mega-link-item">
+                  <span class="mega-link-title">TikTok Shop</span>
+                  <span class="mega-link-desc">Loja, afiliados e GMV Max</span>
+                </a>
+                <a href="../gestao-de-marketplace/" class="mega-link-item">
+                  <span class="mega-link-title">Gestão de Marketplace</span>
+                  <span class="mega-link-desc">Mercado Livre e Shopee</span>
+                </a>
+                <a href="../live-commerce/" class="mega-link-item">
+                  <span class="mega-link-title">Live Commerce</span>
+                  <span class="mega-link-desc">Lives na Shopee e no TikTok</span>
+                </a>
+                <a href="../shopee-ads-e-mercado-ads/" class="mega-link-item">
+                  <span class="mega-link-title">Marketplace Ads</span>
+                  <span class="mega-link-desc">Shopee Ads e Mercado Ads</span>
+                </a>
+                <a href="../estrategia-de-afiliados/" class="mega-link-item">
+                  <span class="mega-link-title">Programa de Afiliados</span>
+                  <span class="mega-link-desc">Venda pagando só por resultado</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="/#cases" class="nav-item-link">Cases</a></li>
+        <li><a href="/#setores" class="nav-item-link">Segmentos</a></li>
+        <li><a href="../blog.html" class="nav-item-link active">Blog</a></li>
+        <li><a href="../trabalhe-conosco.html" class="nav-item-link ">Carreiras</a></li>
+        <li><a href="../fornecedores.html" class="nav-item-link ">Fornecedores</a></li>
+      </ul>
+
+      <div class="nav-desktop-actions">
+        <a href="https://api.whatsapp.com/send?phone=5541988467737" target="_blank" class="btn-nav-whatsapp">
+          <span>Consultoria WhatsApp</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+      
+      <button class="btn-mobile-toggle" id="mobileMenuToggle" aria-label="Abrir Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    
+    </div>
+  </header>
+
+  <main>
+    <article class="article-container">
+      
+      <div class="article-header">
+        <div class="mono-badge">ESTRATÉGIA &amp; DRE</div>
+        <h1 class="article-title">Como Estruturar e Monetizar o seu Marketing Digital com Orçamento Enxuto</h1>
+        <div class="article-meta-header">
+          <span>Escrito por: <strong>RM9 Growth Team</strong></span>
+          <span>•</span>
+          <span>⏱ 2 min de leitura</span>
+          <span>•</span>
+          <span>Data: Maio, 2026</span>
+        </div>
+      </div>
+
+      <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Como Estruturar e Monetizar o seu Marketing Digital com Orçamento Enxuto" class="article-featured-img" loading="eager">
+
+      <div class="article-body">
+<p>Empresas em estágio inicial ou que faturam pouco enfrentam um paradoxo: precisam de marketing para crescer, mas não têm verba para pagar mensalidades caras de agências tradicionais. Se esse é o seu caso, a melhor estratégia é focar em <strong>Consultoria Estratégica e Ativos Orgânicos (SEO)</strong>.</p>
+<h3>O Caminho do Crescimento Enxuto:</h3>
+<ul>
+<li><strong>SEO Local (Curitiba e São Paulo):</strong> Posicione seu site em palavras-chave geográficas com baixa concorrência e alta intenção de compra.</li>
+<li><strong>Adquira Know-How (Consultoria e Mentoria):</strong> Em vez de terceirizar sua operação, contrate uma consultoria focada em ensinar o seu time a executar as tarefas básicas de tráfego e funil.</li>
+<li><strong>Reinvista o Lucro:</strong> Conforme as primeiras vendas orgânicas acontecem, crie verba para mídia paga e posterior contratação de assessoria completa.</li>
+</ul>
+<p>Para ajudar empresas em crescimento enxuto, a RM9Brasil oferece serviços de <strong>Consultoria e Mentoria Individualizada</strong>, permitindo que você aprenda a estrutura correta para escalar o seu negócio de forma acessível. <strong><a href="/#contato">Clique aqui e peça um diagnóstico para a sua empresa</a></strong></p>
+<p><strong>Serviço relacionado:</strong> conheça a <a href="/consultoria-de-marketing/">consultoria de marketing</a> da RM9Brasil, agência de marketing digital em Curitiba.</p>
+      </div>
+
+      <!-- CTA NO FINAL DO ARTIGO -->
+      <div class="article-cta-box">
+        <div class="mono-badge">DIAGNÓSTICO ESTRATÉGICO</div>
+        <h3 style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; text-transform: uppercase; color: #fff; margin-top: 0.8rem;">
+          Pronto para aplicar esta tese na sua empresa?
+        </h3>
+        <p style="color: var(--text-secondary); font-size: 1rem; margin: 1rem 0 1.5rem;">
+          Converse diretamente com a diretoria executiva da RM9Brasil e descubra o plano de ação ideal para seu negócio.
+        </p>
+        <a href="https://api.whatsapp.com/send?phone=5541988467737&text=Ol%C3%A1%20RM9%21%20Li%20o%20artigo%20%27Como%20Estruturar%20e%20Monetizar%20o%20seu%20Marketing%20Digital%20com%20Or%C3%A7amento%20Enxuto%27%20e%20quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio." target="_blank" class="btn-cta-lux" style="display: inline-flex; padding: 1rem 2rem;">
+          <span>Falar com o Consultor no WhatsApp ➔</span>
+        </a>
+      </div>
+
+    </article>
+
+    <!-- SEÇÃO ARTIGOS RELACIONADOS & OUTROS ASSUNTOS -->
+    <section class="related-articles-section">
+      <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+          <div>
+            <div class="mono-badge" style="margin-bottom: 0.5rem;">HUB DE INTELIGÊNCIA EDITORIAL</div>
+            <h3 style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; text-transform: uppercase; color: #fff;">
+              Continue Explorando Outros Assuntos
+            </h3>
+          </div>
+          <a href="../blog.html" style="color: var(--accent-acid); font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; text-decoration: none;">
+            Ver Galeria Completa de Artigos ➔
+          </a>
+        </div>
+
+        <div class="related-grid">
+          
+    <a href="../blog/o-abismo-agentico-por-que-99-por-cento-dos-sites-vao-perder-vendas.html" class="blog-card-enhanced" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; transition: transform 0.3s, border-color 0.3s;">
+      <div style="aspect-ratio: 16/9; overflow: hidden;">
+        <img src="../assets/artigos/agentes-ia-ecommerce.jpg" alt="O Abismo Agêntico: Por Que 99,5% dos Sites Vão Perder Vendas para Robôs e Agentes de IA até 2027" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s;">
+      </div>
+      <div style="padding: 1.25rem; display: flex; flex-direction: column; flex-grow: 1;">
+        <span class="mono-badge" style="margin-bottom: 0.6rem; align-self: flex-start; font-size: 0.65rem;">IA & Automação</span>
+        <h4 style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 800; color: #fff; line-height: 1.3; margin-bottom: 0.6rem;">O Abismo Agêntico: Por Que 99,5% dos Sites Vão Perder Vendas para Robôs e Agentes de IA até 2027</h4>
+        <p style="color: #9fa3b5; font-size: 0.85rem; line-height: 1.5; margin-bottom: 1rem; flex-grow: 1;">Dados do estudo State of Crawl revelam que apenas 0,5% dos sites estão prontos para robôs e agentes que compram e decidem por humanos.</p>
+        <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.75rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-acid); font-weight: 700;">
+          Ler Artigo ➔
+        </div>
+      </div>
+    </a>
+  
+    <a href="../blog/o-fim-do-modelo-tradicional-de-agencia.html" class="blog-card-enhanced" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; transition: transform 0.3s, border-color 0.3s;">
+      <div style="aspect-ratio: 16/9; overflow: hidden;">
+        <img src="../assets/artigos/novo-modelo-de-agencia.jpg" alt="O Fim do Modelo Tradicional de Agência: Como a Engenharia de Negócios Substituiu os Fee Mensais" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s;">
+      </div>
+      <div style="padding: 1.25rem; display: flex; flex-direction: column; flex-grow: 1;">
+        <span class="mono-badge" style="margin-bottom: 0.6rem; align-self: flex-start; font-size: 0.65rem;">Estratégia & DRE</span>
+        <h4 style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 800; color: #fff; line-height: 1.3; margin-bottom: 0.6rem;">O Fim do Modelo Tradicional de Agência: Como a Engenharia de Negócios Substituiu os Fee Mensais</h4>
+        <p style="color: #9fa3b5; font-size: 0.85rem; line-height: 1.5; margin-bottom: 1rem; flex-grow: 1;">Entenda por que empresas maduras estão abandonando o formato antigo de pacotes de posts para adotar hubs estratégicos que mobilizam arsenais sob medida.</p>
+        <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.75rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-acid); font-weight: 700;">
+          Ler Artigo ➔
+        </div>
+      </div>
+    </a>
+  
+    <a href="../blog/inteligencia-artificial-no-trafego-e-vendas.html" class="blog-card-enhanced" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; transition: transform 0.3s, border-color 0.3s;">
+      <div style="aspect-ratio: 16/9; overflow: hidden;">
+        <img src="../assets/artigos/ia-trafego-varejo.jpg" alt="Inteligência Artificial no Tráfego B2B & Varejo: Reduzindo o CAC em até 40%" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s;">
+      </div>
+      <div style="padding: 1.25rem; display: flex; flex-direction: column; flex-grow: 1;">
+        <span class="mono-badge" style="margin-bottom: 0.6rem; align-self: flex-start; font-size: 0.65rem;">IA & Automação</span>
+        <h4 style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 800; color: #fff; line-height: 1.3; margin-bottom: 0.6rem;">Inteligência Artificial no Tráfego B2B & Varejo: Reduzindo o CAC em até 40%</h4>
+        <p style="color: #9fa3b5; font-size: 0.85rem; line-height: 1.5; margin-bottom: 1rem; flex-grow: 1;">Como algoritmos preditivos, agentes de conversão no WhatsApp e automações de ponta a ponta transformam o funil comercial de vendas.</p>
+        <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.75rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-acid); font-weight: 700;">
+          Ler Artigo ➔
+        </div>
+      </div>
+    </a>
+  
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER INSTITUCIONAL COMPLETO RM9 -->
+  <footer class="footer-lux">
+    <div class="container">
+      <div class="footer-main-grid">
+        <div>
+          <a href="/" class="brand-logo-wrap" style="margin-bottom: 1.25rem;">
+            <img src="../assets/logo.png" alt="RM9Brasil" class="brand-logo-img" style="height: 38px;">
+          </a>
+          <div class="footer-manifesto-badge">HOUSE DE ESTRATÉGIA, BRANDING &amp; PERFORMANCE</div>
+          <p class="footer-history-text">
+            Fundada sob a convicção de que empresas não precisam de promessas vazias, mas de <strong>engenharia de negócios aplicada</strong>. Desde 2018, com liderança que atua em publicidade e marketing desde 2006 e bases em Curitiba e São Paulo.
+          </p>
+        </div>
+        <div>
+          <div class="footer-col-title">Serviços</div>
+          <ul class="footer-col-links">
+            <li><a href="../gestao-de-trafego-pago/">Tráfego Pago</a></li>
+            <li><a href="../criacao-de-sites/">Criação de Sites</a></li>
+            <li><a href="../agencia-de-branding/">Branding e Identidade Visual</a></li>
+            <li><a href="../gestao-de-redes-sociais/">Gestão de Redes Sociais</a></li>
+            <li><a href="../agencia-de-tiktok-shop/">TikTok Shop</a></li>
+            <li><a href="../gestao-de-marketplace/">Gestão de Marketplace</a></li>
+            <li><a href="../automacao-whatsapp-ia/">Automação com IA</a></li>
+            <li><a href="../consultoria-de-marketing/">Consultoria de Marketing</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Ecossistema &amp; Carreiras</div>
+          <ul class="footer-col-links">
+            <li><a href="/#metodo">A Tese RM9</a></li>
+            <li><a href="/#cases">Cases de Sucesso</a></li>
+            <li><a href="../blog.html">Blog &amp; Inteligência</a></li>
+            <li><a href="../trabalhe-conosco.html">Trabalhe Conosco</a></li>
+            <li><a href="../fornecedores.html">Portal de Fornecedores</a></li>
+            <li><a href="../empreenda.html">Empreenda com a RM9</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Bases &amp; Contato</div>
+          <div class="footer-hq-badge"><span>SÃO PAULO • BRASIL</span></div>
+          <div class="footer-hq-badge" style="margin-top: 0.8rem;"><span>CURITIBA • BRASIL</span></div>
+          <a href="https://api.whatsapp.com/send?phone=5541988467737" target="_blank" class="footer-btn-cta"><span>Consultoria Executiva ➔</span></a>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <div>© 2026 RM9Brasil. Todos os direitos reservados. </div>
+        <div>Engenharia de Negócios • Curitiba &amp; São Paulo</div>
+      </div>
+    </div>
+  </footer>
+
+  
+  
+  <!-- MOBILE DRAWER & OVERLAY (FAIL-SAFE HIDDEN BY DEFAULT) -->
+  <div id="mobileOverlay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 999998; opacity: 0; transition: opacity 0.35s ease; cursor: pointer;"></div>
+  
+  <div id="mobileDrawer" style="display: none; position: fixed; top: 0; right: 0; width: min(88vw, 340px); height: 100vh; height: 100dvh; background: #08090E; z-index: 999999; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); flex-direction: column; overflow-y: auto; padding: 4.5rem 1.5rem 2rem; box-shadow: -15px 0 50px rgba(0,0,0,0.95); border-left: 1px solid rgba(255,255,255,0.12); box-sizing: border-box;">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08);">
+      <img src="../assets/logo.png" alt="RM9Brasil" style="height: 30px; width: auto;">
+      <button id="mobileDrawerClose" aria-label="Fechar Menu" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; width: 36px; height: 36px; border-radius: 8px; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+    </div>
+
+    <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1.5rem; padding: 0;">
+      <li><a href="/#metodo" class="m-link" style="color: #ffffff; text-decoration: none; font-family: var(--font-display, sans-serif); font-size: 1.05rem; font-weight: 700; display: block; padding: 0.65rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">A Tese</a></li>
+      <li>
+        <div id="mArsenalToggle" style="color: #ffffff; font-family: var(--font-display, sans-serif); font-size: 1.05rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; padding: 0.65rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer;">
+          <span>Serviços</span>
+          <span id="mArsenalArrow" style="font-size: 0.75rem; transition: transform 0.3s;">▼</span>
+        </div>
+        <div id="mArsenalAcc" style="display: none; flex-direction: column; gap: 0.3rem; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.03); border-radius: 8px; margin-top: 0.2rem;">
+          <a href="../planejamento-de-marketing/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Planejamento de Marketing</a>
+          <a href="../consultoria-de-marketing/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Consultoria de Marketing</a>
+          <a href="../agencia-de-publicidade/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Agência de Publicidade</a>
+          <a href="../agencia-de-branding/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Branding e Identidade Visual</a>
+          <a href="../design-grafico/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Design Gráfico</a>
+          <a href="../gestao-de-redes-sociais/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Gestão de Redes Sociais</a>
+          <a href="../gestao-de-trafego-pago/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Tráfego Pago</a>
+          <a href="../midia-offline/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Mídia Offline</a>
+          <a href="../automacao-whatsapp-ia/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Automação com IA</a>
+          <a href="../criacao-de-sites/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Criação de Sites</a>
+          <a href="../landing-pages/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Landing Pages</a>
+          <a href="../lojas-virtuais/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Lojas Virtuais</a>
+          <a href="../agencia-de-influenciadores/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Marketing de Influência</a>
+          <a href="../agencia-de-tiktok-shop/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">TikTok Shop</a>
+          <a href="../gestao-de-marketplace/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Gestão de Marketplace</a>
+          <a href="../live-commerce/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Live Commerce</a>
+          <a href="../shopee-ads-e-mercado-ads/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Marketplace Ads</a>
+          <a href="../estrategia-de-afiliados/" style="color: #9fa3b5; text-decoration: none; font-size: 0.88rem; padding: 0.35rem 0; display: block;">Programa de Afiliados</a>
+        </div>
+      </li>
+      <li><a href="/#cases" class="m-link" style="color: #ffffff; text-decoration: none; font-family: var(--font-display, sans-serif); font-size: 1.05rem; font-weight: 700; display: block; padding: 0.65rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">Cases</a></li>
+      <li><a href="/#setores" class="m-link" style="color: #ffffff; text-decoration: none; font-family: var(--font-display, sans-serif); font-size: 1.05rem; font-weight: 700; display: block; padding: 0.65rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">Segmentos</a></li>
+      <li><a href="../blog.html" class="m-link" style="color: #ffffff; text-decoration: none; font-family: var(--font-display, sans-serif); font-size: 1.05rem; font-weight: 700; display: block; padding: 0.65rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">Blog &amp; Inteligência</a></li>
+      <li><a href="../trabalhe-conosco.html" class="m-link" style="color: #ffffff; text-decoration: none; font-family: var(--font-display, sans-serif); font-size: 1.05rem; font-weight: 700; display: block; padding: 0.65rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">Carreiras</a></li>
+      <li><a href="../fornecedores.html" class="m-link" style="color: #ffffff; text-decoration: none; font-family: var(--font-display, sans-serif); font-size: 1.05rem; font-weight: 700; display: block; padding: 0.65rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">Fornecedores</a></li>
+    </ul>
+
+    <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: auto; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08);">
+      <a href="https://api.whatsapp.com/send?phone=5541988467737" target="_blank" style="display: flex; justify-content: center; width: 100%; text-decoration: none; background: #E2F800; color: #050507; padding: 0.75rem 1rem; border-radius: 999px; font-weight: 800; font-size: 0.88rem; box-sizing: border-box;">
+        <span>Consultoria WhatsApp ➔</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const toggle = document.getElementById('mobileMenuToggle');
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('mobileOverlay');
+      const closeBtn = document.getElementById('mobileDrawerClose');
+      const arsenalToggle = document.getElementById('mArsenalToggle');
+      const arsenalAccordion = document.getElementById('mArsenalAcc');
+      const arsenalArrow = document.getElementById('mArsenalArrow');
+
+      function openMenu() {
+        if (!drawer || !overlay) return;
+        if (toggle) toggle.classList.add('active');
+        overlay.style.display = 'block';
+        drawer.style.display = 'flex';
+        setTimeout(() => {
+          overlay.style.opacity = '1';
+          drawer.style.transform = 'translateX(0)';
+        }, 10);
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        if (!drawer || !overlay) return;
+        if (toggle) toggle.classList.remove('active');
+        overlay.style.opacity = '0';
+        drawer.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+          overlay.style.display = 'none';
+          drawer.style.display = 'none';
+        }, 350);
+        document.body.style.overflow = '';
+      }
+
+      if (toggle) {
+        toggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (drawer && drawer.style.display === 'flex') {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        });
+      }
+
+      if (overlay) overlay.addEventListener('click', closeMenu);
+      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+      if (arsenalToggle && arsenalAccordion) {
+        arsenalToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = arsenalAccordion.style.display === 'flex';
+          arsenalAccordion.style.display = isOpen ? 'none' : 'flex';
+          if (arsenalArrow) arsenalArrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+        });
+      }
+    })();
+  </script>
+  
+</body>
+</html>

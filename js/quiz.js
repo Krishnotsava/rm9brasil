@@ -201,36 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     dialog.close();
 
-    // Send to CRM webhook in background
-    const utmSource = sessionStorage.getItem('utm_source') || 'direto';
-    const utmMedium = sessionStorage.getItem('utm_medium') || 'site';
-    const utmCampaign = sessionStorage.getItem('utm_campaign') || 'raio-x-antes-da-peca';
-
-    const webhookPayload = {
-      name: leadData.nome,
-      email: leadData.email,
-      phone: leadData.whatsapp,
-      score: totalScore,
-      service: 'Raio-X Estratégico',
-      source: 'site_rm9_studio',
-      customFields: {
-        modelo: leadData.modelo,
-        faturamento: leadData.faturamento,
-        gargalo: leadData.gargalo
-      },
-      utm_source: utmSource,
-      utm_medium: utmMedium,
-      utm_campaign: utmCampaign
-    };
-
-    try {
-      fetch('https://crm-rm9.onrender.com/api/leads/webhook/site', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(webhookPayload),
-        keepalive: true
-      }).catch(err => console.warn('CRM Webhook info:', err));
-    } catch (e) {}
 
     // Meta Pixel & GA4
     if (typeof fbq === 'function') {
@@ -266,61 +236,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = `obrigado.html`;
   }
 
-  // 6. PROCESSAR FORMULÁRIO INLINE DE CONTATO (#inlineContactForm)
-  const inlineForm = document.getElementById('inlineContactForm');
-  if (inlineForm) {
-    inlineForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const submitBtn = document.getElementById('contactSubmitBtn');
-      const originalText = submitBtn.innerHTML;
-
-      const nomeVal = document.getElementById('contactNome').value.trim();
-      const emailVal = document.getElementById('contactEmail').value.trim();
-      const phoneVal = document.getElementById('contactPhone').value.trim();
-      const segmentoVal = document.getElementById('contactSegmento').value;
-      const mensagemVal = document.getElementById('contactMensagem').value.trim();
-
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>Enviando mensagem...</span>';
-
-      try {
-        const response = await fetch('/api/send-mail.php', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            nome: nomeVal,
-            email: emailVal,
-            telefone: phoneVal,
-            segmento: segmentoVal,
-            mensagem: mensagemVal,
-            origem: 'Formulário Direto da Home'
-          })
-        });
-
-        const result = await response.json();
-        
-        submitBtn.style.background = '#25D366';
-        submitBtn.style.borderColor = '#25D366';
-        submitBtn.style.color = '#000000';
-        submitBtn.innerHTML = '<span>✓ Mensagem Enviada com Sucesso!</span>';
-
-        setTimeout(() => {
-          inlineForm.reset();
-          submitBtn.disabled = false;
-          submitBtn.style.background = '';
-          submitBtn.style.borderColor = '';
-          submitBtn.style.color = '';
-          submitBtn.innerHTML = originalText;
-        }, 5000);
-
-      } catch (err) {
-        console.error('Erro ao enviar:', err);
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-        alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-        inlineForm.reset();
-      }
-    });
-  }
+  // 6. O formulário de contato da home (#inlineContactForm) é tratado em index.html (um único envio por e-mail).
 });
 

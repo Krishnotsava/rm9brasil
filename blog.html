@@ -2,6 +2,22 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-79HPJNT5WP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-79HPJNT5WP');
+    // Mede cliques de contato (WhatsApp, telefone, e-mail) como eventos no GA4
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="whatsapp.com"], a[href*="wa.me"], a[href^="tel:"], a[href^="mailto:"]');
+      if (!a || typeof gtag !== 'function') return;
+      var h = a.getAttribute('href') || '';
+      var tipo = h.indexOf('tel:') === 0 ? 'telefone' : (h.indexOf('mailto:') === 0 ? 'email' : 'whatsapp');
+      gtag('event', tipo === 'whatsapp' ? 'whatsapp_click' : 'contact_click', { contact_type: tipo, page_path: location.pathname, link_text: (a.textContent || '').trim().slice(0, 60) });
+    }, true);
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog &amp; Galeria de Inteligência de Negócios | RM9Brasil</title>
   <meta name="description" content="Galeria executiva de artigos, teses de engenharia de negócios, inteligência artificial, branding e estratégias de alta performance da RM9Brasil.">
@@ -403,6 +419,207 @@
         </h3>
         <p style="color: #9fa3b5; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
           A fusão entre transmissão ao vivo cinematográfica, gatilhos de escassez e esteira de checkout instantâneo que transformou eventos de varejo no Brasil.
+        </p>
+        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-acid); font-weight: 700; display: flex; justify-content: space-between; align-items: center;">
+          <span>Acessar Conteúdo</span>
+          <span>➔</span>
+        </div>
+      </div>
+    </a>
+  </article>
+  <!-- POSTS ESTATICOS GERADOS -->
+  <article class="blog-gallery-item" data-category="varejo">
+    <a href="blog/funil-de-vendas-ecommerce-escalar-vendas-online" class="blog-card-enhanced" style="height: 100%; display: flex; flex-direction: column;">
+      <div class="blog-card-img-wrap" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Funil de Vendas para E-commerce: A Estratégia Imbatível para Escalar suas Vendas Online" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+        <span class="gallery-category-pill">Varejo &amp; E-commerce</span>
+      </div>
+      <div class="blog-card-body" style="display: flex; flex-direction: column; flex-grow: 1; padding: 1.5rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #8a8f9f; margin-bottom: 0.6rem; display: flex; gap: 0.75rem;">
+          <span>Krishnotsava S. Romero</span>
+          <span>•</span>
+          <span>⏱ 3 min</span>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.22rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.3; margin-bottom: 0.8rem;">
+          Funil de Vendas para E-commerce: A Estratégia Imbatível para Escalar suas Vendas Online
+        </h3>
+        <p style="color: #9fa3b5; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+          Descubra como estruturar um funil de vendas de alta performance focado em atração, conversão e retenção para multiplicar o faturamento da sua loja virtual.
+        </p>
+        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-acid); font-weight: 700; display: flex; justify-content: space-between; align-items: center;">
+          <span>Acessar Conteúdo</span>
+          <span>➔</span>
+        </div>
+      </div>
+    </a>
+  </article>
+  <article class="blog-gallery-item" data-category="estrategia">
+    <a href="blog/5-estrategias-de-growth-marketing-que-funcionam-em-2026" class="blog-card-enhanced" style="height: 100%; display: flex; flex-direction: column;">
+      <div class="blog-card-img-wrap" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
+        <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f311?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="5 Estratégias de Growth Marketing que Funcionam em 2026 [Rascunho de Teste]" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+        <span class="gallery-category-pill">Estratégia &amp; Growth</span>
+      </div>
+      <div class="blog-card-body" style="display: flex; flex-direction: column; flex-grow: 1; padding: 1.5rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #8a8f9f; margin-bottom: 0.6rem; display: flex; gap: 0.75rem;">
+          <span>Krishnotsava S. Romero</span>
+          <span>•</span>
+          <span>⏱ 2 min</span>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.22rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.3; margin-bottom: 0.8rem;">
+          5 Estratégias de Growth Marketing que Funcionam em 2026 [Rascunho de Teste]
+        </h3>
+        <p style="color: #9fa3b5; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+          Este é um artigo de rascunho de teste gerado automaticamente como fallback do Agente de Blog IA para o tema &quot;5 Estratégias de Growth Marketing que Funcionam em 2026&quot;.
+        </p>
+        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-acid); font-weight: 700; display: flex; justify-content: space-between; align-items: center;">
+          <span>Acessar Conteúdo</span>
+          <span>➔</span>
+        </div>
+      </div>
+    </a>
+  </article>
+  <article class="blog-gallery-item" data-category="varejo">
+    <a href="blog/revolucao-live-commerce-tiktok-shop-cosmeticos" class="blog-card-enhanced" style="height: 100%; display: flex; flex-direction: column;">
+      <div class="blog-card-img-wrap" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
+        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="A Revolução do Live Commerce e TikTok Shop no Segmento de Cosméticos" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+        <span class="gallery-category-pill">Varejo &amp; Live Commerce</span>
+      </div>
+      <div class="blog-card-body" style="display: flex; flex-direction: column; flex-grow: 1; padding: 1.5rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #8a8f9f; margin-bottom: 0.6rem; display: flex; gap: 0.75rem;">
+          <span>RM9 Growth Team</span>
+          <span>•</span>
+          <span>⏱ 2 min</span>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.22rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.3; margin-bottom: 0.8rem;">
+          A Revolução do Live Commerce e TikTok Shop no Segmento de Cosméticos
+        </h3>
+        <p style="color: #9fa3b5; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+          Descubra como estruturar transmissões ao vivo de alta conversão e campanhas integradas de tráfego no TikTok Shop para escalar sua marca de cosméticos e beleza.
+        </p>
+        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-acid); font-weight: 700; display: flex; justify-content: space-between; align-items: center;">
+          <span>Acessar Conteúdo</span>
+          <span>➔</span>
+        </div>
+      </div>
+    </a>
+  </article>
+  <article class="blog-gallery-item" data-category="varejo">
+    <a href="blog/guia-definitivo-otimizar-mercado-livre-product-ads" class="blog-card-enhanced" style="height: 100%; display: flex; flex-direction: column;">
+      <div class="blog-card-img-wrap" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Mercado Livre Ads: Guia Definitivo para Otimizar suas Campanhas de Product Ads" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+        <span class="gallery-category-pill">Marketplace Ads</span>
+      </div>
+      <div class="blog-card-body" style="display: flex; flex-direction: column; flex-grow: 1; padding: 1.5rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #8a8f9f; margin-bottom: 0.6rem; display: flex; gap: 0.75rem;">
+          <span>RM9 Growth Team</span>
+          <span>•</span>
+          <span>⏱ 2 min</span>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.22rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.3; margin-bottom: 0.8rem;">
+          Mercado Livre Ads: Guia Definitivo para Otimizar suas Campanhas de Product Ads
+        </h3>
+        <p style="color: #9fa3b5; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+          Saiba como regular o orçamento de Product Ads, reduzir o desperdício de margem de lucro e posicionar seus produtos no topo das buscas no Mercado Livre.
+        </p>
+        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-acid); font-weight: 700; display: flex; justify-content: space-between; align-items: center;">
+          <span>Acessar Conteúdo</span>
+          <span>➔</span>
+        </div>
+      </div>
+    </a>
+  </article>
+  <article class="blog-gallery-item" data-category="estrategia">
+    <a href="blog/funil-de-vendas-do-zero-integrado-ao-crm" class="blog-card-enhanced" style="height: 100%; display: flex; flex-direction: column;">
+      <div class="blog-card-img-wrap" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Como Estruturar um Funil de Vendas do Zero e Integrar com seu CRM Comercial" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+        <span class="gallery-category-pill">Estratégia &amp; CRM</span>
+      </div>
+      <div class="blog-card-body" style="display: flex; flex-direction: column; flex-grow: 1; padding: 1.5rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #8a8f9f; margin-bottom: 0.6rem; display: flex; gap: 0.75rem;">
+          <span>RM9 Growth Team</span>
+          <span>•</span>
+          <span>⏱ 2 min</span>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.22rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.3; margin-bottom: 0.8rem;">
+          Como Estruturar um Funil de Vendas do Zero e Integrar com seu CRM Comercial
+        </h3>
+        <p style="color: #9fa3b5; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+          Chega de receber contatos desqualificados no WhatsApp. Entenda como criar pontos de atrito positivo e automatizar o envio de leads quentes para o seu time de vendas.
+        </p>
+        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-acid); font-weight: 700; display: flex; justify-content: space-between; align-items: center;">
+          <span>Acessar Conteúdo</span>
+          <span>➔</span>
+        </div>
+      </div>
+    </a>
+  </article>
+  <article class="blog-gallery-item" data-category="varejo">
+    <a href="blog/o-que-e-cro-otimizacao-conversao-ecommerce" class="blog-card-enhanced" style="height: 100%; display: flex; flex-direction: column;">
+      <div class="blog-card-img-wrap" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="O que é CRO e por que seu E-commerce Precisa disso Antes de Investir Mais em Mídia" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+        <span class="gallery-category-pill">Varejo &amp; E-commerce</span>
+      </div>
+      <div class="blog-card-body" style="display: flex; flex-direction: column; flex-grow: 1; padding: 1.5rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #8a8f9f; margin-bottom: 0.6rem; display: flex; gap: 0.75rem;">
+          <span>RM9 Growth Team</span>
+          <span>•</span>
+          <span>⏱ 2 min</span>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.22rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.3; margin-bottom: 0.8rem;">
+          O que é CRO e por que seu E-commerce Precisa disso Antes de Investir Mais em Mídia
+        </h3>
+        <p style="color: #9fa3b5; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+          Seu site recebe visitas mas não vende? Entenda como a Otimização de Taxa de Conversão (CRO) pode dobrar seus resultados sem aumentar o gasto com anúncios.
+        </p>
+        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-acid); font-weight: 700; display: flex; justify-content: space-between; align-items: center;">
+          <span>Acessar Conteúdo</span>
+          <span>➔</span>
+        </div>
+      </div>
+    </a>
+  </article>
+  <article class="blog-gallery-item" data-category="varejo">
+    <a href="blog/integracao-marketplace-upseller-shopee-shein" class="blog-card-enhanced" style="height: 100%; display: flex; flex-direction: column;">
+      <div class="blog-card-img-wrap" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
+        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Como Vender na Shopee, Shein e Amazon: Integração e Escala de Catálogos via ERP" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+        <span class="gallery-category-pill">Marketplaces</span>
+      </div>
+      <div class="blog-card-body" style="display: flex; flex-direction: column; flex-grow: 1; padding: 1.5rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #8a8f9f; margin-bottom: 0.6rem; display: flex; gap: 0.75rem;">
+          <span>RM9 Growth Team</span>
+          <span>•</span>
+          <span>⏱ 2 min</span>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.22rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.3; margin-bottom: 0.8rem;">
+          Como Vender na Shopee, Shein e Amazon: Integração e Escala de Catálogos via ERP
+        </h3>
+        <p style="color: #9fa3b5; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+          Entenda como gerenciar múltiplos canais de venda online de forma centralizada utilizando ERPs como o Upseller e logística integrada como a Anjun.
+        </p>
+        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-acid); font-weight: 700; display: flex; justify-content: space-between; align-items: center;">
+          <span>Acessar Conteúdo</span>
+          <span>➔</span>
+        </div>
+      </div>
+    </a>
+  </article>
+  <article class="blog-gallery-item" data-category="estrategia">
+    <a href="blog/marketing-orcamento-enxuto-consultoria-boootstrap" class="blog-card-enhanced" style="height: 100%; display: flex; flex-direction: column;">
+      <div class="blog-card-img-wrap" style="aspect-ratio: 16/9; overflow: hidden; position: relative;">
+        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Como Estruturar e Monetizar o seu Marketing Digital com Orçamento Enxuto" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+        <span class="gallery-category-pill">Estratégia &amp; DRE</span>
+      </div>
+      <div class="blog-card-body" style="display: flex; flex-direction: column; flex-grow: 1; padding: 1.5rem;">
+        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #8a8f9f; margin-bottom: 0.6rem; display: flex; gap: 0.75rem;">
+          <span>RM9 Growth Team</span>
+          <span>•</span>
+          <span>⏱ 2 min</span>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.22rem; font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.3; margin-bottom: 0.8rem;">
+          Como Estruturar e Monetizar o seu Marketing Digital com Orçamento Enxuto
+        </h3>
+        <p style="color: #9fa3b5; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+          Pequenas empresas com pouca verba de mídia devem investir em consultoria focada em SEO local e funis direcionados em vez de assessoria mensal cara. Veja como fazer.
         </p>
         <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-acid); font-weight: 700; display: flex; justify-content: space-between; align-items: center;">
           <span>Acessar Conteúdo</span>

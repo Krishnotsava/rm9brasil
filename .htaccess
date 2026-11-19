@@ -1,3 +1,8 @@
+# Bloqueia acesso público ao log de leads (nomes, e-mails e telefones)
+<IfModule mod_alias.c>
+  RedirectMatch 403 ^/logs(/.*)?$
+</IfModule>
+
 # RM9Brasil - Configuração de Redirecionamento e SEO para Hostinger (Apache)
 RewriteEngine On
 RewriteBase /
@@ -53,6 +58,10 @@ RewriteRule ^([^/]+)$ $1.html [L]
 # Redirecionar /blog/slug/ para /blog/slug para manter caminhos relativos consistentes
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^/?blog/(.+)/$ https://rm9brasil.com.br/blog/$1 [R=301,L]
+
+# Posts do blog em HTML estático: /blog/slug serve /blog/slug.html quando o arquivo existe
+RewriteCond %{DOCUMENT_ROOT}/blog/$1.html -f
+RewriteRule ^/?blog/([^/.]+)$ /blog/$1.html [L]
 
 # Reescrever /blog/slug para /blog/post-template.html?post=slug
 RewriteCond %{REQUEST_FILENAME} !-f
