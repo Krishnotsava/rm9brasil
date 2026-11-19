@@ -60,7 +60,8 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^/?blog/(.+)/$ https://rm9brasil.com.br/blog/$1 [R=301,L]
 
 # Posts do blog em HTML estático: /blog/slug serve /blog/slug.html quando o arquivo existe
-RewriteCond %{DOCUMENT_ROOT}/blog/$1.html -f
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^/?blog/([^/.]+)$ /blog/$1.html [L]
 
 # Reescrever /blog/slug para /blog/post-template.html?post=slug
