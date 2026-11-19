@@ -1,0 +1,208 @@
+/* =========================================================
+   RM9 · Visual clean (mesma linguagem da apresentação institucional)
+   Fundo claro, Plus Jakarta Sans, verde-limão #E2F800 como destaque,
+   blocos escuros #0E0E10 para contraste, pílula lilás #DCDDFB.
+   Ativado com <body class="theme-clean">.
+   ========================================================= */
+
+body.theme-clean {
+  --bg-dark: #F6F6F7;
+  --bg-deep: #F6F6F7;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #E9E9EC;
+  --border-glass: #E2E3E7;
+  --border-glass-active: #0E0E10;
+  --text-pure: #0E0E10;
+  --text-primary: #0E0E10;
+  --text-secondary: #4A4D57;
+  --text-muted: #6A6D77;
+  --font-display: 'Plus Jakarta Sans', Arial, sans-serif;
+  --ink: #0E0E10;
+  --lilac: #DCDDFB;
+  --lime: #E2F800;
+  --card-gray: #E9E9EC;
+  --line: #E2E3E7;
+  background: #F6F6F7 !important;
+  color: var(--ink);
+  font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+  cursor: auto !important;
+}
+body.theme-clean * { cursor: inherit; }
+body.theme-clean a, body.theme-clean button, body.theme-clean summary { cursor: pointer !important; }
+body.theme-clean input, body.theme-clean textarea { cursor: text !important; }
+
+/* Efeitos do visual antigo */
+.theme-clean .film-grain,
+.theme-clean .custom-cursor,
+.theme-clean .custom-cursor-follower { display: none !important; }
+
+/* ---------- Cabeçalho ---------- */
+.theme-clean .studio-nav, .theme-clean .studio-nav.scrolled { box-shadow: none !important; }
+.theme-clean .studio-nav { background: rgba(246, 246, 247, 0.86) !important; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid transparent; }
+.theme-clean .studio-nav.scrolled { background: rgba(246, 246, 247, 0.94) !important; border-bottom: 1px solid var(--line) !important; }
+.theme-clean .studio-nav .brand-logo-img, .theme-clean .studio-nav.scrolled .brand-logo-img { filter: brightness(0) drop-shadow(0 0 0 transparent) !important; opacity: 1 !important; }
+.theme-clean .nav-item-link { color: #4A4D57 !important; font-weight: 500; }
+.theme-clean .nav-item-link:hover { color: var(--ink) !important; }
+.theme-clean .btn-nav-whatsapp { background: var(--ink) !important; color: #fff !important; border-color: var(--ink) !important; }
+.theme-clean .btn-mobile-toggle { background: #fff !important; border: 1px solid var(--line) !important; color: var(--ink) !important; }
+.theme-clean .btn-mobile-toggle span, .theme-clean .btn-mobile-toggle i { background: var(--ink) !important; }
+
+/* Pílula de seção (antigo mono-badge) */
+.theme-clean .mono-badge {
+  background: #fff !important; border: 1px solid #D6D7DC !important; color: var(--ink) !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important; font-weight: 600 !important;
+  letter-spacing: 0 !important; text-transform: none !important; font-size: 0.9rem !important;
+  padding: 0.4rem 1rem !important; border-radius: 999px !important; box-shadow: none !important;
+}
+.theme-clean .mono-badge::before { display: none !important; }
+
+/* Títulos: frase normal, sem tudo em maiúsculas */
+.theme-clean h1, .theme-clean h2, .theme-clean h3 { color: var(--ink); }
+.theme-clean h2, .theme-clean .gallery-title, .theme-clean .ecm-h2 {
+  text-transform: none !important; font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 600 !important; letter-spacing: -0.03em !important; color: var(--ink) !important;
+}
+
+/* ---------- Topo ---------- */
+.theme-clean .hero-cinematic { background: #F6F6F7 !important; }
+.theme-clean .hero-gradient-sphere-1 { background: radial-gradient(circle, rgba(220,221,251,0.9) 0%, rgba(220,221,251,0) 70%) !important; opacity: 0.9; filter: none !important; }
+.theme-clean .hero-gradient-sphere-2 { background: radial-gradient(circle, rgba(226,248,0,0.35) 0%, rgba(226,248,0,0) 70%) !important; opacity: 0.8; filter: none !important; }
+.theme-clean .hero-statement {
+  font-family: 'Plus Jakarta Sans', sans-serif !important; text-transform: none !important;
+  font-weight: 600 !important; letter-spacing: -0.035em !important; line-height: 1.08 !important;
+  color: var(--ink) !important;
+}
+.theme-clean .hero-statement .italic-serif {
+  font-family: 'Plus Jakarta Sans', sans-serif !important; font-style: normal !important; font-weight: inherit !important;
+  background: var(--lilac); color: var(--ink) !important; -webkit-text-fill-color: var(--ink) !important;
+  padding: 0 0.32em 0.06em; border-radius: 999px; display: inline-block; margin: 0.04em 0;
+}
+.theme-clean .hero-statement .gradient-text { background: none !important; -webkit-text-fill-color: var(--ink) !important; color: var(--ink) !important; }
+.theme-clean .hero-sub-statement { color: #4A4D57 !important; }
+.theme-clean .hero-sub-statement strong { color: var(--ink) !important; }
+.theme-clean .hero-floating-meta { border-top: 1px solid var(--line) !important; }
+.theme-clean .meta-num { color: var(--ink) !important; font-family: 'Plus Jakarta Sans', sans-serif !important; font-weight: 600 !important; letter-spacing: -0.03em; }
+.theme-clean .meta-num span { color: #6A6D77 !important; }
+.theme-clean .meta-label { color: #6A6D77 !important; font-family: 'Plus Jakarta Sans', sans-serif !important; letter-spacing: 0 !important; text-transform: none !important; font-size: 0.9rem !important; }
+.theme-clean .hero-certs > span:first-child { color: var(--ink) !important; font-family: 'Plus Jakarta Sans', sans-serif !important; font-weight: 700; letter-spacing: 0 !important; }
+.theme-clean .hero-certs > span + span { background: #fff; border-color: #D6D7DC !important; color: var(--ink) !important; font-family: 'Plus Jakarta Sans', sans-serif !important; font-size: 0.8rem !important; font-weight: 500; }
+
+/* Botões */
+.theme-clean .btn-cta-lux { background: var(--ink) !important; color: #fff !important; border: 1px solid var(--ink) !important; box-shadow: none !important; }
+.theme-clean .btn-cta-lux:hover { background: #26262B !important; }
+.theme-clean .btn-cta-lux svg { color: var(--lime); }
+.theme-clean .btn-outline-lux { background: #fff !important; color: var(--ink) !important; border: 1px solid #D6D7DC !important; }
+.theme-clean .btn-outline-lux:hover { border-color: var(--ink) !important; }
+
+/* Faixa rolante */
+.theme-clean .marquee-band { background: var(--ink) !important; border: 0 !important; }
+.theme-clean .marquee-item { color: #F2F2F4 !important; -webkit-text-stroke: 0 !important; font-family: 'Plus Jakarta Sans', sans-serif !important; font-weight: 600 !important; text-transform: none !important; letter-spacing: -0.01em !important; }
+.theme-clean .marquee-star { color: var(--lime) !important; }
+
+/* ---------- Clientes ---------- */
+.theme-clean .clients-section-ribbon { background: #F6F6F7 !important; }
+.theme-clean .clients-ribbon-header p { color: #6A6D77 !important; text-transform: none !important; letter-spacing: 0 !important; font-size: 1rem !important; }
+.theme-clean .client-logo-card { background: #fff !important; border: 1px solid var(--line) !important; box-shadow: none !important; }
+.theme-clean .client-logo-img { filter: brightness(0) !important; opacity: 0.62 !important; }
+.theme-clean .client-logo-card:hover .client-logo-img { opacity: 0.95 !important; filter: brightness(0) !important; }
+.theme-clean .clients-rows::before, .theme-clean .clients-rows::after { background: linear-gradient(90deg, #F6F6F7, rgba(246,246,247,0)) !important; }
+.theme-clean .clients-rows::after { background: linear-gradient(270deg, #F6F6F7, rgba(246,246,247,0)) !important; }
+
+/* ---------- Cards de serviço ---------- */
+.theme-clean .arsenal-home-section { background: #F6F6F7 !important; }
+.theme-clean .arsenal-home-card {
+  background: #fff !important; border: 1px solid var(--line) !important; border-radius: 28px !important;
+  box-shadow: none !important; transition: transform .25s ease, background .25s ease, border-color .25s ease;
+}
+.theme-clean .arsenal-home-card::before, .theme-clean .arsenal-home-card::after { display: none !important; }
+.theme-clean .arsenal-home-card:hover { background: var(--ink) !important; border-color: var(--ink) !important; transform: translateY(-4px); }
+.theme-clean .arsenal-home-card:hover .arsenal-card-title { color: #F2F2F4 !important; }
+.theme-clean .arsenal-home-card:hover .arsenal-card-desc { color: #A9ABB4 !important; }
+.theme-clean .arsenal-home-card:hover .arsenal-card-arrow span { color: var(--lime) !important; }
+.theme-clean .arsenal-card-pill {
+  background: var(--card-gray) !important; color: var(--ink) !important; border: 0 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important; font-weight: 600 !important; letter-spacing: 0 !important;
+  padding: 0.3rem 0.75rem !important; border-radius: 999px !important; display: inline-block; font-size: 0.72rem !important;
+}
+.theme-clean .arsenal-home-card:hover .arsenal-card-pill { background: var(--lime) !important; }
+.theme-clean .arsenal-card-title { color: var(--ink) !important; font-family: 'Plus Jakarta Sans', sans-serif !important; font-weight: 600 !important; text-transform: none !important; letter-spacing: -0.02em !important; }
+.theme-clean .arsenal-card-desc { color: #5A5D67 !important; }
+.theme-clean .arsenal-card-arrow span { color: var(--ink) !important; font-family: 'Plus Jakarta Sans', sans-serif !important; letter-spacing: 0 !important; text-transform: none !important; font-weight: 600 !important; }
+/* Destaque: primeiro bloco do "O que fazemos" em verde-limão */
+.theme-clean #o-que-fazemos .arsenal-home-card:first-child { background: var(--lime) !important; border-color: var(--lime) !important; }
+.theme-clean #o-que-fazemos .arsenal-home-card:first-child .arsenal-card-pill { background: #fff !important; }
+.theme-clean #o-que-fazemos .arsenal-home-card:first-child .arsenal-card-desc { color: #2E3300 !important; }
+.theme-clean #o-que-fazemos .arsenal-home-card:first-child:hover { background: var(--ink) !important; border-color: var(--ink) !important; }
+.theme-clean #o-que-fazemos .arsenal-home-card:first-child:hover .arsenal-card-pill { background: var(--lime) !important; }
+
+/* ---------- Cases ---------- */
+.theme-clean .cases-gallery { background: #F6F6F7 !important; }
+.theme-clean .case-flagship { background: var(--ink) !important; border: 0 !important; border-radius: 32px !important; overflow: hidden; }
+.theme-clean .case-flagship, .theme-clean .case-flagship * { --text-primary: #F2F2F4; --text-secondary: #A9ABB4; --text-pure: #fff; }
+.theme-clean .flagship-title { color: #F2F2F4 !important; text-transform: none !important; font-family: 'Plus Jakarta Sans', sans-serif !important; font-weight: 600 !important; letter-spacing: -0.02em !important; }
+.theme-clean .flagship-narrative { color: #A9ABB4 !important; }
+.theme-clean .flagship-num-big { color: var(--lime) !important; font-family: 'Plus Jakarta Sans', sans-serif !important; font-weight: 600 !important; }
+.theme-clean .flagship-stats-row .stat-item-num { color: #F2F2F4 !important; font-family: 'Plus Jakarta Sans', sans-serif !important; }
+.theme-clean .flagship-stats-row .stat-item-lbl { color: #A9ABB4 !important; }
+.theme-clean .case-card-visual { background: #fff !important; border: 1px solid var(--line) !important; border-radius: 28px !important; overflow: hidden; box-shadow: none !important; }
+.theme-clean .card-visual-body, .theme-clean .card-visual-body * { color: var(--ink); }
+.theme-clean .card-visual-body p { color: #5A5D67 !important; }
+.theme-clean .card-visual-body h3 { color: var(--ink) !important; text-transform: none !important; font-family: 'Plus Jakarta Sans', sans-serif !important; font-weight: 600 !important; letter-spacing: -0.02em !important; }
+.theme-clean .gallery-header p { color: #4A4D57 !important; }
+
+/* ---------- Segmentos ---------- */
+.theme-clean .sectors-grid-section { background: #F6F6F7 !important; }
+.theme-clean .sector-box-card { background: var(--card-gray) !important; border: 0 !important; border-radius: 28px !important; box-shadow: none !important; }
+.theme-clean .sector-box-card::before, .theme-clean .sector-box-card::after { display: none !important; }
+.theme-clean .sector-box-num { color: #6A6D77 !important; }
+.theme-clean .sector-box-pill { background: #fff !important; color: var(--ink) !important; border: 0 !important; font-family: 'Plus Jakarta Sans', sans-serif !important; letter-spacing: 0 !important; }
+.theme-clean .sector-box-title { color: var(--ink) !important; text-transform: none !important; font-family: 'Plus Jakarta Sans', sans-serif !important; font-weight: 600 !important; letter-spacing: -0.02em !important; }
+.theme-clean .sector-box-desc { color: #5A5D67 !important; }
+.theme-clean .sectors-grid-section .sector-box-card:nth-child(3n+2) { background: var(--ink) !important; }
+.theme-clean .sectors-grid-section .sector-box-card:nth-child(3n+2) .sector-box-title { color: #F2F2F4 !important; }
+.theme-clean .sectors-grid-section .sector-box-card:nth-child(3n+2) .sector-box-desc,
+.theme-clean .sectors-grid-section .sector-box-card:nth-child(3n+2) .sector-box-num { color: #A9ABB4 !important; }
+
+/* ---------- Perguntas frequentes ---------- */
+.theme-clean .ecm-section { background: #F6F6F7 !important; }
+.theme-clean .ecm-faq details, .theme-clean .ecm-faq .faq-item { background: #fff !important; border: 1px solid var(--line) !important; border-radius: 20px !important; }
+.theme-clean .ecm-faq summary, .theme-clean .ecm-faq h3 { color: var(--ink) !important; }
+.theme-clean .ecm-faq p { color: #4A4D57 !important; }
+
+/* ---------- Contato ---------- */
+.theme-clean .direct-contact-section { background: #F6F6F7 !important; }
+.theme-clean .contact-left-card, .theme-clean .whatsapp-direct-box { background: var(--ink) !important; border: 0 !important; border-radius: 32px !important; }
+.theme-clean .contact-left-card *, .theme-clean .whatsapp-direct-box * { --text-primary: #F2F2F4; --text-secondary: #A9ABB4; }
+.theme-clean .contact-left-card h2, .theme-clean .contact-left-card h3,
+.theme-clean .whatsapp-direct-box h2, .theme-clean .whatsapp-direct-box h3 { color: #F2F2F4 !important; }
+.theme-clean .contact-left-card p, .theme-clean .whatsapp-direct-box p { color: #A9ABB4 !important; }
+.theme-clean .contact-form-container { background: #fff !important; border: 1px solid var(--line) !important; border-radius: 32px !important; box-shadow: none !important; }
+.theme-clean .contact-form-container h2, .theme-clean .contact-form-container h3 { color: var(--ink) !important; }
+.theme-clean .contact-form-container p { color: #4A4D57 !important; }
+.theme-clean .form-field-label { color: #4A4D57 !important; font-family: 'Plus Jakarta Sans', sans-serif !important; letter-spacing: 0 !important; text-transform: none !important; font-weight: 600 !important; }
+.theme-clean .form-field-input { background: #F6F6F7 !important; border: 1px solid #D6D7DC !important; color: var(--ink) !important; border-radius: 14px !important; }
+.theme-clean .form-field-input::placeholder { color: #8A8C95 !important; }
+.theme-clean .form-field-input:focus { border-color: var(--ink) !important; box-shadow: 0 0 0 3px rgba(220,221,251,0.9) !important; outline: none; }
+.theme-clean #contactSubmitBtn { background: var(--ink) !important; color: #fff !important; border: 0 !important; }
+.theme-clean #contactFormStatus { color: #2E6B00 !important; }
+
+/* ---------- Rodapé continua escuro, como os slides escuros ---------- */
+.theme-clean .footer-lux {
+  --bg-dark: #0B0B0D; --bg-surface: #141416; --border-glass: rgba(255,255,255,0.09);
+  --text-pure: #fff; --text-primary: #F2F2F4; --text-secondary: #A9ABB4; --text-muted: #7A7D88;
+  background: #0B0B0D !important; color: #F2F2F4; border-radius: 40px 40px 0 0; margin-top: 2rem;
+}
+.theme-clean .footer-lux .brand-logo-img { filter: none !important; }
+
+/* Celular */
+@media (max-width: 640px) {
+  .theme-clean .hero-statement { font-size: 2.15rem !important; line-height: 1.12 !important; }
+  .theme-clean .mono-badge { font-size: 0.8rem !important; }
+  .theme-clean .hero-statement .italic-serif { padding: 0 0.28em 0.04em; }
+  .theme-clean .arsenal-home-card { border-radius: 22px !important; }
+  .theme-clean .footer-lux { border-radius: 28px 28px 0 0; }
+}
+
+/* Palavra em destaque com pílula lilás (como na apresentação) */
+.hl-lilac { color: inherit; }
+.theme-clean .hl-lilac { background: var(--lilac); color: var(--ink) !important; padding: 0 0.3em 0.06em; border-radius: 999px; display: inline-block; }
