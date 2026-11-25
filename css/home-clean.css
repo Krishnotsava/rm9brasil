@@ -521,3 +521,24 @@ body.theme-clean input, body.theme-clean textarea { cursor: text !important; }
   .theme-clean .hero-lead-title { font-size: 1.2rem; }
 }
 @media (max-width: 980px) { .theme-clean .hero-copy .hero-btn-row { display: none; } }
+
+/* Autor, fontes e página Sobre */
+.theme-clean .article-meta-author { color: var(--ink) !important; text-decoration: none; }
+.theme-clean .article-meta-author:hover { text-decoration: underline; }
+.theme-clean .article-sources { margin: 3rem 0 2rem; padding: 1.6rem 1.8rem; background: #fff; border: 1px solid var(--line, #E4E4E8); border-radius: 20px; }
+.theme-clean .article-sources h2 { font-family: 'Plus Jakarta Sans', sans-serif !important; font-size: 1.15rem !important; font-weight: 800 !important; text-transform: none !important; color: var(--ink) !important; margin: 0 0 0.9rem !important; letter-spacing: 0 !important; }
+.theme-clean .article-sources ul { margin: 0; padding-left: 1.1rem; }
+.theme-clean .article-sources li { font-size: 0.95rem; line-height: 1.55; color: #4A4D57 !important; margin-bottom: 0.55rem; }
+.theme-clean .article-sources a { color: var(--ink) !important; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.theme-clean .article-author-box { display: flex; gap: 1.1rem; align-items: flex-start; margin: 0 0 2.5rem; padding: 1.5rem 1.6rem; background: var(--lilac, #DCDDFB); border-radius: 20px; }
+.theme-clean .article-author-avatar { flex: 0 0 56px; width: 56px; height: 56px; border-radius: 50%; background: var(--ink, #0E0E10); color: var(--lime, #E2F800); display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.05rem; }
+.theme-clean .article-author-label { display: block; font-size: 0.75rem; font-weight: 700; color: #4A4D57; text-transform: uppercase; letter-spacing: 0.06em; }
+.theme-clean .article-author-name { display: inline-block; font-size: 1.15rem; font-weight: 800; color: var(--ink) !important; text-decoration: none; margin: 2px 0 6px; }
+.theme-clean .article-author-name:hover { text-decoration: underline; }
+.theme-clean .article-author-box p { margin: 0; font-size: 0.95rem; line-height: 1.55; color: #2A2C33 !important; }
+.theme-clean .about-prose { max-width: 760px; }
+.theme-clean .about-prose p { font-size: 1.08rem; line-height: 1.75; color: #2A2C33 !important; margin: 0 0 1.1rem; }
+.theme-clean .about-list { max-width: 760px; padding-left: 1.2rem; }
+.theme-clean .about-list li { font-size: 1.05rem; line-height: 1.6; color: #2A2C33 !important; margin-bottom: 0.6rem; }
+@media (max-width: 560px) { .theme-clean .article-author-box { flex-direction: column; } .theme-clean .article-sources { padding: 1.3rem; } }
+@media (max-width: 560px) { .theme-clean .article-meta-header { gap: 0.35rem 0.9rem !important; } .theme-clean .article-meta-header > span:nth-child(even) { display: none; } }
