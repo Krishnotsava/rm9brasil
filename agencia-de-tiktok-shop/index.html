@@ -22,7 +22,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=JetBrains+Mono:wght@300;400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Syne:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="../css/studio-lux.css?v=20261111_v8">
-  <link rel="stylesheet" href="../css/home-clean.css?v=20261125_v16">
+  <link rel="stylesheet" href="../css/home-clean.css?v=20261125_v17">
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -421,6 +421,8 @@
           <a href="/">Home</a> <span>/</span> <a href="/#arsenal">Serviços</a> <span>/</span> <span style="color:var(--text-pure);">TikTok Shop</span>
         </nav>
 
+        <div class="hero-split">
+        <div class="hero-copy">
         <div class="mono-badge">E-COMMERCE &amp; MARKETPLACE</div>
         <h1 class="service-title">Agência de TikTok Shop para marcas que querem vender no carrinho laranja</h1>
 
@@ -428,10 +430,66 @@
 
         <div class="hero-btn-row">
           <a href="https://api.whatsapp.com/send?phone=5541988467737&text=Ol%C3%A1%20RM9%21%20Quero%20vender%20no%20TikTok%20Shop%20e%20gostaria%20de%20um%20diagn%C3%B3stico." target="_blank" rel="noopener" class="btn-cta-lux" style="padding: 1rem 2.2rem;">
-            <span>Quero vender no TikTok Shop</span>
+            <span>Falar no WhatsApp</span>
             <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
+        </div><!-- /hero-copy -->
+
+        <!-- Formulário rápido em 2 etapas -->
+        <div class="hero-lead-card">
+          <div class="hero-lead-head">
+            <span class="hero-lead-pill">Diagnóstico de TikTok Shop</span>
+            <span class="hero-lead-step">Etapa 1 de 2</span>
+          </div>
+          <p class="hero-lead-title">Quer vender no TikTok Shop?</p>
+          <p class="hero-lead-sub">Responda em 1 minuto. Resposta em até 24h no seu e-mail.</p>
+          <form data-lead-form data-source="form_hero_tiktok_shop" data-form-id="contato_tiktok_shop" novalidate>
+            <div class="hero-lead-pane" data-step="1">
+              <input type="text" name="nome" class="form-field-input" placeholder="Seu nome" autocomplete="name" required aria-label="Seu nome">
+              <input type="email" name="email" class="form-field-input" placeholder="Seu e-mail" autocomplete="email" required aria-label="Seu e-mail">
+              <select name="servico" class="form-field-input form-field-select" required aria-label="Do que você precisa?">
+                <option value="" disabled>Do que você precisa?</option>
+                <option>Tráfego pago e mídia</option>
+                <option>Planejamento e estratégia de marketing</option>
+                <option>Posicionamento de marca e branding</option>
+                <option>Escala de e-commerce</option>
+                <option selected>Marketplaces e TikTok Shop</option>
+                <option>Geração de contatos comerciais</option>
+                <option>Site ou landing page</option>
+                <option>Visibilidade em IA (ChatGPT, Google IA)</option>
+                <option>Outro / ainda não sei</option>
+              </select>
+              <button type="button" class="btn-cta-lux hero-lead-btn" data-lead-next><span>Continuar</span><svg width="14" height="14" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="hero-lead-pane" data-step="2" hidden>
+              <input type="text" name="empresa" class="form-field-input" placeholder="Nome da empresa" autocomplete="organization" required aria-label="Empresa">
+              <div class="form-field-row">
+                <select name="faturamento" class="form-field-input form-field-select" required aria-label="Faturamento mensal">
+                  <option value="" disabled selected>Faturamento</option>
+                  <option>Até R$ 50 mil</option>
+                  <option>R$ 50 mil a R$ 200 mil</option>
+                  <option>R$ 200 mil a R$ 1 milhão</option>
+                  <option>Acima de R$ 1 milhão</option>
+                  <option>Prefiro não informar</option>
+                </select>
+                <select name="funcionarios" class="form-field-input form-field-select" required aria-label="Funcionários">
+                  <option value="" disabled selected>Funcionários</option>
+                  <option>1 a 5</option>
+                  <option>6 a 20</option>
+                  <option>21 a 50</option>
+                  <option>51 a 200</option>
+                  <option>Mais de 200</option>
+                </select>
+              </div>
+              <textarea name="mensagem" class="form-field-input" rows="2" placeholder="O que você vende? (opcional)" aria-label="Mensagem"></textarea>
+              <button type="submit" class="btn-cta-lux hero-lead-btn"><span>Enviar para a RM9</span><svg width="14" height="14" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button type="button" class="hero-lead-back" data-lead-back>Voltar</button>
+            </div>
+            <p class="hero-lead-msg" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+        </div><!-- /hero-split -->
 
         <figure style="margin: 3rem 0 0; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); aspect-ratio: 16 / 9; background: #0b0d14;">
           <img src="/assets/img/servicos/agencia-de-tiktok-shop.jpg" alt="TikTok Shop | RM9Brasil" width="1600" height="900" fetchpriority="high" style="display: block; width: 100%; height: 100%; object-fit: cover;">
@@ -879,5 +937,6 @@
       try { fbq('track', 'Contact'); fbq('track', 'Lead', { content_name: document.title }); } catch (err) {}
     });
   </script>
+  <script src="/js/lead-form.js?v=1" defer></script>
 </body>
 </html>
