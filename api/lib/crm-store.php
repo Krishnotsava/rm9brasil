@@ -61,7 +61,7 @@ function crm_add_from_form(array $f) {
             'empresa' => $f['empresa'] ?? '',
             'email' => $f['email'] ?? '',
             'whatsapp' => $f['whatsapp'] ?? '',
-            'origem' => 'Site Formulário',
+            'origem' => $f['origem'] ?? 'Site Formulário',
             'origem_detalhe' => $f['source'] ?? '',
             'servico' => $f['servico'] ?? '',
             'faturamento' => $f['faturamento'] ?? '',
@@ -101,4 +101,35 @@ function crm_origem_nova($o) {
         'Outro' => 'Outros',
     ];
     return $map[$o] ?? $o;
+}
+
+/** Lead que pediu contato pelo WhatsApp do site. Se o mesmo número já tem lead em aberto, só registra no histórico. */
+function crm_add_whatsapp(array $f) {
+    $digits = preg_replace('/\D/', '', (string) ($f['whatsapp'] ?? ''));
+    return crm_transaction(function (&$data) use ($f, $digits) {
+        $now = crm_now();
+        foreach ($data['leads'] as &$l) {
+            $ld = preg_replace('/\D/', '', (string) ($l['whatsapp'] ?? ''));
+            $aberto = !in_array($l['etapa'] ?? '', ['Ganho', 'Perdido'], true);
+            if ($digits !== '' && $ld !== '' && substr($ld, -9) === substr($digits, -9) && $aberto) {
+                $l['comentarios'][] = ['em' => $now, 'texto' => 'Chamou de novo no WhatsApp pelo site (' . ($f['pagina'] ?? '') . ')' . (!empty($f['servico']) ? ', interesse: ' . $f['servico'] : ''), 'auto' => true];
+                if (empty($l['servico']) && !empty($f['servico'])) { $l['servico'] = $f['servico']; }
+                if (empty($l['empresa']) && !empty($f['empresa'])) { $l['empresa'] = $f['empresa']; }
+                $l['followup'] = crm_today();
+                $l['atualizado_em'] = $now;
+                return $l['id'];
+            }
+        }
+        unset($l);
+        $lead = [
+            'id' => crm_new_id(), 'nome' => $f['nome'] ?? '', 'empresa' => $f['empresa'] ?? '', 'email' => '',
+            'whatsapp' => $f['whatsapp'] ?? '', 'origem' => 'Site WhatsApp', 'origem_detalhe' => $f['pagina'] ?? '',
+            'servico' => $f['servico'] ?? '', 'faturamento' => '', 'funcionarios' => '', 'valor' => '', 'etapa' => 'Novo',
+            'motivo_perda' => '', 'followup' => crm_today(),
+            'comentarios' => [['em' => $now, 'texto' => 'Chamou no WhatsApp pelo site, página ' . ($f['pagina'] ?? '/'), 'auto' => true]],
+            'criado_em' => $now, 'atualizado_em' => $now, 'proposta_em' => '', 'fechado_em' => '', 'anexos' => [],
+        ];
+        $data['leads'][] = $lead;
+        return $lead['id'];
+    });
 }
