@@ -560,3 +560,16 @@ body.theme-clean input, body.theme-clean textarea { cursor: text !important; }
 .theme-clean .case-flagship .btn-consultant span,
 .theme-clean .sectors-grid-section .sector-box-card:nth-child(3n+2) .btn-consultant span { color: var(--lime, #E2F800) !important; }
 .theme-clean .hero-lead-step { color: #6B6E78 !important; }
+
+/* TikTok Shop: cartões de contexto */
+.theme-clean .tts-facts { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-top: 1.5rem; }
+.theme-clean .tts-fact { display: flex; flex-direction: column; gap: 8px; background: #fff; border: 1px solid var(--line, #E4E4E8); border-radius: 24px; padding: 24px; }
+.theme-clean .tts-fact strong { font-size: clamp(1.6rem, 2.6vw, 2.2rem); font-weight: 800; line-height: 1.1; color: var(--ink, #0E0E10); letter-spacing: -0.02em; }
+.theme-clean .tts-fact span { font-size: 0.98rem; line-height: 1.5; color: #4A4D57; }
+.theme-clean .tts-fact a { margin-top: auto; font-size: 0.8rem; font-weight: 600; color: #4A4D57; text-decoration: underline; text-underline-offset: 3px; }
+.theme-clean .tts-fact--lime { background: var(--lime, #E2F800); border-color: var(--lime, #E2F800); }
+.theme-clean .tts-fact--lime span, .theme-clean .tts-fact--lime a { color: #2E3300 !important; }
+.theme-clean .tts-fact--ink { background: var(--ink, #0E0E10); border-color: var(--ink, #0E0E10); }
+.theme-clean .tts-fact--ink strong { color: #F2F2F4; }
+.theme-clean .tts-fact--ink span, .theme-clean .tts-fact--ink a { color: #C9CBD3 !important; }
+@media (max-width: 860px) { .theme-clean .tts-facts { grid-template-columns: 1fr; } }
