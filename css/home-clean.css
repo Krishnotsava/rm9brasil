@@ -542,3 +542,21 @@ body.theme-clean input, body.theme-clean textarea { cursor: text !important; }
 .theme-clean .about-list li { font-size: 1.05rem; line-height: 1.6; color: #2A2C33 !important; margin-bottom: 0.6rem; }
 @media (max-width: 560px) { .theme-clean .article-author-box { flex-direction: column; } .theme-clean .article-sources { padding: 1.3rem; } }
 @media (max-width: 560px) { .theme-clean .article-meta-header { gap: 0.35rem 0.9rem !important; } .theme-clean .article-meta-header > span:nth-child(even) { display: none; } }
+
+/* Tabelas e FAQ dentro dos artigos (contraste no tema claro) */
+.theme-clean .data-table-wrap { border: 1px solid var(--line, #E4E4E8) !important; background: #fff !important; border-radius: 16px !important; }
+.theme-clean .data-table th { background: var(--ink, #0E0E10) !important; color: #F2F2F4 !important; border-bottom: 0 !important; }
+.theme-clean .data-table td { color: #2A2C33 !important; border-bottom: 1px solid var(--line, #E4E4E8) !important; }
+.theme-clean .data-table td strong { color: var(--ink, #0E0E10) !important; }
+.theme-clean .data-table tr:last-child td { border-bottom: 0 !important; }
+.theme-clean .data-table tr:hover td { background: #F6F6F7 !important; }
+.theme-clean .faq-section { border-top: 1px solid var(--line, #E4E4E8) !important; }
+.theme-clean .faq-item { background: #fff !important; border: 1px solid var(--line, #E4E4E8) !important; border-radius: 16px !important; }
+.theme-clean .faq-question { color: var(--ink, #0E0E10) !important; font-family: 'Plus Jakarta Sans', sans-serif !important; }
+.theme-clean .faq-answer { color: #4A4D57 !important; }
+/* Botões "Ver o case" / "Falar" dentro de cards escuros */
+.theme-clean .case-flagship .btn-consultant,
+.theme-clean .sectors-grid-section .sector-box-card:nth-child(3n+2) .btn-consultant { color: var(--lime, #E2F800) !important; border-color: rgba(226,248,0,0.5) !important; }
+.theme-clean .case-flagship .btn-consultant span,
+.theme-clean .sectors-grid-section .sector-box-card:nth-child(3n+2) .btn-consultant span { color: var(--lime, #E2F800) !important; }
+.theme-clean .hero-lead-step { color: #6B6E78 !important; }
