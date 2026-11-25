@@ -45,6 +45,7 @@ $empresa = htmlspecialchars(trim($data['empresa'] ?? ''));
 $cidade = htmlspecialchars(trim($data['cidade'] ?? ''));
 $link_curriculo = htmlspecialchars(trim($data['link_curriculo'] ?? ''));
 $link_kit = htmlspecialchars(trim($data['link_kit'] ?? ''));
+$pretensao = htmlspecialchars(trim($data['pretensao'] ?? ''));
 
 $leadEmpresa = htmlspecialchars(trim($data['lead_empresa'] ?? ''));
 $servicoInteresse = htmlspecialchars(trim($data['servico_interesse'] ?? ''));
@@ -167,6 +168,14 @@ if (!empty($cidade)) {
                 </tr>";
 }
 
+if (!empty($pretensao)) {
+    $corpoHtml .= "
+                <tr>
+                    <td style='padding: 10px 0; color: #9fa3b5; border-bottom: 1px solid #1c1f2e;'><strong>Pretensão salarial:</strong></td>
+                    <td style='padding: 10px 0; color: #e2f800; font-weight: bold; border-bottom: 1px solid #1c1f2e;'>{$pretensao}</td>
+                </tr>";
+}
+
 if (!empty($link_curriculo)) {
     $corpoHtml .= "
                 <tr>
@@ -230,6 +239,10 @@ if (is_file($cfgFile)) {
 if (defined('LEAD_DESTINATARIO') && LEAD_DESTINATARIO !== '') {
     $destinatario = LEAD_DESTINATARIO;
 }
+// Candidaturas vão para o RH
+if ($service === 'trabalhe_conosco') {
+    $destinatario = (defined('RH_DESTINATARIO') && RH_DESTINATARIO !== '') ? RH_DESTINATARIO : 'rh@rm9brasil.com.br';
+}
 
 // Disparar email
 // Com SMTP configurado em api/config.php, envia autenticado (entrega confiável).
@@ -267,6 +280,7 @@ if (defined('SMTP_HOST') && SMTP_HOST !== '' && defined('SMTP_USER') && defined(
         if ($whatsappClean !== '') { $alt[] = "WhatsApp: " . $txt($whatsapp); }
         if ($servicoInteresse !== '') { $alt[] = "Serviço: " . $txt($servicoInteresse); }
         if ($faturamento !== '') { $alt[] = "Faturamento mensal: " . $txt($faturamento); }
+        if ($pretensao !== '') { $alt[] = "Pretensão salarial: " . $txt($pretensao); }
         if ($funcionarios !== '') { $alt[] = "Funcionários: " . $txt($funcionarios); }
         $alt[] = ""; $alt[] = "Mensagem:"; $alt[] = $txt($mensagem);
         $alt[] = ""; $alt[] = "Origem: " . $txt($source) . " | " . $dataHora;
