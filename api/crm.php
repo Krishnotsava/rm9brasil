@@ -53,7 +53,84 @@ $CAMPOS = ['nome', 'empresa', 'email', 'whatsapp', 'origem', 'servico', 'faturam
 function limpa($v) { return mb_substr(trim(strip_tags((string) $v)), 0, 500); }
 
 if ($action === 'list') {
-    out(['ok' => true, 'leads' => crm_read()['leads'], 'hoje' => crm_today()]);
+    $leads = crm_read()['leads'];
+    $precisa = false;
+    foreach ($leads as $l) { if (crm_origem_nova($l['origem'] ?? '') !== ($l['origem'] ?? '')) { $precisa = true; break; } }
+    if ($precisa) {
+        $leads = crm_transaction(function (&$data) {
+            foreach ($data['leads'] as &$l) { $l['origem'] = crm_origem_nova($l['origem'] ?? ''); }
+            unset($l);
+            return $data['leads'];
+        });
+    }
+    out(['ok' => true, 'leads' => $leads, 'hoje' => crm_today()]);
+}
+
+// ---------- Anexos (propostas) ----------
+$EXT_OK = ['pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'png', 'jpg', 'jpeg', 'webp', 'txt', 'zip'];
+
+if ($action === 'upload') {
+    if (($_SERVER['HTTP_X_CSRF'] ?? '') !== ($_SESSION['csrf'] ?? '-')) { out(['ok' => false, 'erro' => 'Sessão expirada, entre de novo'], 403); }
+    $leadId = (string) ($_POST['lead'] ?? '');
+    $f = $_FILES['arquivo'] ?? null;
+    if (!$f || ($f['error'] ?? 1) !== UPLOAD_ERR_OK) { out(['ok' => false, 'erro' => 'Falha no envio do arquivo (limite do servidor ou arquivo vazio)'], 400); }
+    if ($f['size'] > 25 * 1024 * 1024) { out(['ok' => false, 'erro' => 'Arquivo acima de 25 MB'], 400); }
+    $orig = basename((string) $f['name']);
+    $ext = strtolower(pathinfo($orig, PATHINFO_EXTENSION));
+    if (!in_array($ext, $EXT_OK, true)) { out(['ok' => false, 'erro' => 'Tipo de arquivo não permitido'], 400); }
+    $fid = bin2hex(random_bytes(8)) . '.' . $ext;
+    if (!move_uploaded_file($f['tmp_name'], crm_files_dir() . '/' . $fid)) { out(['ok' => false, 'erro' => 'Não foi possível salvar o arquivo'], 500); }
+    $res = crm_transaction(function (&$data) use ($leadId, $fid, $orig, $f) {
+        foreach ($data['leads'] as &$l) {
+            if ($l['id'] === $leadId) {
+                if (!isset($l['anexos']) || !is_array($l['anexos'])) { $l['anexos'] = []; }
+                $now = crm_now();
+                $l['anexos'][] = ['id' => $fid, 'nome' => mb_substr($orig, 0, 120), 'tamanho' => (int) $f['size'], 'em' => $now];
+                $l['comentarios'][] = ['em' => $now, 'texto' => 'Anexo adicionado: ' . mb_substr($orig, 0, 120), 'auto' => true];
+                $l['atualizado_em'] = $now;
+                return $l;
+            }
+        }
+        unset($l);
+        return null;
+    });
+    if (!$res) { @unlink(crm_files_dir() . '/' . $fid); out(['ok' => false, 'erro' => 'Lead não encontrado'], 404); }
+    out(['ok' => true, 'lead' => $res]);
+}
+
+if ($action === 'file') {
+    $fid = basename((string) ($_GET['f'] ?? ''));
+    $path = crm_files_dir() . '/' . $fid;
+    if ($fid === '' || !preg_match('/^[a-f0-9]{16}\.[a-z0-9]+$/', $fid) || !is_file($path)) { out(['ok' => false, 'erro' => 'Arquivo não encontrado'], 404); }
+    $nome = $fid;
+    foreach (crm_read()['leads'] as $l) { foreach (($l['anexos'] ?? []) as $a) { if ($a['id'] === $fid) { $nome = $a['nome']; } } }
+    $tipos = ['pdf' => 'application/pdf', 'png' => 'image/png', 'jpg' => 'image/jpeg', 'jpeg' => 'image/jpeg', 'webp' => 'image/webp', 'txt' => 'text/plain; charset=utf-8'];
+    $ext = strtolower(pathinfo($fid, PATHINFO_EXTENSION));
+    header_remove('Content-Type');
+    header('Content-Type: ' . ($tipos[$ext] ?? 'application/octet-stream'));
+    header('Content-Length: ' . filesize($path));
+    header("Content-Disposition: " . (isset($tipos[$ext]) ? 'inline' : 'attachment') . "; filename*=UTF-8''" . rawurlencode($nome));
+    header('X-Content-Type-Options: nosniff');
+    readfile($path);
+    exit;
+}
+
+if ($action === 'unattach') {
+    if (($_SERVER['HTTP_X_CSRF'] ?? '') !== ($_SESSION['csrf'] ?? '-')) { out(['ok' => false, 'erro' => 'Sessão expirada, entre de novo'], 403); }
+    $leadId = (string) ($input['lead'] ?? ''); $fid = basename((string) ($input['f'] ?? ''));
+    $res = crm_transaction(function (&$data) use ($leadId, $fid) {
+        foreach ($data['leads'] as &$l) {
+            if ($l['id'] === $leadId) {
+                $l['anexos'] = array_values(array_filter($l['anexos'] ?? [], function ($a) use ($fid) { return $a['id'] !== $fid; }));
+                $l['atualizado_em'] = crm_now();
+                return $l;
+            }
+        }
+        unset($l);
+        return null;
+    });
+    if ($fid && preg_match('/^[a-f0-9]{16}\.[a-z0-9]+$/', $fid)) { @unlink(crm_files_dir() . '/' . $fid); }
+    out(['ok' => (bool) $res, 'lead' => $res]);
 }
 
 if ($action === 'save') {
@@ -67,7 +144,7 @@ if ($action === 'save') {
         }
         $lead = $idx === null ? [
             'id' => crm_new_id(), 'etapa' => 'Novo', 'comentarios' => [], 'criado_em' => $now,
-            'proposta_em' => '', 'fechado_em' => '', 'origem_detalhe' => '',
+            'proposta_em' => '', 'fechado_em' => '', 'origem_detalhe' => '', 'anexos' => [],
         ] : $data['leads'][$idx];
         $etapaAntes = $lead['etapa'] ?? 'Novo';
         foreach ($CAMPOS as $c) { if (array_key_exists($c, $l)) { $lead[$c] = limpa($l[$c]); } }
@@ -96,6 +173,9 @@ if ($action === 'save') {
 if ($action === 'delete') {
     $id = (string) ($input['id'] ?? '');
     crm_transaction(function (&$data) use ($id) {
+        foreach ($data['leads'] as $x) {
+            if ($x['id'] === $id) { foreach (($x['anexos'] ?? []) as $a) { if (preg_match('/^[a-f0-9]{16}\.[a-z0-9]+$/', $a['id'])) { @unlink(crm_files_dir() . '/' . $a['id']); } } }
+        }
         $data['leads'] = array_values(array_filter($data['leads'], function ($x) use ($id) { return $x['id'] !== $id; }));
     });
     out(['ok' => true]);
