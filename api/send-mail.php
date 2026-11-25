@@ -201,17 +201,58 @@ if (!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
 $headers .= "X-Mailer: PHP/" . phpversion() . "
 ";
 
-// Disparar email
-// -f define o remetente do envelope (Return-Path) no domínio da RM9: ajuda a não cair no spam na Hostinger
-$enviado = @mail($destinatario, $assunto, $corpoHtml, $headers, '-fcontato@rm9brasil.com.br');
-
-// Aviso no WhatsApp do Kris (CallMeBot). Configure em api/config.php (fora do Git):
-//   define('CALLMEBOT_PHONE', '5541988467737'); define('CALLMEBOT_APIKEY', 'sua-chave');
-$waEnviado = false;
+// Configuração privada (fora do Git): SMTP e CallMeBot
 $cfgFile = __DIR__ . '/config.php';
 if (is_file($cfgFile)) {
     require_once $cfgFile;
 }
+if (defined('LEAD_DESTINATARIO') && LEAD_DESTINATARIO !== '') {
+    $destinatario = LEAD_DESTINATARIO;
+}
+
+// Disparar email
+// Com SMTP configurado em api/config.php, envia autenticado (entrega confiável).
+// Sem SMTP, cai no mail() do PHP, que na Hostinger pode não entregar.
+$enviado = false;
+$emailErro = '';
+if (defined('SMTP_HOST') && SMTP_HOST !== '' && defined('SMTP_USER') && defined('SMTP_PASS') && SMTP_PASS !== '') {
+    require_once __DIR__ . '/lib/PHPMailer/Exception.php';
+    require_once __DIR__ . '/lib/PHPMailer/PHPMailer.php';
+    require_once __DIR__ . '/lib/PHPMailer/SMTP.php';
+    try {
+        $mailer = new PHPMailer\PHPMailer\PHPMailer(true);
+        $mailer->isSMTP();
+        $mailer->Host = SMTP_HOST;
+        $mailer->Port = defined('SMTP_PORT') ? (int) SMTP_PORT : 465;
+        $mailer->SMTPAuth = true;
+        $mailer->Username = SMTP_USER;
+        $mailer->Password = SMTP_PASS;
+        $mailer->SMTPSecure = ($mailer->Port === 587)
+            ? PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS
+            : PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
+        $mailer->Timeout = 15;
+        $mailer->CharSet = 'UTF-8';
+        $mailer->setFrom(SMTP_USER, 'RM9Brasil Notificações');
+        $mailer->addAddress($destinatario);
+        $replyTo = filter_var(html_entity_decode($email), FILTER_VALIDATE_EMAIL);
+        $mailer->addReplyTo($replyTo ?: $destinatario);
+        $mailer->isHTML(true);
+        $mailer->Subject = html_entity_decode($assunto, ENT_QUOTES, 'UTF-8');
+        $mailer->Body = $corpoHtml;
+        $enviado = $mailer->send();
+    } catch (\Throwable $e) {
+        $enviado = false;
+        $emailErro = isset($mailer) ? $mailer->ErrorInfo : $e->getMessage();
+    }
+} else {
+    // -f define o remetente do envelope (Return-Path) no domínio da RM9
+    $enviado = @mail($destinatario, $assunto, $corpoHtml, $headers, '-fcontato@rm9brasil.com.br');
+    $emailErro = $enviado ? 'via mail() sem SMTP' : 'mail() falhou';
+}
+
+// Aviso no WhatsApp do Kris (CallMeBot). Configure em api/config.php (fora do Git):
+//   define('CALLMEBOT_PHONE', '5541988467737'); define('CALLMEBOT_APIKEY', 'sua-chave');
+$waEnviado = false;
 if ($service !== 'trabalhe_conosco' && defined('CALLMEBOT_APIKEY') && CALLMEBOT_APIKEY !== '' && defined('CALLMEBOT_PHONE')) {
     $plain = function ($v) { return html_entity_decode((string) $v, ENT_QUOTES, 'UTF-8'); };
     $linhas = ["Novo lead no site RM9", "Nome: " . $plain($nome)];
@@ -234,7 +275,7 @@ if (!is_dir($logDir)) {
 }
 @file_put_contents(
     $logDir . '/leads.log', 
-    date('Y-m-d H:i:s') . " | {$service} | Mail: " . ($enviado ? 'OK' : 'FAIL') . " | WhatsApp: " . ($waEnviado ? 'OK' : 'NAO') . " | " . json_encode($data, JSON_UNESCAPED_UNICODE) . "
+    date('Y-m-d H:i:s') . " | {$service} | Mail: " . ($enviado ? 'OK' : 'FAIL') . ($emailErro !== '' ? " ({$emailErro})" : '') . " | WhatsApp: " . ($waEnviado ? 'OK' : 'NAO') . " | " . json_encode($data, JSON_UNESCAPED_UNICODE) . "
 ", 
     FILE_APPEND
 );
