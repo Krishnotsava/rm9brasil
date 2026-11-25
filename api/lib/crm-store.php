@@ -61,7 +61,7 @@ function crm_add_from_form(array $f) {
             'empresa' => $f['empresa'] ?? '',
             'email' => $f['email'] ?? '',
             'whatsapp' => $f['whatsapp'] ?? '',
-            'origem' => 'Formulário do site',
+            'origem' => 'Site Formulário',
             'origem_detalhe' => $f['source'] ?? '',
             'servico' => $f['servico'] ?? '',
             'faturamento' => $f['faturamento'] ?? '',
@@ -75,6 +75,7 @@ function crm_add_from_form(array $f) {
             'atualizado_em' => $now,
             'proposta_em' => '',
             'fechado_em' => '',
+            'anexos' => [],
         ];
         if (!empty($f['mensagem'])) {
             $lead['comentarios'][] = ['em' => $now, 'texto' => 'Mensagem do formulário: ' . $f['mensagem']];
@@ -82,4 +83,22 @@ function crm_add_from_form(array $f) {
         $data['leads'][] = $lead;
         return $lead['id'];
     });
+}
+
+/** Pasta privada dos anexos (propostas). */
+function crm_files_dir() {
+    $dir = dirname(crm_data_file()) . '/crm-arquivos';
+    if (!is_dir($dir)) { @mkdir($dir, 0755, true); }
+    return $dir;
+}
+
+/** Normaliza origens antigas para a lista atual. */
+function crm_origem_nova($o) {
+    $map = [
+        'Formulário do site' => 'Site Formulário',
+        'WhatsApp' => 'Site WhatsApp',
+        'Google' => 'Google Orgânico (site)',
+        'Outro' => 'Outros',
+    ];
+    return $map[$o] ?? $o;
 }

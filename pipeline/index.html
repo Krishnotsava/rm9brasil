@@ -25,13 +25,14 @@
   .login-card p { margin: 0 0 18px; color: var(--muted); font-size: .92rem; }
 
   /* Topo */
-  header.top { position: sticky; top: 0; z-index: 20; background: var(--ink); color: #F2F2F4; }
+  header.top { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); color: var(--ink); }
+  .brand-logo { height: 30px; width: auto; filter: brightness(0); display: block; }
+  .brand-tag { font-size: .72rem; font-weight: 800; background: var(--lime); border-radius: 999px; padding: 3px 9px; margin-left: 8px; }
   .top-row { display: flex; align-items: center; gap: 10px; padding: 12px 0; }
-  .brand { font-weight: 800; font-size: 1.05rem; letter-spacing: -.01em; margin-right: auto; }
-  .brand b { color: var(--lime); }
+  .brand { display: flex; align-items: center; margin-right: auto; text-decoration: none; color: var(--ink); }
   .tabs { display: flex; gap: 6px; padding-bottom: 12px; overflow-x: auto; }
-  .tab { border: 1px solid #2A2C33; background: transparent; color: #C9CBD3; border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: .88rem; white-space: nowrap; cursor: pointer; }
-  .tab.on { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+  .tab { border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: .88rem; white-space: nowrap; cursor: pointer; }
+  .tab.on { background: var(--ink); color: #F2F2F4; border-color: var(--ink); }
   .tab .n { display: inline-block; min-width: 20px; padding: 0 6px; margin-left: 6px; border-radius: 999px; background: var(--red); color: #fff; font-size: .75rem; }
 
   .btn { border: 0; border-radius: 999px; padding: 10px 16px; font-weight: 700; cursor: pointer; background: var(--ink); color: #F2F2F4; }
@@ -39,7 +40,7 @@
   .btn.ghost { background: transparent; border: 1px solid var(--line); color: var(--ink); }
   .btn.small { padding: 7px 12px; font-size: .85rem; }
   .btn.danger { background: #fff; color: var(--red); border: 1px solid #F1C4C4; }
-  .icon-btn { background: transparent; border: 1px solid #2A2C33; color: #C9CBD3; border-radius: 999px; padding: 8px 12px; font-weight: 600; cursor: pointer; font-size: .85rem; }
+  .icon-btn { background: #fff; border: 1px solid var(--line); color: var(--ink); border-radius: 999px; padding: 8px 12px; font-weight: 600; cursor: pointer; font-size: .85rem; }
 
   .field { width: 100%; background: #F6F6F7; border: 1px solid #D6D7DC; border-radius: 12px; padding: 11px 12px; outline: none; }
   .field:focus { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(220,221,251,.9); }
@@ -105,6 +106,17 @@
   .cm small { display: block; color: var(--muted); font-size: .75rem; margin-bottom: 3px; }
   .save-bar { position: fixed; z-index: 60; right: 0; bottom: 0; width: min(560px, 100%); background: #fff; border-top: 1px solid var(--line); padding: 12px 18px calc(12px + env(safe-area-inset-bottom)); display: flex; gap: 8px; }
   .save-bar .btn { flex: 1; }
+  .val { font-weight: 800; font-size: .95rem; }
+  .col-sum { margin: -6px 4px 10px; font-size: .8rem; font-weight: 700; color: var(--muted); }
+  .col-sum b { color: var(--ink); }
+  .board-total { margin: 0 0 12px; font-size: .95rem; font-weight: 700; }
+  .board-total b { background: var(--lime); padding: 2px 8px; border-radius: 8px; }
+  .files { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+  .file { display: flex; align-items: center; gap: 8px; background: #F6F6F7; border-radius: 12px; padding: 8px 10px; font-size: .88rem; }
+  .file a { color: var(--ink); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; margin-right: auto; word-break: break-all; }
+  .file button { border: 0; background: none; color: var(--red); font-weight: 700; cursor: pointer; }
+  .upload { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; cursor: pointer; }
+  .upload input { display: none; }
   .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--ink); color: #F2F2F4; padding: 10px 16px; border-radius: 999px; font-weight: 700; z-index: 99; font-size: .9rem; }
   .fab { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 30; box-shadow: 0 12px 30px -10px rgba(14,14,16,.5); }
 </style>
@@ -127,28 +139,28 @@
   <header class="top">
     <div class="wrap">
       <div class="top-row">
-        <div class="brand">CRM <b>RM9</b></div>
+        <a class="brand" href="/" title="Ir para o site"><img src="/assets/logo.png" alt="RM9Brasil" class="brand-logo"><span class="brand-tag">CRM</span></a>
         <button class="icon-btn" id="reload" title="Atualizar">Atualizar</button>
         <button class="icon-btn" id="logout">Sair</button>
       </div>
       <nav class="tabs">
-        <button class="tab on" data-tab="hoje">Hoje <span class="n hidden" id="nHoje"></span></button>
+        <button class="tab on" data-tab="relatorio">Dashboard</button>
+        <button class="tab" data-tab="hoje">Hoje <span class="n hidden" id="nHoje"></span></button>
         <button class="tab" data-tab="funil">Funil</button>
         <button class="tab" data-tab="todos">Todos</button>
-        <button class="tab" data-tab="relatorio">Relatório</button>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
-    <div class="bar" id="searchBar">
+    <div class="bar hidden" id="searchBar">
       <input class="field" id="busca" placeholder="Buscar nome, empresa, telefone ou e-mail">
     </div>
 
-    <section id="tab-hoje"></section>
-    <section id="tab-funil" class="hidden"><div class="board" id="board"></div></section>
+    <section id="tab-hoje" class="hidden"></section>
+    <section id="tab-funil" class="hidden"><p class="board-total" id="boardTotal"></p><div class="board" id="board"></div></section>
     <section id="tab-todos" class="hidden"><div class="cards" id="todos"></div></section>
-    <section id="tab-relatorio" class="hidden">
+    <section id="tab-relatorio">
       <div class="bar"><label class="l" style="margin:0">Mês</label><input type="month" class="field" id="mes" style="flex:0 0 190px"></div>
       <div id="relatorio"></div>
     </section>
@@ -175,7 +187,7 @@
     <div class="two">
       <div><label class="l">Origem</label>
         <select class="field" name="origem">
-          <option>WhatsApp</option><option>Formulário do site</option><option>Indicação</option><option>Instagram</option><option>Google</option><option>Prospecção ativa</option><option>Outro</option>
+          <option>Site WhatsApp</option><option>Site Formulário</option><option>Instagram</option><option>Google Orgânico (site)</option><option>Google Ads</option><option>Meta Ads</option><option>E-mail</option><option>Prospecção ativa</option><option>Indicação</option><option>Outros</option>
         </select></div>
       <div><label class="l">Serviço</label>
         <select class="field" name="servico">
@@ -213,6 +225,11 @@
         <button type="button" class="chip" data-days="15">+15 dias</button>
       </div>
     </div>
+
+    <label class="l">Proposta e anexos</label>
+    <div class="files" id="files"></div>
+    <label class="upload btn ghost small"><input type="file" id="fileInput" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.png,.jpg,.jpeg,.webp,.txt,.zip">Anexar proposta</label>
+    <p style="margin:6px 0 0;font-size:.78rem;color:var(--muted)">PDF, Word, PowerPoint, Excel ou imagem, até 25 MB.</p>
 
     <label class="l">Novo comentário</label>
     <textarea class="field" name="novo_comentario" rows="3" placeholder="O que foi conversado, próximos passos..."></textarea>
@@ -289,7 +306,8 @@
       '<div class="t">' + esc(l.nome || 'Sem nome') + '</div>' +
       (l.empresa || l.servico ? '<div class="s">' + esc([l.empresa, l.servico].filter(Boolean).join(' · ')) + '</div>' : '') +
       '<div class="row"><span class="pill etapa-' + esc(et) + '">' + esc(l.etapa) + '</span>' + fu +
-      (l.origem === 'Formulário do site' ? '<span class="pill">Site</span>' : '') + '</div>' +
+      ((l.origem || '').indexOf('Site') === 0 ? '<span class="pill">' + esc(l.origem) + '</span>' : '') + '</div>' +
+      (money(l.valor) ? '<div class="val">' + fmtMoney(money(l.valor)) + '<span class="s" style="font-weight:600">/mês</span></div>' : '') +
       (wa ? '<div class="acts"><a class="wa" href="' + wa + '" target="_blank" rel="noopener" data-stop>WhatsApp</a></div>' : '') +
       '</div>';
   }
@@ -300,7 +318,7 @@
   }
 
   // ---------- Render ----------
-  var tab = 'hoje';
+  var tab = 'relatorio';
   document.querySelectorAll('.tab').forEach(function (b) {
     b.addEventListener('click', function () {
       tab = b.getAttribute('data-tab');
@@ -337,10 +355,15 @@
     }
     if (tab === 'funil') {
       var b = $('#board'); var fl = filtra(leads);
+      var soma = function (ls) { return ls.reduce(function (s, l) { return s + money(l.valor); }, 0); };
+      var tram = fl.filter(aberto);
+      $('#boardTotal').innerHTML = 'Negócios tramitando: <b>' + fmtMoney(soma(tram)) + '/mês</b> em ' + tram.length + ' lead(s) em aberto';
       b.innerHTML = ETAPAS.map(function (et) {
-        var ls = fl.filter(function (l) { return l.etapa === et; }).sort(function (a, b) { return (b.atualizado_em || '') > (a.atualizado_em || '') ? 1 : -1; });
-        if (et === 'Ganho' || et === 'Perdido') ls = ls.slice(0, 15);
-        return '<div class="col"><h3><span>' + et + '</span><span>' + ls.length + '</span></h3>' + ls.map(card).join('') + '</div>';
+        var todosEt = fl.filter(function (l) { return l.etapa === et; }).sort(function (a, b) { return (b.atualizado_em || '') > (a.atualizado_em || '') ? 1 : -1; });
+        var ls = (et === 'Ganho' || et === 'Perdido') ? todosEt.slice(0, 15) : todosEt;
+        var rot = et === 'Ganho' ? 'fechado' : et === 'Perdido' ? 'perdido' : 'tramitando';
+        return '<div class="col"><h3><span>' + et + '</span><span>' + todosEt.length + '</span></h3>' +
+          '<div class="col-sum"><b>' + fmtMoney(soma(todosEt)) + '</b> ' + rot + '</div>' + ls.map(card).join('') + '</div>';
       }).join('');
       bindCards(b);
     }
@@ -371,7 +394,17 @@
       return '<div><h2 class="sec">' + titulo + '</h2>' + (rows.length ? '<table class="table"><tr><th>Item</th><th style="width:70px">Qtd</th></tr>' +
         rows.map(function (r) { return '<tr><td>' + esc(r[0]) + '</td><td>' + r[1] + '</td></tr>'; }).join('') + '</table>' : '<div class="empty">Sem dados no mês.</div>') + '</div>';
     };
+    var abertos = leads.filter(aberto);
+    var tramVal = abertos.reduce(function (s, l) { return s + money(l.valor); }, 0);
+    var emProposta = abertos.filter(function (l) { return l.etapa === 'Proposta enviada' || l.etapa === 'Negociação'; });
+    var fuHoje = abertos.filter(function (l) { return l.followup && l.followup <= hoje; }).length;
     $('#relatorio').innerHTML =
+      '<h2 class="sec" style="margin-top:4px">Agora</h2><div class="kpis">' +
+      '<div class="kpi lime"><b>' + fmtMoney(tramVal) + '</b><span>Negócios tramitando (/mês)</span></div>' +
+      '<div class="kpi"><b>' + abertos.length + '</b><span>Leads em aberto</span></div>' +
+      '<div class="kpi"><b>' + emProposta.length + '</b><span>Em proposta ou negociação</span></div>' +
+      '<div class="kpi' + (fuHoje ? ' ink' : '') + '" style="cursor:pointer" id="kpiFu"><b>' + fuHoje + '</b><span>Follow-ups para hoje ou atrasados</span></div>' +
+      '</div><h2 class="sec">Resultado do mês</h2>' +
       '<div class="kpis">' +
       '<div class="kpi ink"><b>' + gerados.length + '</b><span>Leads gerados</span></div>' +
       '<div class="kpi"><b>' + propostas.length + '</b><span>Propostas enviadas</span></div>' +
@@ -383,6 +416,7 @@
       '</div>' +
       '<div class="grid2">' + tabela('Motivos de perda', conta(perdidos, 'motivo_perda')) + tabela('Leads por origem', conta(gerados, 'origem')) + '</div>' +
       '<div class="grid2">' + tabela('Leads por serviço', conta(gerados, 'servico')) + tabela('Leads por faturamento', conta(gerados, 'faturamento')) + '</div>';
+    var k = $('#kpiFu'); if (k) k.addEventListener('click', function () { document.querySelector('.tab[data-tab="hoje"]').click(); });
   }
 
   // ---------- Painel ----------
@@ -396,12 +430,13 @@
       if (el.tagName === 'SELECT' && v && !Array.prototype.some.call(el.options, function (o) { return o.value === v || o.text === v; })) { var o = document.createElement('option'); o.text = v; el.add(o); }
       el.value = v;
     });
-    if (!l) { form.elements.origem.value = 'WhatsApp'; form.elements.etapa.value = 'Novo'; form.elements.followup.value = hoje; }
+    if (!l) { form.elements.origem.value = 'Site WhatsApp'; form.elements.etapa.value = 'Novo'; form.elements.followup.value = hoje; }
     $('#pTitle').textContent = l ? (l.nome || 'Lead') : 'Novo lead';
     $('#histBox').classList.toggle('hidden', !l);
     $('#hist').innerHTML = l && l.comentarios && l.comentarios.length ? l.comentarios.slice().reverse().map(function (c) {
       return '<div class="cm' + (c.auto ? ' auto' : '') + '"><small>' + esc(br(c.em) + ' ' + (c.em || '').slice(11, 16)) + '</small>' + esc(c.texto) + '</div>';
     }).join('') : '<div class="empty">Sem comentários ainda.</div>';
+    renderFiles(l);
     var wa = l ? waLink(l.whatsapp) : '';
     $('#pWa').classList.toggle('hidden', !wa); if (wa) $('#pWa').href = wa;
     syncEtapa();
@@ -409,6 +444,38 @@
     $('#panel').scrollTop = 0;
     if (!l) setTimeout(function () { form.elements.nome.focus(); }, 50);
   }
+  function renderFiles(l) {
+    var fs = (l && l.anexos) || [];
+    $('#files').innerHTML = fs.length ? fs.map(function (a) {
+      return '<div class="file"><a href="' + API + '?action=file&f=' + encodeURIComponent(a.id) + '" target="_blank" rel="noopener">' + esc(a.nome) + '</a>' +
+        '<span style="color:var(--muted);font-size:.75rem">' + Math.max(1, Math.round((a.tamanho || 0) / 1024)) + ' KB</span>' +
+        '<button type="button" data-rm="' + esc(a.id) + '">Remover</button></div>';
+    }).join('') : '<div class="empty" style="padding:10px">Nenhum anexo.</div>';
+    $('#files').querySelectorAll('[data-rm]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (!window.confirm('Remover este anexo?')) return;
+        api('unattach', { lead: form.elements.id.value, f: b.getAttribute('data-rm') }).then(function (j) { upsert(j.lead); renderFiles(j.lead); toast('Anexo removido'); }).catch(function (e) { toast(e.message); });
+      });
+    });
+  }
+  function upsert(lead) { var i = leads.findIndex(function (x) { return x.id === lead.id; }); if (i > -1) leads[i] = lead; else leads.push(lead); }
+  $('#fileInput').addEventListener('change', function () {
+    var file = this.files[0]; var input = this; if (!file) return;
+    if (file.size > 25 * 1024 * 1024) { toast('Arquivo acima de 25 MB'); input.value = ''; return; }
+    var send = function (id) {
+      var fd = new FormData(); fd.append('lead', id); fd.append('arquivo', file);
+      toast('Enviando anexo...');
+      return fetch(API + '?action=upload', { method: 'POST', credentials: 'same-origin', headers: { 'X-CSRF': csrf }, body: fd })
+        .then(function (r) { return r.json().then(function (j) { if (!r.ok || !j.ok) throw new Error(j.erro || 'Erro no envio'); return j; }); })
+        .then(function (j) { upsert(j.lead); renderFiles(j.lead); render(); toast('Anexo salvo'); })
+        .catch(function (e) { toast(e.message); })
+        .finally(function () { input.value = ''; });
+    };
+    var id = form.elements.id.value;
+    if (id) { send(id); return; }
+    if (!form.elements.nome.value.trim()) { toast('Preencha o nome e salve antes de anexar'); input.value = ''; return; }
+    saveLead(false).then(function (lead) { if (lead) { form.elements.id.value = lead.id; $('#histBox').classList.remove('hidden'); send(lead.id); } });
+  });
   function closeLead() { ['#overlay', '#panel', '#saveBar'].forEach(function (s) { $(s).classList.add('hidden'); }); }
   function syncEtapa() {
     var et = form.elements.etapa.value; var fechado = et === 'Ganho' || et === 'Perdido';
@@ -425,17 +492,18 @@
   form.addEventListener('submit', function (e) { e.preventDefault(); save(); });
   $('#pSave').addEventListener('click', save);
 
-  function save() {
-    if (!form.elements.nome.value.trim()) { form.elements.nome.reportValidity(); return; }
-    if (form.elements.etapa.value === 'Perdido' && !form.elements.motivo_perda.value) { toast('Escolha o motivo da perda'); form.elements.motivo_perda.focus(); return; }
+  function save() { saveLead(true); }
+  function saveLead(fechar) {
+    if (!form.elements.nome.value.trim()) { form.elements.nome.reportValidity(); return Promise.resolve(null); }
+    if (form.elements.etapa.value === 'Perdido' && !form.elements.motivo_perda.value) { toast('Escolha o motivo da perda'); form.elements.motivo_perda.focus(); return Promise.resolve(null); }
     var lead = {};
     ['id', 'nome', 'empresa', 'whatsapp', 'email', 'origem', 'servico', 'faturamento', 'funcionarios', 'etapa', 'valor', 'motivo_perda', 'followup', 'novo_comentario'].forEach(function (k) { lead[k] = form.elements[k].value; });
     $('#pSave').disabled = true;
-    api('save', { lead: lead }).then(function (j) {
-      var i = leads.findIndex(function (x) { return x.id === j.lead.id; });
-      if (i > -1) leads[i] = j.lead; else leads.push(j.lead);
-      closeLead(); render(); toast('Salvo');
-    }).catch(function (err) { toast(err.message); }).finally(function () { $('#pSave').disabled = false; });
+    return api('save', { lead: lead }).then(function (j) {
+      upsert(j.lead); form.elements.novo_comentario.value = '';
+      if (fechar) { closeLead(); toast('Salvo'); }
+      render(); return j.lead;
+    }).catch(function (err) { toast(err.message); return null; }).finally(function () { $('#pSave').disabled = false; });
   }
   $('#pDelete').addEventListener('click', function () {
     var id = form.elements.id.value; if (!id) return;
