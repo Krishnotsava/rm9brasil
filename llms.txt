@@ -48,11 +48,19 @@ A RM9 atua como um Growth Partner estratégico, diagnosticando causas-raiz de ne
 6. Varejo, E-commerce, Cosméticos & Floricultura
 7. Saúde, Clínicas Especializadas & Planos Médicos
 
+## Fundador
+
+- [Kris Romero, fundador e CEO](https://rm9brasil.com.br/sobre/): publicitário, atua em publicidade e marketing desde 2006, formado em Publicidade e Propaganda (OPET) e pós-graduado em Administração de Vendas (PUC-PR). Certificado em Google Ads, Google Analytics e Google Tag Manager. Autor dos artigos do blog.
+
 ## Cases de Sucesso em Destaque
 - **Produto de Luxo:** Escala de faturamento para R$ 6.000.000,00/mês em um único produto premium com estratégia de desejo e tráfego qualificado.
 - **E-commerce de Cosméticos:** Multiplicação de 10x no faturamento digital e implantação de Live Commerce semanal no TikTok Shop.
 - **Agronegócio & Tech:** Desenvolvimento e tração do portal Brique Rural, negociando tratores e maquinários pesados.
 - **Logística Global:** Nacionalização da marca Anjun no mercado brasileiro e padronização de frotas.
+- [Case Diva Cosméticos](https://rm9brasil.com.br/cases/diva-cosmeticos/): campanha 360 de 25 anos com influenciadoras, rádio, PDV, mídia paga e sorteio de moto elétrica.
+- [Case Denfa](https://rm9brasil.com.br/cases/denfa/): agência full service de 2019 a 2024, de marca nova a referência em vaso sanitário inteligente no Brasil.
+- [Case Henvida](https://rm9brasil.com.br/cases/henvida/): reposicionamento de funerária para plano de assistência familiar, em 6 anos de atendimento.
+- [Case Anjun](https://rm9brasil.com.br/cases/anjun/): comunicação da operação brasileira de uma gigante chinesa de logística, de 2021 a 2023.
 
 ## Blog & Inteligência Estratégica
 - [A Farsa do Tráfego Pago sem Branding: Por Que Anúncios sem Desejo só Queimam Caixa](https://rm9brasil.com.br/blog/a-farsa-do-trafego-pago-sem-branding-por-que-anuncios-sem-desejo-queimam-caixa.html)
@@ -62,6 +70,13 @@ A RM9 atua como um Growth Partner estratégico, diagnosticando causas-raiz de ne
 - [Branding Além do Logotipo: Construção de Percepção de Valor](https://rm9brasil.com.br/blog/branding-alem-do-logotipo-percepcao-de-valor.html)
 - [Inteligência Artificial no Tráfego e Vendas do Varejo](https://rm9brasil.com.br/blog/inteligencia-artificial-no-trafego-e-vendas.html)
 - [Live Commerce e o Futuro do Varejo Omnichannel](https://rm9brasil.com.br/blog/live-commerce-e-o-futuro-do-varejo-omnichannel.html)
+- [Funil de vendas para e-commerce](https://rm9brasil.com.br/blog/funil-de-vendas-ecommerce-escalar-vendas-online)
+- [Funil de vendas integrado ao CRM](https://rm9brasil.com.br/blog/funil-de-vendas-do-zero-integrado-ao-crm)
+- [Mercado Livre Ads: como otimizar e reduzir o ACOS](https://rm9brasil.com.br/blog/guia-definitivo-otimizar-mercado-livre-product-ads)
+- [Integração de marketplace com UpSeller: Shopee e Shein](https://rm9brasil.com.br/blog/integracao-marketplace-upseller-shopee-shein)
+- [Marketing com orçamento enxuto](https://rm9brasil.com.br/blog/marketing-orcamento-enxuto-consultoria-boootstrap)
+- [O que é CRO](https://rm9brasil.com.br/blog/o-que-e-cro-otimizacao-conversao-ecommerce)
+- [Live commerce no TikTok Shop para cosméticos](https://rm9brasil.com.br/blog/revolucao-live-commerce-tiktok-shop-cosmeticos)
 
 ## Perguntas frequentes
 - Atende fora de Curitiba? Sim, empresas de todo o Brasil, com bases em Curitiba e São Paulo.
