@@ -317,6 +317,27 @@ if ($service !== 'trabalhe_conosco' && defined('CALLMEBOT_APIKEY') && CALLMEBOT_
     $waEnviado = ($waResp !== false);
 }
 
+// Lead do site entra no CRM (pipeline)
+if ($service === 'lead_site') {
+    try {
+        require_once __DIR__ . '/lib/crm-store.php';
+        $plainCrm = function ($v) { return html_entity_decode((string) $v, ENT_QUOTES, 'UTF-8'); };
+        crm_add_from_form([
+            'nome' => $plainCrm($nome),
+            'empresa' => $plainCrm($empresa),
+            'email' => $plainCrm($email !== 'Não informado' ? $email : ''),
+            'whatsapp' => $plainCrm($whatsappClean !== '' ? $whatsapp : ''),
+            'servico' => $plainCrm($servicoInteresse),
+            'faturamento' => $plainCrm($faturamento),
+            'funcionarios' => $plainCrm($funcionarios),
+            'mensagem' => trim(strip_tags($plainCrm(str_replace('<br />', "\n", $mensagem)))) === 'Sem observações adicionais' ? '' : trim(strip_tags($plainCrm(str_replace('<br />', "\n", $mensagem)))),
+            'source' => $plainCrm($source),
+        ]);
+    } catch (\Throwable $e) {
+        // o CRM nunca pode impedir o envio do lead
+    }
+}
+
 // Log local
 $logDir = __DIR__ . '/../logs';
 if (!is_dir($logDir)) {

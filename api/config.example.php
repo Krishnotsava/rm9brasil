@@ -24,3 +24,9 @@ define('RH_DESTINATARIO', 'rh@rm9brasil.com.br');
 // 4. O bot responde com a sua APIKEY. Cole abaixo.
 define('CALLMEBOT_PHONE', '+5541988467737');
 define('CALLMEBOT_APIKEY', '');
+
+// ===== CRM (rm9brasil.com.br/pipeline) =====
+// Senha para entrar no CRM. Use uma senha forte e só sua.
+define('CRM_SENHA', '');
+// Código secreto para o lembrete diário por URL (qualquer texto longo e aleatório)
+define('CRM_CRON_TOKEN', '');
