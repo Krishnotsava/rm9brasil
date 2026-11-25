@@ -520,7 +520,7 @@ body.theme-clean input, body.theme-clean textarea { cursor: text !important; }
   .theme-clean .hero-lead-pane .form-field-row { grid-template-columns: 1fr 1fr; }
   .theme-clean .hero-lead-title { font-size: 1.2rem; }
 }
-@media (max-width: 980px) { .theme-clean .hero-copy .hero-btn-row { display: none; } }
+@media (max-width: 980px) { .theme-clean .hero-cinematic .hero-copy .hero-btn-row { display: none; } }
 
 /* Autor, fontes e página Sobre */
 .theme-clean .article-meta-author { color: var(--ink) !important; text-decoration: none; }
@@ -573,3 +573,6 @@ body.theme-clean input, body.theme-clean textarea { cursor: text !important; }
 .theme-clean .tts-fact--ink strong { color: #F2F2F4; }
 .theme-clean .tts-fact--ink span, .theme-clean .tts-fact--ink a { color: #C9CBD3 !important; }
 @media (max-width: 860px) { .theme-clean .tts-facts { grid-template-columns: 1fr; } }
+
+.theme-clean .service-hero-section .hero-split { align-items: center; }
+.theme-clean .service-hero-section .hero-lead-card { margin-top: 1rem; }
