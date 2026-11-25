@@ -41,7 +41,7 @@
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/studio-lux.css?v=20261111_v10">
-  <link rel="stylesheet" href="css/home-clean.css?v=20261125_v12">
+  <link rel="stylesheet" href="css/home-clean.css?v=20261125_v13">
   
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -502,6 +502,8 @@
     </div>
     
     <div class="container hero-content">
+      <div class="hero-split">
+      <div class="hero-copy">
       <h1 class="mono-badge" style="margin: 0;">
         Agência de marketing digital e publicidade em Curitiba
       </h1>
@@ -515,16 +517,72 @@
       </p>
       
       <div class="hero-btn-row">
-        <a href="#contato" class="btn-cta-lux" style="font-size: 0.95rem; padding: 0.95rem 2rem;">
-          <span>Quero vender mais</span>
-          <svg width="14" height="14" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
         <a href="#cases" class="btn-outline-lux" style="font-size: 0.95rem; padding: 0.95rem 2rem;">
           <span>Ver cases</span>
         </a>
       </div>
+      </div><!-- /hero-copy -->
+
+      <!-- Formulário rápido em 2 etapas -->
+      <div class="hero-lead-card" id="heroLead">
+        <div class="hero-lead-head">
+          <span class="hero-lead-pill">Fale com um especialista</span>
+          <span class="hero-lead-step" id="heroLeadStep">Etapa 1 de 2</span>
+        </div>
+        <p class="hero-lead-title">Conte o que sua empresa precisa</p>
+        <p class="hero-lead-sub">Resposta em até 24h no seu e-mail.</p>
+        <form id="heroLeadForm" novalidate>
+          <div class="hero-lead-pane" data-step="1">
+            <input type="text" id="heroNome" class="form-field-input" placeholder="Seu nome" autocomplete="name" required aria-label="Seu nome">
+            <input type="email" id="heroEmail" class="form-field-input" placeholder="Seu e-mail" autocomplete="email" required aria-label="Seu e-mail">
+            <select id="heroServico" class="form-field-input form-field-select" required aria-label="Do que você precisa?">
+              <option value="" disabled selected>Do que você precisa?</option>
+              <option>Tráfego pago e mídia</option>
+              <option>Planejamento e estratégia de marketing</option>
+              <option>Posicionamento de marca e branding</option>
+              <option>Escala de e-commerce</option>
+              <option>Marketplaces e TikTok Shop</option>
+              <option>Geração de contatos comerciais</option>
+              <option>Site ou landing page</option>
+              <option>Visibilidade em IA (ChatGPT, Google IA)</option>
+              <option>Outro / ainda não sei</option>
+            </select>
+            <button type="button" class="btn-cta-lux hero-lead-btn" id="heroNext">
+              <span>Continuar</span>
+              <svg width="14" height="14" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="hero-lead-pane" data-step="2" hidden>
+            <input type="text" id="heroEmpresa" class="form-field-input" placeholder="Nome da empresa" autocomplete="organization" required aria-label="Empresa">
+            <div class="form-field-row">
+              <select id="heroFaturamento" class="form-field-input form-field-select" required aria-label="Faturamento mensal">
+                <option value="" disabled selected>Faturamento</option>
+                <option>Até R$ 50 mil</option>
+                <option>R$ 50 mil a R$ 200 mil</option>
+                <option>R$ 200 mil a R$ 1 milhão</option>
+                <option>Acima de R$ 1 milhão</option>
+                <option>Prefiro não informar</option>
+              </select>
+              <select id="heroFuncionarios" class="form-field-input form-field-select" required aria-label="Funcionários">
+                <option value="" disabled selected>Funcionários</option>
+                <option>1 a 5</option>
+                <option>6 a 20</option>
+                <option>21 a 50</option>
+                <option>51 a 200</option>
+                <option>Mais de 200</option>
+              </select>
+            </div>
+            <textarea id="heroMensagem" class="form-field-input" rows="2" placeholder="Algo mais que devemos saber? (opcional)" aria-label="Mensagem"></textarea>
+            <button type="submit" class="btn-cta-lux hero-lead-btn" id="heroSubmit">
+              <span>Enviar para a RM9</span>
+              <svg width="14" height="14" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="hero-lead-back" id="heroBack">Voltar</button>
+          </div>
+          <p class="hero-lead-msg" id="heroLeadMsg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+      </div><!-- /hero-split -->
 
       <!-- Floating Meta Strip -->
       <div class="hero-floating-meta">
@@ -1709,6 +1767,74 @@
 
   
   
+
+  <script>
+    // Formulário rápido do topo (2 etapas)
+    (function () {
+      const form = document.getElementById('heroLeadForm');
+      if (!form) return;
+      const panes = form.querySelectorAll('.hero-lead-pane');
+      const stepLabel = document.getElementById('heroLeadStep');
+      const msg = document.getElementById('heroLeadMsg');
+      const $ = (id) => document.getElementById(id);
+      const say = (t, ok) => { msg.textContent = t; msg.className = 'hero-lead-msg ' + (ok ? 'is-ok' : 'is-err'); };
+      const check = (ids) => {
+        for (const id of ids) {
+          const el = $(id);
+          if (!el.checkValidity()) { el.reportValidity(); el.focus(); return false; }
+        }
+        return true;
+      };
+      const go = (n) => {
+        panes.forEach((p) => { p.hidden = p.dataset.step !== String(n); });
+        stepLabel.textContent = 'Etapa ' + n + ' de 2';
+        msg.textContent = '';
+      };
+      $('heroNext').addEventListener('click', () => {
+        if (!check(['heroNome', 'heroEmail', 'heroServico'])) return;
+        go(2);
+        $('heroEmpresa').focus();
+        if (typeof gtag === 'function') gtag('event', 'form_step', { form_id: 'contato_hero', step: 1, servico: $('heroServico').value });
+      });
+      $('heroBack').addEventListener('click', () => go(1));
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!check(['heroEmpresa', 'heroFaturamento', 'heroFuncionarios'])) return;
+        const btn = $('heroSubmit');
+        const original = btn.innerHTML;
+        btn.innerHTML = '<span>Enviando...</span>';
+        btn.disabled = true;
+        const payload = {
+          nome: $('heroNome').value.trim(),
+          email: $('heroEmail').value.trim(),
+          lead_empresa: $('heroEmpresa').value.trim(),
+          servico_interesse: $('heroServico').value,
+          faturamento: $('heroFaturamento').value,
+          funcionarios: $('heroFuncionarios').value,
+          mensagem: $('heroMensagem').value.trim(),
+          service: 'lead_site',
+          source: 'form_hero_home'
+        };
+        try {
+          const res = await fetch('/api/send-mail.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+          const result = await res.json().catch(() => ({}));
+          if (!res.ok || !result.success) throw new Error('falha no envio');
+          if (typeof gtag === 'function') gtag('event', 'generate_lead', { form_id: 'contato_hero', lead_source: 'formulario', servico: payload.servico_interesse, faturamento: payload.faturamento, funcionarios: payload.funcionarios });
+          if (typeof fbq === 'function') fbq('track', 'Lead');
+          form.reset();
+          go(1);
+          panes.forEach((p) => { p.hidden = true; });
+          stepLabel.textContent = 'Enviado';
+          say('Recebemos! A RM9 vai responder no e-mail que você informou em até 24h.', true);
+        } catch (err) {
+          btn.disabled = false;
+          btn.innerHTML = original;
+          say('Não conseguimos enviar agora. Tente de novo ou escreva para romero@rm9brasil.com.br.', false);
+        }
+      });
+    })();
+  </script>
+
   <!-- MOBILE DRAWER & OVERLAY (FAIL-SAFE HIDDEN BY DEFAULT) -->
   <div id="mobileOverlay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 999998; opacity: 0; transition: opacity 0.35s ease; cursor: pointer;"></div>
   
