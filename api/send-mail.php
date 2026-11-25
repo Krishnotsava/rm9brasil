@@ -47,6 +47,8 @@ $link_curriculo = htmlspecialchars(trim($data['link_curriculo'] ?? ''));
 $link_kit = htmlspecialchars(trim($data['link_kit'] ?? ''));
 
 $leadEmpresa = htmlspecialchars(trim($data['lead_empresa'] ?? ''));
+$servicoInteresse = htmlspecialchars(trim($data['servico_interesse'] ?? ''));
+$funcionarios = htmlspecialchars(trim($data['funcionarios'] ?? ''));
 if ($leadEmpresa !== '' && $empresa === '') {
     $empresa = $leadEmpresa; // mostra a empresa no corpo do e-mail
 }
@@ -57,7 +59,10 @@ $whatsappClean = preg_replace('/[^0-9]/', '', $whatsapp);
 // Definir assunto do e-mail
 $assunto = "[Lead RM9] Novo Contato: {$nome} - {$segmento}";
 if ($service === 'lead_site') {
-    $assunto = "[Lead RM9] Novo lead do site: {$nome} ({$leadEmpresa})";
+    $assunto = "Novo contato pelo site: {$nome} ({$leadEmpresa})";
+    if ($servicoInteresse !== '') {
+        $assunto = "Novo contato pelo site: {$servicoInteresse} | {$nome} ({$leadEmpresa})";
+    }
 } elseif (!empty($empresa)) {
     $assunto = "[Parceiro/Fornecedor RM9] {$empresa} ({$nome})";
 } elseif ($service === 'trabalhe_conosco') {
@@ -100,7 +105,7 @@ if ($whatsappClean !== '') {
                     <td style='padding: 10px 0; color: #9fa3b5; border-bottom: 1px solid #1c1f2e;'><strong>WhatsApp:</strong></td>
                     <td style='padding: 10px 0; border-bottom: 1px solid #1c1f2e;'>
                         <a href='https://wa.me/55{$whatsappClean}' style='display: inline-block; background: #25d366; color: #050507; font-weight: bold; text-decoration: none; padding: 5px 12px; border-radius: 20px; font-size: 12px;' target='_blank'>
-                            📱 Abrir WhatsApp ({$whatsapp}) ➔
+                            Abrir WhatsApp ({$whatsapp})
                         </a>
                     </td>
                 </tr>
@@ -119,6 +124,22 @@ if (!empty($faturamento)) {
                 <tr>
                     <td style='padding: 10px 0; color: #9fa3b5; border-bottom: 1px solid #1c1f2e;'><strong>Faturamento:</strong></td>
                     <td style='padding: 10px 0; color: #e2f800; font-weight: bold; border-bottom: 1px solid #1c1f2e;'>{$faturamento}</td>
+                </tr>";
+}
+
+if (!empty($funcionarios)) {
+    $corpoHtml .= "
+                <tr>
+                    <td style='padding: 10px 0; color: #9fa3b5; border-bottom: 1px solid #1c1f2e;'><strong>Funcionários:</strong></td>
+                    <td style='padding: 10px 0; color: #ffffff; border-bottom: 1px solid #1c1f2e;'>{$funcionarios}</td>
+                </tr>";
+}
+
+if (!empty($servicoInteresse)) {
+    $corpoHtml .= "
+                <tr>
+                    <td style='padding: 10px 0; color: #9fa3b5; border-bottom: 1px solid #1c1f2e;'><strong>Serviço de interesse:</strong></td>
+                    <td style='padding: 10px 0; color: #e2f800; font-weight: bold; border-bottom: 1px solid #1c1f2e;'>{$servicoInteresse}</td>
                 </tr>";
 }
 
@@ -239,6 +260,17 @@ if (defined('SMTP_HOST') && SMTP_HOST !== '' && defined('SMTP_USER') && defined(
         $mailer->isHTML(true);
         $mailer->Subject = html_entity_decode($assunto, ENT_QUOTES, 'UTF-8');
         $mailer->Body = $corpoHtml;
+        $txt = function ($v) { return html_entity_decode(strip_tags(str_replace('<br />', "\n", (string) $v)), ENT_QUOTES, 'UTF-8'); };
+        $alt = ["Novo contato pelo site rm9brasil.com.br", "", "Nome: " . $txt($nome)];
+        if ($empresa !== '') { $alt[] = "Empresa: " . $txt($empresa); }
+        $alt[] = "E-mail: " . $txt($email);
+        if ($whatsappClean !== '') { $alt[] = "WhatsApp: " . $txt($whatsapp); }
+        if ($servicoInteresse !== '') { $alt[] = "Serviço: " . $txt($servicoInteresse); }
+        if ($faturamento !== '') { $alt[] = "Faturamento mensal: " . $txt($faturamento); }
+        if ($funcionarios !== '') { $alt[] = "Funcionários: " . $txt($funcionarios); }
+        $alt[] = ""; $alt[] = "Mensagem:"; $alt[] = $txt($mensagem);
+        $alt[] = ""; $alt[] = "Origem: " . $txt($source) . " | " . $dataHora;
+        $mailer->AltBody = implode("\n", $alt);
         $enviado = $mailer->send();
     } catch (\Throwable $e) {
         $enviado = false;
@@ -259,6 +291,9 @@ if ($service !== 'trabalhe_conosco' && defined('CALLMEBOT_APIKEY') && CALLMEBOT_
     if ($empresa !== '') { $linhas[] = "Empresa: " . $plain($empresa); }
     $linhas[] = "E-mail: " . $plain($email);
     if ($whatsappClean !== '') { $linhas[] = "WhatsApp: " . $plain($whatsapp); }
+    if ($servicoInteresse !== '') { $linhas[] = "Serviço: " . $plain($servicoInteresse); }
+    if ($faturamento !== '') { $linhas[] = "Faturamento: " . $plain($faturamento); }
+    if ($funcionarios !== '') { $linhas[] = "Funcionários: " . $plain($funcionarios); }
     $linhas[] = "Origem: " . $plain($service);
     $waUrl = 'https://api.callmebot.com/whatsapp.php?phone=' . rawurlencode(CALLMEBOT_PHONE)
         . '&text=' . rawurlencode(implode("\n", $linhas))
