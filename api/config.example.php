@@ -13,6 +13,8 @@ define('SMTP_PASS', '');
 
 // Para onde os leads vão
 define('LEAD_DESTINATARIO', 'romero@rm9brasil.com.br');
+// Para onde vão as candidaturas do Trabalhe Conosco
+define('RH_DESTINATARIO', 'rh@rm9brasil.com.br');
 
 // ===== AVISO NO WHATSAPP (opcional) =====
 // Como pegar a chave (uma vez só, pelo seu celular):
